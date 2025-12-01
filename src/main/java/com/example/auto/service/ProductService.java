@@ -1377,7 +1377,7 @@ public class ProductService {
         Map<String, Object> map = new HashMap<>();
         
         // 필수 필드 (네이버 API 요구사항)
-        map.put("naverShoppingRegistration", false);
+            map.put("naverShoppingRegistration", false);
         map.put("channelProductDisplayStatusType", "ON");
         log.debug("필수 필드 추가: naverShoppingRegistration=false, channelProductDisplayStatusType=ON");
         
