@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>네이버 스마트스토어 자동화 툴 테스트</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            padding: 30px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .subtitle {
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .section h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .required {
+            color: red;
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .result.success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        
+        .result.error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        
+        .result pre {
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(0,0,0,0.05);
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 12px;
+        }
+        
+        .info {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #0c5460;
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .link-button {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        
+        .link-button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛍️ 네이버 스마트스토어 자동화 툴</h1>
+        <p class="subtitle">브라우저에서 간편하게 테스트하세요</p>
+        
+        <div class="info">
+            <strong>📌 사용 전 확인사항:</strong><br>
+            1. 애플리케이션이 실행 중이어야 합니다 (포트 8080)<br>
+            2. <code>application.properties</code>에 Client ID/Secret이 설정되어 있어야 합니다<br>
+            3. <strong>판매자 ID 확인 방법:</strong><br>
+               &nbsp;&nbsp;&nbsp;&nbsp;→ <a href="https://sell.smartstore.naver.com" target="_blank" style="color: #2196F3;">네이버 스마트스토어 판매자센터</a> 로그인<br>
+               &nbsp;&nbsp;&nbsp;&nbsp;→ 스토어 설정 → 스토어 정보 → 판매자 ID 확인
+        </div>
+        
+        <!-- Step 1: 상태 확인 -->
+        <div class="section">
+            <h2><span class="step-number">1</span>애플리케이션 상태 확인</h2>
+            <p style="margin-bottom: 15px; color: #666; font-size: 14px;">
+                애플리케이션이 정상적으로 실행 중인지 확인합니다.
+            </p>
+            <button onclick="checkStatus()">상태 확인</button>
+            <div id="statusResult" class="result"></div>
+        </div>
+        
+        <!-- Step 2: 스토어 등록 -->
+        <div class="section">
+            <h2><span class="step-number">2</span>스토어 등록 / 토큰 갱신</h2>
+            <p style="margin-bottom: 15px; color: #666; font-size: 14px;">
+                <strong>✨ 자동 모드:</strong> 스토어가 이미 등록되어 있으면 저장된 정보로 자동 토큰 갱신합니다.<br>
+                <strong>📝 최초 설정:</strong> 스토어가 없으면 최초 1회만 판매자 ID를 입력하세요.
+            </p>
+            
+            <div class="info" id="storeInfo" style="display: none;">
+                <strong>ℹ️ 현재 등록된 스토어가 있습니다.</strong><br>
+                버튼을 클릭하면 저장된 정보로 자동 토큰 갱신이 진행됩니다.
+            </div>
+            
+            <div id="firstTimeSetup" style="display: none;">
+                <div class="form-group">
+                    <label>인증 타입</label>
+                    <select id="type">
+                        <option value="SELF" selected>SELF (판매자 리소스)</option>
+                        <option value="SELF">SELF (자기 자신의 리소스)</option>
+                    </select>
+                    <small style="color: #666; font-size: 12px;">기본값: SELF</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>판매자 ID (accountId) <span class="required">*</span></label>
+                    <input type="text" id="accountId" placeholder="예: ncp_2sRZTWJVbDtHPoz9OXXXX">
+                    <small style="color: #666; font-size: 12px; line-height: 1.6;">
+                        <strong>📌 판매자 ID 확인 방법:</strong><br>
+                        1. <a href="https://sell.smartstore.naver.com" target="_blank" style="color: #667eea;">네이버 스마트스토어 판매자센터</a> 로그인<br>
+                        2. <strong>스토어 설정</strong> → <strong>스토어 정보</strong> 메뉴 클릭<br>
+                        3. <strong>판매자 ID</strong> 또는 <strong>스토어 ID</strong> 확인<br>
+                        <br>
+                        ⚠️ <strong>주의:</strong> Client ID (예: 7gz2KKBlKrNUFaAOt1urVB)가 아닌<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;실제 <strong>판매자 ID</strong>를 입력하세요!
+                    </small>
+                </div>
+                
+                <div class="form-group">
+                    <label>판매자 ID (vendorId)</label>
+                    <input type="text" id="vendorId" placeholder="선택사항 (없으면 accountId 사용)">
+                    <small style="color: #666; font-size: 12px;">선택사항입니다</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>스토어 이름</label>
+                    <input type="text" id="storeName" placeholder="기본값: 내 스토어" value="내 스토어">
+                </div>
+            </div>
+            
+            <button onclick="registerStore()" id="registerButton">토큰 발급 / 갱신</button>
+            <div id="storeResult" class="result"></div>
+        </div>
+        
+        <!-- Step 3: 스토어 조회 -->
+        <div class="section">
+            <h2><span class="step-number">3</span>등록된 스토어 확인</h2>
+            <p style="margin-bottom: 15px; color: #666; font-size: 14px;">
+                현재 등록된 스토어 정보를 확인합니다.
+            </p>
+            <button onclick="getStore()">스토어 조회</button>
+            <div id="getStoreResult" class="result"></div>
+        </div>
+    </div>
+    
+    <script>
+        const API_BASE_URL = 'http://localhost:8080';
+        
+        // Step 1: 상태 확인
+        async function checkStatus() {
+            const resultDiv = document.getElementById('statusResult');
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result';
+            resultDiv.innerHTML = '<p>확인 중...</p>';
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/stores`);
+                
+                if (response.status === 404) {
+                    resultDiv.className = 'result success';
+                    resultDiv.innerHTML = '<p>✅ 애플리케이션이 정상적으로 실행 중입니다!</p><p style="margin-top: 10px;">스토어가 아직 등록되지 않았습니다. Step 2로 진행하세요.</p>';
+                } else if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.className = 'result success';
+                    resultDiv.innerHTML = '<p>✅ 애플리케이션이 정상적으로 실행 중입니다!</p><pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = '<p>❌ 오류 발생:</p><pre>' + error.message + '</pre><p style="margin-top: 10px;">애플리케이션이 실행 중인지 확인하세요.</p>';
+            }
+        }
+        
+        // 페이지 로드 시 스토어 상태 확인
+        window.addEventListener('DOMContentLoaded', async function() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/stores`);
+                if (response.ok) {
+                    // 스토어가 있으면 자동 모드 표시
+                    const store = await response.json();
+                    document.getElementById('storeInfo').style.display = 'block';
+                    document.getElementById('firstTimeSetup').style.display = 'none';
+                    document.getElementById('registerButton').textContent = '토큰 갱신 (자동)';
+                } else {
+                    // 스토어가 없으면 최초 설정 모드 표시
+                    document.getElementById('storeInfo').style.display = 'none';
+                    document.getElementById('firstTimeSetup').style.display = 'block';
+                    document.getElementById('registerButton').textContent = '스토어 등록';
+                }
+            } catch (error) {
+                // 에러 발생 시 최초 설정 모드 표시
+                document.getElementById('storeInfo').style.display = 'none';
+                document.getElementById('firstTimeSetup').style.display = 'block';
+                document.getElementById('registerButton').textContent = '스토어 등록';
+            }
+        });
+        
+        // Step 2: 스토어 등록 / 토큰 갱신
+        async function registerStore() {
+            const resultDiv = document.getElementById('storeResult');
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result';
+            resultDiv.innerHTML = '<p>처리 중...</p>';
+            
+            const type = document.getElementById('type') ? document.getElementById('type').value : null;
+            const accountId = document.getElementById('accountId') ? document.getElementById('accountId').value.trim() : null;
+            const vendorId = document.getElementById('vendorId') ? document.getElementById('vendorId').value.trim() : null;
+            const storeName = document.getElementById('storeName') ? document.getElementById('storeName').value.trim() : null;
+            
+            // 입력값 검증 (최초 설정 시에만)
+            if (accountId) {
+                if (accountId.includes('7gz2KKBlKrNUFaAOt1urVB') || accountId.startsWith('$2a$')) {
+                    resultDiv.className = 'result error';
+                    resultDiv.innerHTML = '<p>❌ 잘못된 입력입니다!</p><p style="margin-top: 10px;">accountId에는 Client ID가 아닌 <strong>실제 판매자 ID</strong>를 입력하세요.</p><p>판매자 ID는 네이버 스마트스토어 판매자센터에서 확인할 수 있습니다.</p>';
+                    return;
+                }
+            }
+            
+            if (vendorId && vendorId.startsWith('$2a$')) {
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = '<p>❌ 잘못된 입력입니다!</p><p style="margin-top: 10px;">vendorId에는 Client Secret이 아닌 <strong>판매자 ID</strong>를 입력하세요.</p>';
+                return;
+            }
+            
+            // FormData 생성 (값이 있는 것만 추가)
+            const formData = new URLSearchParams();
+            if (type) formData.append('type', type);
+            if (accountId) formData.append('accountId', accountId);
+            if (vendorId) formData.append('vendorId', vendorId);
+            if (storeName) formData.append('storeName', storeName);
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/oauth/authenticate`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: formData.toString()
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.className = 'result success';
+                    const isNewStore = !document.getElementById('storeInfo').style.display || 
+                                      document.getElementById('storeInfo').style.display === 'none';
+                    resultDiv.innerHTML = '<p>✅ ' + (isNewStore ? '스토어 등록' : '토큰 갱신') + ' 성공!</p><pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                    
+                    // 성공 후 UI 업데이트
+                    document.getElementById('storeInfo').style.display = 'block';
+                    document.getElementById('firstTimeSetup').style.display = 'none';
+                    document.getElementById('registerButton').textContent = '토큰 갱신 (자동)';
+                } else {
+                    resultDiv.className = 'result error';
+                    resultDiv.innerHTML = '<p>❌ 처리 실패:</p><pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                }
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = '<p>❌ 오류 발생:</p><pre>' + error.message + '</pre>';
+            }
+        }
+        
+        // Step 3: 스토어 조회
+        async function getStore() {
+            const resultDiv = document.getElementById('getStoreResult');
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result';
+            resultDiv.innerHTML = '<p>조회 중...</p>';
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/stores`);
+                
+                if (response.status === 404) {
+                    resultDiv.className = 'result error';
+                    resultDiv.innerHTML = '<p>❌ 등록된 스토어가 없습니다.</p><p style="margin-top: 10px;">Step 2에서 스토어를 먼저 등록하세요.</p>';
+                } else if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.className = 'result success';
+                    resultDiv.innerHTML = '<p>✅ 스토어 정보:</p><pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = '<p>❌ 오류 발생:</p><pre>' + error.message + '</pre>';
+            }
+        }
+    </script>
+</body>
+</html>
+
