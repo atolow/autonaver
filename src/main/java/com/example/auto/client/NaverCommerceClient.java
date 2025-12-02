@@ -659,6 +659,78 @@ public class NaverCommerceClient {
     }
     
     /**
+     * 하위 카테고리 조회
+     * GET /v1/categories/:categoryId/sub-categories
+     * 
+     * @param accessToken Access Token
+     * @param categoryId 상위 카테고리 ID
+     * @return 하위 카테고리 목록
+     */
+    public Mono<List<Map<String, Object>>> getSubCategories(String accessToken, String categoryId) {
+        return webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path(EXTERNAL_PREFIX + "/v1/categories/{categoryId}/sub-categories")
+                        .build(categoryId))
+                .header("Authorization", "Bearer " + accessToken)
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .bodyToMono(new ParameterizedTypeReference<List<Map<String, Object>>>() {
+                })
+                .doOnSuccess(response -> log.info("하위 카테고리 조회 성공: categoryId={}, 하위 카테고리 개수={}", 
+                        categoryId, response != null ? response.size() : 0))
+                .doOnError(error -> {
+                    if (error instanceof WebClientResponseException ex) {
+                        String responseBody = ex.getResponseBodyAsString();
+                        log.error("하위 카테고리 조회 실패: status={}, categoryId={}", ex.getStatusCode(), categoryId);
+                        log.error("응답 본문: {}", responseBody != null ? responseBody : "null");
+                    } else {
+                        log.error("하위 카테고리 조회 실패: categoryId={}", categoryId, error);
+                    }
+                });
+    }
+
+    /**
+     * 전체 카테고리 조회
+     * GET /v1/categories
+     * 
+     * @param accessToken Access Token
+     * @param last 리프 카테고리만 조회 여부 (true: 리프 카테고리만, false: 전체 카테고리, 기본값: false)
+     * @return 카테고리 정보 (트리 구조)
+     */
+    public Mono<List<Map<String, Object>>> getCategories(String accessToken, Boolean last) {
+        return webClient.get()
+                .uri(uriBuilder -> {
+                    var builder = uriBuilder.path(EXTERNAL_PREFIX + "/v1/categories");
+                    if (last != null) {
+                        builder.queryParam("last", last);
+                    }
+                    return builder.build();
+                })
+                .header("Authorization", "Bearer " + accessToken)
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .bodyToMono(new ParameterizedTypeReference<List<Map<String, Object>>>() {
+                })
+                .doOnSuccess(response -> {
+                    log.info("카테고리 정보 조회 성공: {}개 카테고리, last={}", 
+                            response != null ? response.size() : 0, last);
+                    if (response != null && !response.isEmpty()) {
+                        log.debug("카테고리 예시: {}", response.get(0));
+                    }
+                })
+                .doOnError(error -> {
+                    if (error instanceof WebClientResponseException ex) {
+                        String responseBody = ex.getResponseBodyAsString();
+                        log.error("카테고리 정보 조회 실패: status={}, last={}", 
+                                ex.getStatusCode(), last);
+                        log.error("응답 본문: {}", responseBody != null ? responseBody : "null");
+                    } else {
+                        log.error("카테고리 정보 조회 실패: last={}", last, error);
+                    }
+                });
+    }
+    
+    /**
      * 재고 조회
      */
     public Mono<Map<String, Object>> getInventory(String accessToken,

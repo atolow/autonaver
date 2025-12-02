@@ -68,11 +68,12 @@ public class ExcelToProductConverter {
                 log.info("행 {}: 카테고리 경로를 ID로 변환: {} -> {}", rowNumber, trimmedCategoryId, mappedCategoryId);
                 builder.leafCategoryId(mappedCategoryId);
             } else {
-                // 매핑이 없으면 경고하고 원본 그대로 전달 (네이버 API에서 에러 발생)
-                log.error("행 {}: 카테고리 매핑을 찾을 수 없습니다: {}. " +
-                        "CategoryMappingService에 매핑을 추가하거나, 엑셀 파일의 카테고리 컬럼을 숫자 ID로 변경하세요.", 
-                        rowNumber, trimmedCategoryId);
-                builder.leafCategoryId(trimmedCategoryId); // 일단 그대로 전달 (에러 발생 예상)
+                // 매핑이 없으면 에러 발생 (잘못된 카테고리 ID로 등록 시도 방지)
+                throw new IllegalArgumentException(String.format(
+                        "행 %d: 카테고리 매핑을 찾을 수 없습니다: '%s'. " +
+                        "엑셀 파일의 카테고리 컬럼을 숫자 ID로 변경하거나, " +
+                        "네이버 스마트스토어에서 확인한 정확한 카테고리 경로를 사용하세요.", 
+                        rowNumber, trimmedCategoryId));
             }
         }
         

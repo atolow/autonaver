@@ -86,6 +86,49 @@ public class ProductController {
     }
     
     /**
+     * 전체 카테고리 조회
+     * 네이버 스마트스토어의 전체 카테고리 목록을 조회합니다.
+     * (독립 실행형: 현재 등록된 스토어에 자동으로 조회)
+     * 
+     * @param last 리프 카테고리만 조회 여부 (true: 리프 카테고리만, false: 전체 카테고리, 기본값: false)
+     * @return 카테고리 목록 (트리 구조)
+     */
+    @Operation(summary = "전체 카테고리 조회", description = "네이버 스마트스토어의 전체 카테고리 목록을 조회합니다.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "카테고리 조회 성공"),
+            @ApiResponse(responseCode = "400", description = "잘못된 요청"),
+            @ApiResponse(responseCode = "500", description = "서버 오류")
+    })
+    @GetMapping("/categories")
+    public ResponseEntity<?> getCategories(
+            @Parameter(description = "리프 카테고리만 조회 여부", example = "false")
+            @RequestParam(required = false, defaultValue = "false") Boolean last) {
+        try {
+            log.info("카테고리 조회 요청: last={}", last);
+            
+            List<Map<String, Object>> categories = productService.getCategories(last);
+            
+            return ResponseEntity.ok(Map.of(
+                    "success", true,
+                    "data", categories != null ? categories : List.of(),
+                    "count", categories != null ? categories.size() : 0,
+                    "last", last
+            ));
+            
+        } catch (IllegalArgumentException e) {
+            log.error("카테고리 조회 실패: {}", e.getMessage());
+            return ResponseEntity.badRequest()
+                    .body(Map.of("error", e.getMessage(), "code", "VALIDATION_ERROR"));
+                    
+        } catch (Exception e) {
+            log.error("카테고리 조회 중 오류 발생", e);
+            return ResponseEntity.internalServerError()
+                    .body(Map.of("error", "카테고리 조회 중 오류가 발생했습니다: " + e.getMessage(), 
+                            "code", "INTERNAL_ERROR"));
+        }
+    }
+    
+    /**
      * 네이버 스마트스토어에 상품 등록
      * (독립 실행형: 현재 등록된 스토어에 자동으로 등록)
      * 
