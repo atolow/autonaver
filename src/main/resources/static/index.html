@@ -269,6 +269,33 @@
             <button onclick="getStore()">스토어 조회</button>
             <div id="getStoreResult" class="result"></div>
         </div>
+        
+        <!-- Step 4: 엑셀 파일 업로드 -->
+        <div class="section">
+            <h2><span class="step-number">4</span>엑셀 파일로 상품 일괄 업로드</h2>
+            <p style="margin-bottom: 15px; color: #666; font-size: 14px;">
+                엑셀 파일(.xlsx)을 업로드하여 네이버 스토어에 상품을 자동으로 등록합니다.
+            </p>
+            
+            <div class="info">
+                <strong>📋 엑셀 파일 형식:</strong><br>
+                필수 컬럼: 상품명, 카테고리, 판매가, 재고수량, 상세설명, 대표이미지URL<br>
+                선택 컬럼: 추가이미지URL1, 배송비, 배송방법, 브랜드, 모델명, 제조사, 원산지, 과세구분, 판매상태, 전시상태
+            </div>
+            
+            <div class="form-group">
+                <label>엑셀 파일 선택 <span class="required">*</span></label>
+                <input type="file" id="excelFile" accept=".xlsx,.xls" style="padding: 8px;">
+                <small style="color: #666; font-size: 12px;">.xlsx 또는 .xls 파일만 지원</small>
+            </div>
+            
+            <button onclick="uploadExcel()" id="uploadButton">엑셀 파일 업로드</button>
+            <div id="uploadResult" class="result"></div>
+            
+            <div style="margin-top: 15px;">
+                <a href="/swagger-ui.html" target="_blank" class="link-button">📚 Swagger UI에서도 테스트하기</a>
+            </div>
+        </div>
     </div>
     
     <script>
@@ -412,6 +439,92 @@
             } catch (error) {
                 resultDiv.className = 'result error';
                 resultDiv.innerHTML = '<p>❌ 오류 발생:</p><pre>' + error.message + '</pre>';
+            }
+        }
+        
+        // Step 4: 엑셀 파일 업로드
+        async function uploadExcel() {
+            const fileInput = document.getElementById('excelFile');
+            const resultDiv = document.getElementById('uploadResult');
+            const uploadButton = document.getElementById('uploadButton');
+            
+            if (!fileInput.files || fileInput.files.length === 0) {
+                resultDiv.style.display = 'block';
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = '<p>❌ 엑셀 파일을 선택해주세요.</p>';
+                return;
+            }
+            
+            const file = fileInput.files[0];
+            
+            // 파일 형식 검증
+            if (!file.name.endsWith('.xlsx') && !file.name.endsWith('.xls')) {
+                resultDiv.style.display = 'block';
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = '<p>❌ 엑셀 파일 형식이 올바르지 않습니다. (.xlsx 또는 .xls 파일만 지원)</p>';
+                return;
+            }
+            
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result';
+            resultDiv.innerHTML = '<p>업로드 중... (파일 크기에 따라 시간이 걸릴 수 있습니다)</p>';
+            uploadButton.disabled = true;
+            uploadButton.textContent = '업로드 중...';
+            
+            const formData = new FormData();
+            formData.append('file', file);
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/products/upload-excel`, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.className = 'result success';
+                    const successCount = data.successCount || 0;
+                    const failureCount = data.failureCount || 0;
+                    const totalCount = data.totalCount || 0;
+                    
+                    let html = `<p>✅ 업로드 완료!</p>`;
+                    html += `<p style="margin-top: 10px;"><strong>총 ${totalCount}개</strong> | `;
+                    html += `<span style="color: #28a745;">성공 ${successCount}개</span> | `;
+                    html += `<span style="color: #dc3545;">실패 ${failureCount}개</span></p>`;
+                    
+                    if (data.successItems && data.successItems.length > 0) {
+                        html += `<p style="margin-top: 15px;"><strong>✅ 성공한 상품:</strong></p>`;
+                        html += `<ul style="margin-left: 20px; margin-top: 5px;">`;
+                        data.successItems.forEach(item => {
+                            html += `<li>행 ${item.rowNumber}: ${item.productName || '이름 없음'}</li>`;
+                        });
+                        html += `</ul>`;
+                    }
+                    
+                    if (data.failureItems && data.failureItems.length > 0) {
+                        html += `<p style="margin-top: 15px;"><strong>❌ 실패한 상품:</strong></p>`;
+                        html += `<ul style="margin-left: 20px; margin-top: 5px;">`;
+                        data.failureItems.forEach(item => {
+                            html += `<li>행 ${item.rowNumber}: ${item.productName || '이름 없음'} - ${item.errorMessage}</li>`;
+                        });
+                        html += `</ul>`;
+                    }
+                    
+                    html += `<p style="margin-top: 15px;"><strong>전체 결과:</strong></p>`;
+                    html += `<pre style="max-height: 300px; overflow-y: auto;">${JSON.stringify(data, null, 2)}</pre>`;
+                    
+                    resultDiv.innerHTML = html;
+                } else {
+                    resultDiv.className = 'result error';
+                    resultDiv.innerHTML = '<p>❌ 업로드 실패:</p><pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                }
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = '<p>❌ 오류 발생:</p><pre>' + error.message + '</pre>';
+            } finally {
+                uploadButton.disabled = false;
+                uploadButton.textContent = '엑셀 파일 업로드';
             }
         }
     </script>

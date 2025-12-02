@@ -1,20 +1,35 @@
 package com.example.auto.controller;
 
+import com.example.auto.dto.ExcelUploadResult;
 import com.example.auto.dto.GroupProductRequest;
 import com.example.auto.dto.ProductRequest;
 import com.example.auto.dto.ProductSearchRequest;
+import com.example.auto.service.BatchUploadService;
+import com.example.auto.service.ExcelService;
 import com.example.auto.service.ProductService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 /**
  * 상품 관리 REST API
  */
+@Tag(name = "상품 관리", description = "네이버 스토어 상품 등록 및 관리 API")
 @Slf4j
 @RestController
 @RequestMapping("/api/products")
@@ -22,6 +37,8 @@ import java.util.Map;
 public class ProductController {
     
     private final ProductService productService;
+    private final ExcelService excelService;
+    private final BatchUploadService batchUploadService;
     
     /**
      * 상품 목록 조회
@@ -549,6 +566,138 @@ public class ProductController {
             log.error("판매 옵션 정보 조회 중 오류 발생", e);
             return ResponseEntity.internalServerError()
                     .body(Map.of("error", "판매 옵션 정보 조회 중 오류가 발생했습니다: " + e.getMessage(), 
+                            "code", "INTERNAL_ERROR"));
+        }
+    }
+    
+    /**
+     * 엑셀 파일로 상품 일괄 업로드
+     * 엑셀 파일을 읽어서 여러 상품을 네이버 스토어에 자동으로 등록합니다.
+     * (독립 실행형: 현재 등록된 스토어에 자동으로 등록)
+     * 
+     * @param file 엑셀 파일 (MultipartFile, .xlsx 형식)
+     * @return 업로드 결과 리포트 (성공/실패 상품 목록)
+     */
+    @Operation(
+            summary = "엑셀 파일로 상품 일괄 업로드",
+            description = "엑셀 파일(.xlsx)을 업로드하여 네이버 스토어에 상품을 자동으로 등록합니다. " +
+                    "엑셀 파일의 각 행이 하나의 상품으로 등록됩니다. " +
+                    "필수 컬럼: 상품명, 카테고리, 판매가, 재고수량, 상세설명, 대표이미지URL"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "업로드 성공",
+                    content = @Content(schema = @Schema(implementation = ExcelUploadResult.class))
+            ),
+            @ApiResponse(responseCode = "400", description = "잘못된 요청 (파일 형식 오류, 필수 필드 누락 등)"),
+            @ApiResponse(responseCode = "500", description = "서버 오류")
+    })
+    @PostMapping(value = "/upload-excel", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<?> uploadProductsFromExcel(
+            @Parameter(description = "엑셀 파일 (.xlsx 또는 .xls)", required = true)
+            @RequestParam("file") MultipartFile file) {
+        try {
+            log.info("엑셀 파일 업로드 요청: fileName={}, size={}", file.getOriginalFilename(), file.getSize());
+            
+            // 파일 검증
+            if (file == null || file.isEmpty()) {
+                return ResponseEntity.badRequest()
+                        .body(Map.of("error", "엑셀 파일이 비어있습니다.", "code", "FILE_EMPTY"));
+            }
+            
+            String fileName = file.getOriginalFilename();
+            if (fileName == null || (!fileName.endsWith(".xlsx") && !fileName.endsWith(".xls"))) {
+                return ResponseEntity.badRequest()
+                        .body(Map.of("error", "엑셀 파일 형식이 올바르지 않습니다. (.xlsx 또는 .xls 파일만 지원)", 
+                                "code", "INVALID_FILE_TYPE"));
+            }
+            
+            // 현재 스토어 조회
+            com.example.auto.domain.Store currentStore = productService.getCurrentStore()
+                    .orElseThrow(() -> new IllegalArgumentException("등록된 스토어가 없습니다. 먼저 스토어를 등록해주세요."));
+            
+            // 엑셀 파일 파싱
+            List<Map<String, Object>> excelRows;
+            try {
+                excelRows = excelService.parseExcelFile(file);
+            } catch (IOException e) {
+                log.error("엑셀 파일 파싱 실패: {}", fileName, e);
+                return ResponseEntity.badRequest()
+                        .body(Map.of("error", "엑셀 파일을 읽을 수 없습니다: " + e.getMessage(), 
+                                "code", "EXCEL_PARSE_ERROR"));
+            }
+            
+            if (excelRows == null || excelRows.isEmpty()) {
+                return ResponseEntity.badRequest()
+                        .body(Map.of("error", "엑셀 파일에 데이터가 없습니다.", "code", "NO_DATA"));
+            }
+            
+            log.info("엑셀 파일 파싱 완료: {}개 행", excelRows.size());
+            
+            // 배치 업로드 실행
+            ExcelUploadResult result = batchUploadService.batchUploadProducts(currentStore.getId(), excelRows);
+            
+            log.info("엑셀 업로드 완료: 총 {}개, 성공 {}개, 실패 {}개", 
+                    result.getTotalCount(), result.getSuccessCount(), result.getFailureCount());
+            
+            return ResponseEntity.ok(result);
+            
+        } catch (IllegalArgumentException e) {
+            log.error("엑셀 업로드 실패: {}", e.getMessage());
+            return ResponseEntity.badRequest()
+                    .body(Map.of("error", e.getMessage(), "code", "VALIDATION_ERROR"));
+                    
+        } catch (Exception e) {
+            log.error("엑셀 업로드 중 오류 발생", e);
+            return ResponseEntity.internalServerError()
+                    .body(Map.of("error", "엑셀 업로드 중 오류가 발생했습니다: " + e.getMessage(), 
+                            "code", "INTERNAL_ERROR"));
+        }
+    }
+    
+    /**
+     * 상품 업로드용 엑셀 템플릿 파일 다운로드
+     * 엑셀 파일 업로드 전 참고할 수 있는 템플릿 파일을 제공합니다.
+     * 
+     * @return 엑셀 파일 (application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)
+     */
+    @Operation(
+            summary = "엑셀 템플릿 파일 다운로드",
+            description = "상품 업로드용 엑셀 템플릿 파일을 다운로드합니다. " +
+                    "이 템플릿 파일을 참고하여 상품 데이터를 입력한 후 업로드하세요."
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "템플릿 파일 다운로드 성공"),
+            @ApiResponse(responseCode = "500", description = "서버 오류")
+    })
+    @GetMapping(value = "/template", produces = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    public ResponseEntity<?> downloadTemplate() {
+        try {
+            log.info("엑셀 템플릿 파일 다운로드 요청");
+            
+            byte[] templateBytes = excelService.createProductTemplate();
+            
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.parseMediaType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"));
+            headers.setContentDispositionFormData("attachment", "product_template.xlsx");
+            headers.setContentLength(templateBytes.length);
+            
+            log.info("엑셀 템플릿 파일 다운로드 완료: {} bytes", templateBytes.length);
+            
+            return ResponseEntity.ok()
+                    .headers(headers)
+                    .body(templateBytes);
+                    
+        } catch (IOException e) {
+            log.error("엑셀 템플릿 파일 생성 실패", e);
+            return ResponseEntity.internalServerError()
+                    .body(Map.of("error", "엑셀 템플릿 파일 생성 중 오류가 발생했습니다: " + e.getMessage(), 
+                            "code", "TEMPLATE_GENERATION_ERROR"));
+        } catch (Exception e) {
+            log.error("엑셀 템플릿 파일 다운로드 중 오류 발생", e);
+            return ResponseEntity.internalServerError()
+                    .body(Map.of("error", "엑셀 템플릿 파일 다운로드 중 오류가 발생했습니다: " + e.getMessage(), 
                             "code", "INTERNAL_ERROR"));
         }
     }

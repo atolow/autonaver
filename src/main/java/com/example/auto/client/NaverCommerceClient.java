@@ -7,8 +7,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.core.io.buffer.DataBuffer;
-import org.springframework.core.io.buffer.DataBufferUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.MultipartBodyBuilder;
@@ -17,21 +15,14 @@ import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.BodyInserters.FormInserter;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 /**
  * 네이버 커머스 API 클라이언트
- *
+ * <p>
  * API 문서: https://api.commerce.naver.com/partner
  */
 @Slf4j
@@ -101,7 +92,8 @@ public class NaverCommerceClient {
                 .accept(MediaType.APPLICATION_JSON)
                 .body(formData)
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {})
+                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {
+                })
                 .doOnSuccess(response -> log.info("Access Token 발급 성공: {}", response))
                 .doOnError(error -> {
                     if (error instanceof WebClientResponseException ex) {
@@ -118,7 +110,8 @@ public class NaverCommerceClient {
                                 ObjectMapper objectMapper = new ObjectMapper();
                                 Map<String, Object> errorResponse = objectMapper.readValue(
                                         responseBody,
-                                        new TypeReference<Map<String, Object>>() {}
+                                        new TypeReference<Map<String, Object>>() {
+                                        }
                                 );
 
                                 log.error("에러 코드: {}", errorResponse.get("code"));
@@ -155,7 +148,8 @@ public class NaverCommerceClient {
                 .accept(MediaType.APPLICATION_JSON)
                 .body(formData)
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {})
+                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {
+                })
                 .doOnSuccess(response -> log.info("Access Token 갱신 성공"))
                 .doOnError(error -> log.error("Access Token 갱신 실패", error));
     }
@@ -168,7 +162,8 @@ public class NaverCommerceClient {
                 .uri(EXTERNAL_PREFIX + "/v2/channels")
                 .header("Authorization", "Bearer " + accessToken)
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {})
+                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {
+                })
                 .doOnSuccess(response -> log.info("사용자 정보 조회 성공"))
                 .doOnError(error -> log.error("사용자 정보 조회 실패", error));
     }
@@ -184,7 +179,8 @@ public class NaverCommerceClient {
                         .build())
                 .header("Authorization", "Bearer " + accessToken)
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {})
+                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {
+                })
                 .doOnSuccess(response -> log.info("상품 목록 조회 성공"))
                 .doOnError(error -> log.error("상품 목록 조회 실패", error));
     }
@@ -192,10 +188,10 @@ public class NaverCommerceClient {
     /**
      * 판매 옵션 정보 조회
      * 그룹상품 등록 시 필요한 guideId를 조회하기 위해 사용
-     * 
+     *
      * @param accessToken Access Token
-     * @param vendorId 판매자 ID
-     * @param categoryId 리프 카테고리 ID
+     * @param vendorId    판매자 ID
+     * @param categoryId  리프 카테고리 ID
      * @return 판매 옵션 정보 (useOptionYn, optionGuides 배열 포함)
      */
     public Mono<Map<String, Object>> getPurchaseOptionGuides(String accessToken,
@@ -209,7 +205,8 @@ public class NaverCommerceClient {
                         .build())
                 .header("Authorization", "Bearer " + accessToken)
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {})
+                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {
+                })
                 .doOnSuccess(response -> {
                     log.info("판매 옵션 정보 조회 성공: categoryId={}", categoryId);
                     if (response.containsKey("useOptionYn")) {
@@ -220,7 +217,7 @@ public class NaverCommerceClient {
                 .doOnError(error -> {
                     if (error instanceof WebClientResponseException ex) {
                         String responseBody = ex.getResponseBodyAsString();
-                        log.error("판매 옵션 정보 조회 실패: status={}, categoryId={}", 
+                        log.error("판매 옵션 정보 조회 실패: status={}, categoryId={}",
                                 ex.getStatusCode(), categoryId);
                         log.error("응답 본문: {}", responseBody != null ? responseBody : "null");
                     } else {
@@ -236,7 +233,7 @@ public class NaverCommerceClient {
                                                    String vendorId,
                                                    Map<String, Object> productData) {
         String url = properties.getApiBaseUrl() + EXTERNAL_PREFIX + "/v2/products";
-        
+
         // 요청 본문 로깅 (디버깅용)
         try {
             ObjectMapper objectMapper = new ObjectMapper();
@@ -246,7 +243,7 @@ public class NaverCommerceClient {
         } catch (Exception e) {
             log.debug("요청 본문 로깅 실패", e);
         }
-        
+
         return webClient.post()
                 .uri(uriBuilder -> uriBuilder
                         .path(EXTERNAL_PREFIX + "/v2/products")
@@ -256,31 +253,33 @@ public class NaverCommerceClient {
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(productData)
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {})
+                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {
+                })
                 .doOnSuccess(response -> log.info("상품 등록 성공: {}", response))
                 .doOnError(error -> {
                     if (error instanceof WebClientResponseException ex) {
                         String responseBody = ex.getResponseBodyAsString();
                         log.error("상품 등록 실패: status={}, URL={}", ex.getStatusCode(), url);
                         log.error("응답 본문: {}", responseBody != null ? responseBody : "null");
-                        
+
                         // 에러 응답 파싱 시도
                         if (responseBody != null && !responseBody.isEmpty()) {
                             try {
                                 ObjectMapper objectMapper = new ObjectMapper();
                                 Map<String, Object> errorResponse = objectMapper.readValue(
                                         responseBody,
-                                        new TypeReference<Map<String, Object>>() {}
+                                        new TypeReference<Map<String, Object>>() {
+                                        }
                                 );
-                                
+
                                 log.error("에러 코드: {}", errorResponse.get("code"));
                                 log.error("에러 메시지: {}", errorResponse.get("message"));
-                                
+
                                 if (errorResponse.containsKey("invalidInputs")) {
                                     Object invalidInputs = errorResponse.get("invalidInputs");
                                     log.error("유효하지 않은 입력 필드: {}", invalidInputs);
                                 }
-                                
+
                                 if (errorResponse.containsKey("timestamp")) {
                                     log.error("에러 발생 일시: {}", errorResponse.get("timestamp"));
                                 }
@@ -298,9 +297,9 @@ public class NaverCommerceClient {
     /**
      * 그룹상품 등록
      * 여러 개의 상품을 하나의 그룹으로 묶어 등록
-     * 
-     * @param accessToken Access Token
-     * @param vendorId 판매자 ID
+     *
+     * @param accessToken      Access Token
+     * @param vendorId         판매자 ID
      * @param groupProductData 그룹상품 데이터 (groupProduct 객체 포함)
      * @return 등록된 그룹상품 정보
      */
@@ -308,7 +307,7 @@ public class NaverCommerceClient {
                                                         String vendorId,
                                                         Map<String, Object> groupProductData) {
         String url = properties.getApiBaseUrl() + EXTERNAL_PREFIX + "/v2/standard-group-products";
-        
+
         // 요청 본문 로깅 (디버깅용)
         try {
             ObjectMapper objectMapper = new ObjectMapper();
@@ -318,7 +317,7 @@ public class NaverCommerceClient {
         } catch (Exception e) {
             log.debug("요청 본문 로깅 실패", e);
         }
-        
+
         return webClient.post()
                 .uri(uriBuilder -> uriBuilder
                         .path(EXTERNAL_PREFIX + "/v2/standard-group-products")
@@ -328,31 +327,33 @@ public class NaverCommerceClient {
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(groupProductData)
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {})
+                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {
+                })
                 .doOnSuccess(response -> log.info("그룹상품 등록 성공: {}", response))
                 .doOnError(error -> {
                     if (error instanceof WebClientResponseException ex) {
                         String responseBody = ex.getResponseBodyAsString();
                         log.error("그룹상품 등록 실패: status={}, URL={}", ex.getStatusCode(), url);
                         log.error("응답 본문: {}", responseBody != null ? responseBody : "null");
-                        
+
                         // 에러 응답 파싱 시도
                         if (responseBody != null && !responseBody.isEmpty()) {
                             try {
                                 ObjectMapper objectMapper = new ObjectMapper();
                                 Map<String, Object> errorResponse = objectMapper.readValue(
                                         responseBody,
-                                        new TypeReference<Map<String, Object>>() {}
+                                        new TypeReference<Map<String, Object>>() {
+                                        }
                                 );
-                                
+
                                 log.error("에러 코드: {}", errorResponse.get("code"));
                                 log.error("에러 메시지: {}", errorResponse.get("message"));
-                                
+
                                 if (errorResponse.containsKey("invalidInputs")) {
                                     Object invalidInputs = errorResponse.get("invalidInputs");
                                     log.error("유효하지 않은 입력 필드: {}", invalidInputs);
                                 }
-                                
+
                                 if (errorResponse.containsKey("timestamp")) {
                                     log.error("에러 발생 일시: {}", errorResponse.get("timestamp"));
                                 }
@@ -370,11 +371,11 @@ public class NaverCommerceClient {
     /**
      * 그룹상품 요청 결과 조회
      * 그룹상품 등록/수정 API의 처리 상태를 조회합니다.
-     * 
+     *
      * @param accessToken Access Token
-     * @param vendorId 판매자 ID
-     * @param type 요청 타입 (CREATE: 그룹상품 등록, UPDATE: 그룹상품 수정)
-     * @param requestId 조회할 요청 ID
+     * @param vendorId    판매자 ID
+     * @param type        요청 타입 (CREATE: 그룹상품 등록, UPDATE: 그룹상품 수정)
+     * @param requestId   조회할 요청 ID
      * @return 그룹상품 요청 결과 (progress, state, requestId, groupProductNo 등)
      */
     public Mono<Map<String, Object>> getGroupProductStatus(String accessToken,
@@ -390,7 +391,8 @@ public class NaverCommerceClient {
                         .build())
                 .header("Authorization", "Bearer " + accessToken)
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {})
+                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {
+                })
                 .doOnSuccess(response -> {
                     log.info("그룹상품 요청 결과 조회 성공: type={}, requestId={}", type, requestId);
                     if (response.containsKey("progress")) {
@@ -407,7 +409,7 @@ public class NaverCommerceClient {
                 .doOnError(error -> {
                     if (error instanceof WebClientResponseException ex) {
                         String responseBody = ex.getResponseBodyAsString();
-                        log.error("그룹상품 요청 결과 조회 실패: status={}, type={}, requestId={}", 
+                        log.error("그룹상품 요청 결과 조회 실패: status={}, type={}, requestId={}",
                                 ex.getStatusCode(), type, requestId);
                         log.error("응답 본문: {}", responseBody != null ? responseBody : "null");
                     } else {
@@ -419,9 +421,9 @@ public class NaverCommerceClient {
     /**
      * 브랜드 조회
      * 전체 브랜드 목록을 조회합니다.
-     * 
+     *
      * @param accessToken Access Token
-     * @param vendorId 판매자 ID
+     * @param vendorId    판매자 ID
      * @return 브랜드 목록 (배열)
      */
     public Mono<List<Map<String, Object>>> getProductBrands(String accessToken, String vendorId) {
@@ -433,7 +435,8 @@ public class NaverCommerceClient {
                         .build())
                 .header("Authorization", "Bearer " + accessToken)
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<List<Map<String, Object>>>() {})
+                .bodyToMono(new ParameterizedTypeReference<List<Map<String, Object>>>() {
+                })
                 .doOnSuccess(response -> log.info("브랜드 조회 성공: {}개 브랜드", response != null ? response.size() : 0))
                 .doOnError(error -> {
                     if (error instanceof WebClientResponseException ex) {
@@ -449,9 +452,9 @@ public class NaverCommerceClient {
     /**
      * 전체 사이즈 타입 조회
      * 전체 사이즈 타입 목록을 조회합니다.
-     * 
+     *
      * @param accessToken Access Token
-     * @param vendorId 판매자 ID (필요한 경우 사용)
+     * @param vendorId    판매자 ID (필요한 경우 사용)
      * @return 사이즈 타입 목록 (배열)
      */
     public Mono<List<Map<String, Object>>> getProductSizes(String accessToken, String vendorId) {
@@ -460,7 +463,8 @@ public class NaverCommerceClient {
                 .uri(EXTERNAL_PREFIX + "/v1/product-sizes")
                 .header("Authorization", "Bearer " + accessToken)
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<List<Map<String, Object>>>() {})
+                .bodyToMono(new ParameterizedTypeReference<List<Map<String, Object>>>() {
+                })
                 .doOnSuccess(response -> log.info("사이즈 타입 조회 성공: {}개 사이즈 타입", response != null ? response.size() : 0))
                 .doOnError(error -> {
                     if (error instanceof WebClientResponseException ex) {
@@ -476,9 +480,9 @@ public class NaverCommerceClient {
     /**
      * 상품 목록 조회
      * 검색 조건에 따라 상품 목록을 조회합니다.
-     * 
-     * @param accessToken Access Token
-     * @param vendorId 판매자 ID
+     *
+     * @param accessToken   Access Token
+     * @param vendorId      판매자 ID
      * @param searchRequest 검색 요청 데이터
      * @return 상품 목록
      */
@@ -486,7 +490,7 @@ public class NaverCommerceClient {
                                                     String vendorId,
                                                     Map<String, Object> searchRequest) {
         String url = properties.getApiBaseUrl() + EXTERNAL_PREFIX + "/v1/products/search";
-        
+
         // 요청 본문 로깅 (디버깅용)
         try {
             ObjectMapper objectMapper = new ObjectMapper();
@@ -496,7 +500,7 @@ public class NaverCommerceClient {
         } catch (Exception e) {
             log.debug("요청 본문 로깅 실패", e);
         }
-        
+
         return webClient.post()
                 .uri(uriBuilder -> uriBuilder
                         .path(EXTERNAL_PREFIX + "/v1/products/search")
@@ -506,26 +510,28 @@ public class NaverCommerceClient {
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(searchRequest)
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {})
+                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {
+                })
                 .doOnSuccess(response -> log.info("상품 목록 조회 성공"))
                 .doOnError(error -> {
                     if (error instanceof WebClientResponseException ex) {
                         String responseBody = ex.getResponseBodyAsString();
                         log.error("상품 목록 조회 실패: status={}, URL={}", ex.getStatusCode(), url);
                         log.error("응답 본문: {}", responseBody != null ? responseBody : "null");
-                        
+
                         // 에러 응답 파싱 시도
                         if (responseBody != null && !responseBody.isEmpty()) {
                             try {
                                 ObjectMapper objectMapper = new ObjectMapper();
                                 Map<String, Object> errorResponse = objectMapper.readValue(
                                         responseBody,
-                                        new TypeReference<Map<String, Object>>() {}
+                                        new TypeReference<Map<String, Object>>() {
+                                        }
                                 );
-                                
+
                                 log.error("에러 코드: {}", errorResponse.get("code"));
                                 log.error("에러 메시지: {}", errorResponse.get("message"));
-                                
+
                                 if (errorResponse.containsKey("invalidInputs")) {
                                     Object invalidInputs = errorResponse.get("invalidInputs");
                                     log.error("유효하지 않은 입력 필드: {}", invalidInputs);
@@ -556,7 +562,8 @@ public class NaverCommerceClient {
                         .build())
                 .header("Authorization", "Bearer " + accessToken)
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {})
+                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {
+                })
                 .doOnSuccess(response -> log.info("주문 목록 조회 성공"))
                 .doOnError(error -> log.error("주문 목록 조회 실패", error));
     }
@@ -564,9 +571,9 @@ public class NaverCommerceClient {
     /**
      * 원상품 조회
      * 원상품 번호로 원상품 정보를 조회합니다.
-     * 
-     * @param accessToken Access Token
-     * @param vendorId 판매자 ID
+     *
+     * @param accessToken     Access Token
+     * @param vendorId        판매자 ID
      * @param originProductNo 원상품 번호
      * @return 원상품 정보
      */
@@ -580,12 +587,13 @@ public class NaverCommerceClient {
                         .build(originProductNo))
                 .header("Authorization", "Bearer " + accessToken)
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {})
+                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {
+                })
                 .doOnSuccess(response -> log.info("원상품 조회 성공: originProductNo={}", originProductNo))
                 .doOnError(error -> {
                     if (error instanceof WebClientResponseException ex) {
                         String responseBody = ex.getResponseBodyAsString();
-                        log.error("원상품 조회 실패: status={}, originProductNo={}", 
+                        log.error("원상품 조회 실패: status={}, originProductNo={}",
                                 ex.getStatusCode(), originProductNo);
                         log.error("응답 본문: {}", responseBody != null ? responseBody : "null");
                     } else {
@@ -607,7 +615,8 @@ public class NaverCommerceClient {
                         .build(productId))
                 .header("Authorization", "Bearer " + accessToken)
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {})
+                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {
+                })
                 .doOnSuccess(response -> log.info("재고 조회 성공"))
                 .doOnError(error -> log.error("재고 조회 실패", error));
     }
@@ -628,7 +637,8 @@ public class NaverCommerceClient {
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(Map.of("quantity", quantity))
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {})
+                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {
+                })
                 .doOnSuccess(response -> log.info("재고 수정 성공"))
                 .doOnError(error -> log.error("재고 수정 실패", error));
     }
@@ -636,21 +646,21 @@ public class NaverCommerceClient {
     /**
      * 상품 이미지 업로드 (상품 이미지 다건 등록 API)
      * 외부 이미지 URL에서 이미지를 다운로드한 후 네이버 서버에 업로드합니다.
-     * 
+     * <p>
      * 엔드포인트: POST /v1/product-images/upload
      * 방식: multipart/form-data
      * 필드: imageFiles (binary[], 최대 10개)
-     * 
+     *
      * @param accessToken Access Token
-     * @param vendorId 판매자 ID
-     * @param imageUrl 업로드할 이미지 URL (외부 URL)
+     * @param vendorId    판매자 ID
+     * @param imageUrl    업로드할 이미지 URL (외부 URL)
      * @return 업로드된 이미지 정보 (네이버 서버의 URL 포함)
      */
     public Mono<Map<String, Object>> uploadProductImage(String accessToken,
                                                         String vendorId,
                                                         String imageUrl) {
         log.info("이미지 업로드 시작: vendorId={}, imageUrl={}", vendorId, imageUrl);
-        
+
         // 1. 외부 이미지 URL에서 이미지 다운로드
         return webClient.get()
                 .uri(imageUrl)
@@ -658,14 +668,14 @@ public class NaverCommerceClient {
                 .bodyToMono(byte[].class)
                 .flatMap(imageBytes -> {
                     log.info("이미지 다운로드 완료: {} bytes", imageBytes.length);
-                    
+
                     // 2. multipart/form-data로 이미지 업로드
                     MultipartBodyBuilder builder = new MultipartBodyBuilder();
                     builder.part("imageFiles", imageBytes)
-                           .header(HttpHeaders.CONTENT_DISPOSITION, 
-                                   "form-data; name=\"imageFiles\"; filename=\"image.jpg\"")
-                           .contentType(MediaType.IMAGE_JPEG); // 이미지 타입은 실제 파일에 맞게 조정 필요
-                    
+                            .header(HttpHeaders.CONTENT_DISPOSITION,
+                                    "form-data; name=\"imageFiles\"; filename=\"image.jpg\"")
+                            .contentType(MediaType.IMAGE_JPEG); // 이미지 타입은 실제 파일에 맞게 조정 필요
+
                     // 네이버 API는 /external prefix를 사용할 수 있음
                     // 가능한 엔드포인트들 시도
                     return webClient.post()
@@ -677,7 +687,8 @@ public class NaverCommerceClient {
                             .contentType(MediaType.MULTIPART_FORM_DATA)
                             .body(BodyInserters.fromMultipartData(builder.build()))
                             .retrieve()
-                            .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {})
+                            .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {
+                            })
                             .doOnSuccess(response -> log.info("이미지 업로드 성공: {}", response))
                             .onErrorResume(WebClientResponseException.NotFound.class, notFoundError -> {
                                 // 404인 경우 /external 없이 시도
@@ -691,23 +702,25 @@ public class NaverCommerceClient {
                                         .contentType(MediaType.MULTIPART_FORM_DATA)
                                         .body(BodyInserters.fromMultipartData(builder.build()))
                                         .retrieve()
-                                        .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {})
+                                        .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {
+                                        })
                                         .doOnSuccess(response -> log.info("이미지 업로드 성공 (두 번째 엔드포인트): {}", response));
                             })
                             .doOnError(error -> {
                                 if (error instanceof WebClientResponseException ex) {
                                     String responseBody = ex.getResponseBodyAsString();
-                                    log.error("이미지 업로드 실패: status={}, URL={}", ex.getStatusCode(), 
+                                    log.error("이미지 업로드 실패: status={}, URL={}", ex.getStatusCode(),
                                             ex.getRequest() != null ? ex.getRequest().getURI() : "unknown");
                                     log.error("응답 본문: {}", responseBody != null ? responseBody : "null");
-                                    
+
                                     // JSON 응답 파싱 시도
                                     if (responseBody != null && !responseBody.isEmpty() && responseBody.startsWith("{")) {
                                         try {
                                             ObjectMapper objectMapper = new ObjectMapper();
                                             Map<String, Object> errorResponse = objectMapper.readValue(
                                                     responseBody,
-                                                    new TypeReference<Map<String, Object>>() {}
+                                                    new TypeReference<Map<String, Object>>() {
+                                                    }
                                             );
                                             log.error("에러 코드: {}", errorResponse.get("code"));
                                             log.error("에러 메시지: {}", errorResponse.get("message"));

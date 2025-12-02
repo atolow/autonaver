@@ -1,0 +1,901 @@
+﻿행번호,상품ID(내부용),상품명,카테고리,판매가,재고수량,옵션명1,옵션값1,옵션명2,옵션값2,브랜드,모델명,바코드,상세설명,대표이미지URL,추가이미지URL1,배송비,배송방법,원산지,제조사,과세구분,판매상태,전시상태,상품ID
+2,1,[URBANWEAR] 더미 상품 001 (레드/FREE),패션의류 > 상의 > 티셔츠,116500,8,색상,레드,사이즈,FREE,URBANWEAR,MDL-0001,880851364605,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 001 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: FREE, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,한진택배,중국,URBANWEAR 제조사,면세,판매중,전시안함,,12706810464
+3,2,[NAVYFOX] 더미 상품 002 (화이트/250),식품 > 과자/간식 > 과자,65000,168,색상,화이트,사이즈,250,NAVYFOX,MDL-0002,880560635885,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 002 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: 250, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,한진택배,일본,NAVYFOX 제조사,과세,판매중,전시안함,,12706810534
+4,3,[MOON] 더미 상품 003 (베이지/FREE),패션잡화 > 가방 > 백팩,71000,44,색상,베이지,사이즈,FREE,MOON,MDL-0003,880715977078,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 003 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: FREE, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,롯데택배,베트남,MOON 제조사,면세,판매중,전시중,,12706810604
+5,4,[MOON] 더미 상품 004 (블랙/L),패션잡화 > 가방 > 백팩,92500,39,색상,블랙,사이즈,L,MOON,MDL-0004,880669791194,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 004 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: L, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,국산,MOON 제조사,면세,품절,전시중,,12706810688
+6,5,[URBANWEAR] 더미 상품 005 (블랙/FREE),디지털/가전 > 모니터,141000,149,색상,블랙,사이즈,FREE,URBANWEAR,MDL-0005,880765014168,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 005 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: FREE, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,중국,URBANWEAR 제조사,면세,판매중,전시중,,12706810765
+7,6,[NAVYFOX] 더미 상품 006 (베이지/270),패션잡화 > 가방 > 백팩,10500,102,색상,베이지,사이즈,270,NAVYFOX,MDL-0006,880949447912,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 006 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: 270, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,CJ대한통운,일본,NAVYFOX 제조사,면세,판매중,전시중,,12706810844
+8,7,[MOON] 더미 상품 007 (베이지/250),디지털/가전 > 모니터,122500,164,색상,베이지,사이즈,250,MOON,MDL-0007,880179744369,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 007 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: 250, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,일본,MOON 제조사,면세,판매중,전시안함,,12706810908
+9,8,[COOKMASTER] 더미 상품 008 (베이지/M),디지털/가전 > 모니터,126500,129,색상,베이지,사이즈,M,COOKMASTER,MDL-0008,880661270315,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 008 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: M, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,한진택배,중국,COOKMASTER 제조사,과세,판매중,전시안함,,12706810983
+10,9,[COOKMASTER] 더미 상품 009 (화이트/260),디지털/가전 > 노트북,84000,49,색상,화이트,사이즈,260,COOKMASTER,MDL-0009,880579256982,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 009 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: 260, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,택배,미국,COOKMASTER 제조사,면세,판매중,전시안함,,12706811051
+11,10,[COOKMASTER] 더미 상품 010 (블랙/260),생활/주방 > 주방용품 > 프라이팬,147000,109,색상,블랙,사이즈,260,COOKMASTER,MDL-0010,880794405553,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 010 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: 260, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,롯데택배,베트남,COOKMASTER 제조사,과세,판매중,전시안함,,12706811124
+12,11,[TECHONE] 더미 상품 011 (베이지/270),패션잡화 > 가방 > 백팩,107000,186,색상,베이지,사이즈,270,TECHONE,MDL-0011,880540529593,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 011 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: 270, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,롯데택배,중국,TECHONE 제조사,과세,품절,전시중,,12706811200
+13,12,[STARLINE] 더미 상품 012 (화이트/250),패션의류 > 하의 > 청바지,63000,1,색상,화이트,사이즈,250,STARLINE,MDL-0012,880995518342,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 012 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: 250, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,일본,STARLINE 제조사,면세,품절,전시중,,12706811280
+14,13,[HOMEPLUS] 더미 상품 013 (그레이/XL),패션잡화 > 가방 > 백팩,125500,114,색상,그레이,사이즈,XL,HOMEPLUS,MDL-0013,880358967503,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 013 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: XL, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,베트남,HOMEPLUS 제조사,면세,품절,전시중,,12706811351
+15,14,[COOKMASTER] 더미 상품 014 (네이비/270),반려동물 > 강아지용품 > 사료,45000,82,색상,네이비,사이즈,270,COOKMASTER,MDL-0014,880609031264,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 014 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: 270, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,일본,COOKMASTER 제조사,과세,품절,전시안함,,12706811417
+16,15,[NAVYFOX] 더미 상품 015 (레드/M),패션잡화 > 가방 > 백팩,40500,10,색상,레드,사이즈,M,NAVYFOX,MDL-0015,880808353118,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 015 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: M, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,택배,중국,NAVYFOX 제조사,면세,품절,전시안함,,12706811478
+17,16,[COOKMASTER] 더미 상품 016 (그레이/XL),디지털/가전 > 모니터,20000,168,색상,그레이,사이즈,XL,COOKMASTER,MDL-0016,880942331110,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 016 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: XL, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,국산,COOKMASTER 제조사,면세,판매중,전시중,,12706811541
+18,17,[MOON] 더미 상품 017 (블랙/250),식품 > 과자/간식 > 과자,82000,86,색상,블랙,사이즈,250,MOON,MDL-0017,880862305644,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 017 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: 250, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,한진택배,중국,MOON 제조사,과세,판매중,전시안함,,12706811611
+19,18,[MOON] 더미 상품 018 (화이트/270),패션의류 > 하의 > 청바지,35000,20,색상,화이트,사이즈,270,MOON,MDL-0018,880605067834,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 018 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: 270, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,한진택배,국산,MOON 제조사,과세,판매중,전시중,,12706811689
+20,19,[URBANWEAR] 더미 상품 019 (블랙/FREE),디지털/가전 > 노트북,71000,88,색상,블랙,사이즈,FREE,URBANWEAR,MDL-0019,880805397256,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 019 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: FREE, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,롯데택배,중국,URBANWEAR 제조사,면세,판매중,전시중,,12706811754
+21,20,[NAVYFOX] 더미 상품 020 (레드/250),식품 > 과자/간식 > 과자,42500,150,색상,레드,사이즈,250,NAVYFOX,MDL-0020,880585781204,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 020 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: 250, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,한진택배,미국,NAVYFOX 제조사,과세,판매중,전시중,,12706811835
+22,21,[TECHONE] 더미 상품 021 (블랙/L),패션잡화 > 가방 > 백팩,16000,158,색상,블랙,사이즈,L,TECHONE,MDL-0021,880851082307,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 021 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: L, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,한진택배,베트남,TECHONE 제조사,면세,판매중,전시안함,,12706811920
+23,22,[STARLINE] 더미 상품 022 (네이비/260),패션의류 > 상의 > 티셔츠,141500,199,색상,네이비,사이즈,260,STARLINE,MDL-0022,880674030715,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 022 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: 260, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,독일,STARLINE 제조사,면세,판매중,전시안함,,12706811995
+24,23,[URBANWEAR] 더미 상품 023 (베이지/M),디지털/가전 > 노트북,87000,41,색상,베이지,사이즈,M,URBANWEAR,MDL-0023,880954304901,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 023 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: M, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,국산,URBANWEAR 제조사,면세,품절,전시중,,12706812065
+25,24,[STARLINE] 더미 상품 024 (네이비/XL),디지털/가전 > 노트북,35000,32,색상,네이비,사이즈,XL,STARLINE,MDL-0024,880112284511,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 024 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: XL, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,CJ대한통운,일본,STARLINE 제조사,면세,판매중,전시안함,,12706812132
+26,25,[URBANWEAR] 더미 상품 025 (블랙/M),반려동물 > 강아지용품 > 사료,19500,200,색상,블랙,사이즈,M,URBANWEAR,MDL-0025,880676763326,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 025 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: M, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,CJ대한통운,미국,URBANWEAR 제조사,면세,품절,전시중,,12706812197
+27,26,[GREENPET] 더미 상품 026 (레드/M),패션의류 > 상의 > 티셔츠,131000,19,색상,레드,사이즈,M,GREENPET,MDL-0026,880166563831,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 026 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: M, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,택배,국산,GREENPET 제조사,과세,품절,전시중,,12706812277
+28,27,[GREENPET] 더미 상품 027 (네이비/XL),패션의류 > 하의 > 청바지,33500,130,색상,네이비,사이즈,XL,GREENPET,MDL-0027,880157282815,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 027 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: XL, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,독일,GREENPET 제조사,면세,품절,전시안함,,12706812351
+29,28,[GREENPET] 더미 상품 028 (네이비/250),반려동물 > 강아지용품 > 사료,88500,103,색상,네이비,사이즈,250,GREENPET,MDL-0028,880288620186,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 028 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: 250, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,한진택배,국산,GREENPET 제조사,과세,품절,전시중,,12706812425
+30,29,[TECHONE] 더미 상품 029 (베이지/L),디지털/가전 > 노트북,14000,61,색상,베이지,사이즈,L,TECHONE,MDL-0029,880774995818,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 029 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: L, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,한진택배,독일,TECHONE 제조사,과세,판매중,전시중,,12706812497
+31,30,[HOMEPLUS] 더미 상품 030 (베이지/L),디지털/가전 > 노트북,66000,121,색상,베이지,사이즈,L,HOMEPLUS,MDL-0030,880986826768,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 030 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: L, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,베트남,HOMEPLUS 제조사,과세,품절,전시안함,,12706812592
+32,31,[MOON] 더미 상품 031 (그레이/250),식품 > 과자/간식 > 과자,8500,40,색상,그레이,사이즈,250,MOON,MDL-0031,880250677318,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 031 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: 250, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,베트남,MOON 제조사,과세,판매중,전시중,,12706812669
+33,32,[TECHONE] 더미 상품 032 (레드/270),디지털/가전 > 모니터,20000,46,색상,레드,사이즈,270,TECHONE,MDL-0032,880557155930,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 032 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: 270, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,CJ대한통운,국산,TECHONE 제조사,면세,품절,전시안함,,12706812739
+34,33,[NAVYFOX] 더미 상품 033 (블랙/S),디지털/가전 > 노트북,80000,38,색상,블랙,사이즈,S,NAVYFOX,MDL-0033,880560602480,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 033 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: S, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,한진택배,독일,NAVYFOX 제조사,과세,판매중,전시중,,12706812806
+35,34,[TECHONE] 더미 상품 034 (네이비/FREE),디지털/가전 > 모니터,56500,19,색상,네이비,사이즈,FREE,TECHONE,MDL-0034,880266199069,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 034 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: FREE, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,베트남,TECHONE 제조사,면세,판매중,전시안함,,12706812957
+36,35,[GREENPET] 더미 상품 035 (레드/270),패션잡화 > 가방 > 백팩,26500,103,색상,레드,사이즈,270,GREENPET,MDL-0035,880689420828,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 035 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: 270, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,한진택배,국산,GREENPET 제조사,면세,품절,전시안함,,12706813060
+37,36,[NAVYFOX] 더미 상품 036 (베이지/XL),패션의류 > 상의 > 티셔츠,61500,80,색상,베이지,사이즈,XL,NAVYFOX,MDL-0036,880305363112,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 036 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: XL, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,독일,NAVYFOX 제조사,면세,판매중,전시안함,,12706813125
+38,37,[URBANWEAR] 더미 상품 037 (레드/250),디지털/가전 > 노트북,35500,1,색상,레드,사이즈,250,URBANWEAR,MDL-0037,880939985372,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 037 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: 250, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,택배,일본,URBANWEAR 제조사,면세,품절,전시중,,12706813189
+39,38,[NAVYFOX] 더미 상품 038 (그레이/270),디지털/가전 > 노트북,73500,56,색상,그레이,사이즈,270,NAVYFOX,MDL-0038,880948854899,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 038 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: 270, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,한진택배,미국,NAVYFOX 제조사,과세,품절,전시중,,12706813263
+40,39,[URBANWEAR] 더미 상품 039 (화이트/FREE),생활/주방 > 주방용품 > 프라이팬,48000,187,색상,화이트,사이즈,FREE,URBANWEAR,MDL-0039,880131540898,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 039 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: FREE, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,한진택배,일본,URBANWEAR 제조사,면세,판매중,전시중,,12706813332
+41,40,[COOKMASTER] 더미 상품 040 (베이지/S),반려동물 > 강아지용품 > 사료,64500,118,색상,베이지,사이즈,S,COOKMASTER,MDL-0040,880336292982,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 040 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: S, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,한진택배,미국,COOKMASTER 제조사,과세,판매중,전시중,,12706813403
+42,41,[GREENPET] 더미 상품 041 (화이트/250),생활/주방 > 주방용품 > 프라이팬,134000,39,색상,화이트,사이즈,250,GREENPET,MDL-0041,880429362478,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 041 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: 250, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,한진택배,국산,GREENPET 제조사,면세,품절,전시중,,12706813494
+43,42,[MOON] 더미 상품 042 (블랙/XL),패션의류 > 상의 > 티셔츠,121000,43,색상,블랙,사이즈,XL,MOON,MDL-0042,880702228819,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 042 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: XL, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,한진택배,중국,MOON 제조사,면세,판매중,전시안함,,12706813567
+44,43,[GREENPET] 더미 상품 043 (레드/M),패션의류 > 하의 > 청바지,106500,185,색상,레드,사이즈,M,GREENPET,MDL-0043,880646372454,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 043 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: M, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,일본,GREENPET 제조사,과세,판매중,전시안함,,12706813645
+45,44,[URBANWEAR] 더미 상품 044 (그레이/260),디지털/가전 > 노트북,125000,194,색상,그레이,사이즈,260,URBANWEAR,MDL-0044,880633522843,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 044 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: 260, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,미국,URBANWEAR 제조사,면세,판매중,전시안함,,12706813726
+46,45,[URBANWEAR] 더미 상품 045 (레드/L),디지털/가전 > 모니터,86000,155,색상,레드,사이즈,L,URBANWEAR,MDL-0045,880198714762,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 045 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: L, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,중국,URBANWEAR 제조사,면세,품절,전시안함,,12706813804
+47,46,[HOMEPLUS] 더미 상품 046 (블랙/XL),패션의류 > 하의 > 청바지,137000,2,색상,블랙,사이즈,XL,HOMEPLUS,MDL-0046,880765957611,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 046 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: XL, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,한진택배,베트남,HOMEPLUS 제조사,과세,판매중,전시안함,,12706813875
+48,47,[COOKMASTER] 더미 상품 047 (네이비/260),패션의류 > 상의 > 티셔츠,21500,186,색상,네이비,사이즈,260,COOKMASTER,MDL-0047,880923549171,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 047 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: 260, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,독일,COOKMASTER 제조사,면세,판매중,전시안함,,12706813935
+49,48,[GREENPET] 더미 상품 048 (네이비/M),생활/주방 > 주방용품 > 프라이팬,50500,53,색상,네이비,사이즈,M,GREENPET,MDL-0048,880505478168,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 048 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: M, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,롯데택배,일본,GREENPET 제조사,과세,품절,전시안함,,12706814017
+50,49,[TECHONE] 더미 상품 049 (베이지/XL),디지털/가전 > 노트북,112000,80,색상,베이지,사이즈,XL,TECHONE,MDL-0049,880688094347,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 049 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: XL, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,국산,TECHONE 제조사,면세,품절,전시안함,,12706814085
+51,50,[MOON] 더미 상품 050 (그레이/S),패션잡화 > 가방 > 백팩,120000,98,색상,그레이,사이즈,S,MOON,MDL-0050,880862156870,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 050 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: S, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,미국,MOON 제조사,과세,판매중,전시중,,12706814170
+52,51,[COOKMASTER] 더미 상품 051 (네이비/M),식품 > 과자/간식 > 과자,26500,106,색상,네이비,사이즈,M,COOKMASTER,MDL-0051,880518335012,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 051 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: M, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,CJ대한통운,독일,COOKMASTER 제조사,과세,품절,전시안함,,12706814247
+53,52,[COOKMASTER] 더미 상품 052 (베이지/260),반려동물 > 강아지용품 > 사료,56500,197,색상,베이지,사이즈,260,COOKMASTER,MDL-0052,880401421147,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 052 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: 260, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,베트남,COOKMASTER 제조사,과세,품절,전시안함,,12706814312
+54,53,[COOKMASTER] 더미 상품 053 (그레이/XL),패션잡화 > 가방 > 백팩,100500,3,색상,그레이,사이즈,XL,COOKMASTER,MDL-0053,880217789572,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 053 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: XL, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,한진택배,베트남,COOKMASTER 제조사,면세,품절,전시중,,12706814404
+55,54,[MOON] 더미 상품 054 (네이비/XL),패션의류 > 상의 > 티셔츠,56500,188,색상,네이비,사이즈,XL,MOON,MDL-0054,880233084014,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 054 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: XL, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,택배,중국,MOON 제조사,면세,판매중,전시중,,12706814468
+56,55,[URBANWEAR] 더미 상품 055 (블랙/L),생활/주방 > 주방용품 > 프라이팬,46000,136,색상,블랙,사이즈,L,URBANWEAR,MDL-0055,880312337221,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 055 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: L, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,미국,URBANWEAR 제조사,면세,품절,전시안함,,12706814533
+57,56,[MOON] 더미 상품 056 (네이비/250),생활/주방 > 주방용품 > 프라이팬,8500,167,색상,네이비,사이즈,250,MOON,MDL-0056,880783897725,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 056 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: 250, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,중국,MOON 제조사,과세,품절,전시안함,,12706814623
+58,57,[MOON] 더미 상품 057 (그레이/FREE),식품 > 과자/간식 > 과자,128500,181,색상,그레이,사이즈,FREE,MOON,MDL-0057,880461683809,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 057 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: FREE, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,일본,MOON 제조사,면세,판매중,전시중,,12706814695
+59,58,[COOKMASTER] 더미 상품 058 (베이지/L),패션의류 > 하의 > 청바지,98000,93,색상,베이지,사이즈,L,COOKMASTER,MDL-0058,880333942770,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 058 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: L, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,일본,COOKMASTER 제조사,과세,판매중,전시중,,12706814760
+60,59,[COOKMASTER] 더미 상품 059 (베이지/250),패션의류 > 하의 > 청바지,51000,99,색상,베이지,사이즈,250,COOKMASTER,MDL-0059,880225994958,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 059 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: 250, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,미국,COOKMASTER 제조사,면세,품절,전시안함,,12706814830
+61,60,[TECHONE] 더미 상품 060 (그레이/260),디지털/가전 > 모니터,119500,41,색상,그레이,사이즈,260,TECHONE,MDL-0060,880634677608,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 060 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: 260, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,중국,TECHONE 제조사,면세,품절,전시안함,,12706814906
+62,61,[NAVYFOX] 더미 상품 061 (레드/XL),생활/주방 > 주방용품 > 프라이팬,40500,172,색상,레드,사이즈,XL,NAVYFOX,MDL-0061,880927634389,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 061 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: XL, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,택배,국산,NAVYFOX 제조사,과세,품절,전시중,,12706814994
+63,62,[COOKMASTER] 더미 상품 062 (화이트/270),디지털/가전 > 모니터,67500,39,색상,화이트,사이즈,270,COOKMASTER,MDL-0062,880985386038,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 062 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: 270, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,한진택배,국산,COOKMASTER 제조사,면세,품절,전시중,,12706815070
+64,63,[URBANWEAR] 더미 상품 063 (그레이/L),디지털/가전 > 노트북,136500,37,색상,그레이,사이즈,L,URBANWEAR,MDL-0063,880869301909,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 063 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: L, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,한진택배,국산,URBANWEAR 제조사,과세,품절,전시중,,12706815148
+65,64,[STARLINE] 더미 상품 064 (레드/XL),패션의류 > 하의 > 청바지,11500,71,색상,레드,사이즈,XL,STARLINE,MDL-0064,880603769498,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 064 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: XL, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,독일,STARLINE 제조사,면세,품절,전시중,,12706815211
+66,65,[URBANWEAR] 더미 상품 065 (네이비/XL),패션의류 > 하의 > 청바지,110500,142,색상,네이비,사이즈,XL,URBANWEAR,MDL-0065,880880719511,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 065 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: XL, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,택배,일본,URBANWEAR 제조사,과세,판매중,전시중,,12706815291
+67,66,[STARLINE] 더미 상품 066 (그레이/XL),패션의류 > 하의 > 청바지,125000,145,색상,그레이,사이즈,XL,STARLINE,MDL-0066,880486272019,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 066 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: XL, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,국산,STARLINE 제조사,과세,품절,전시안함,,12706815358
+68,67,[STARLINE] 더미 상품 067 (화이트/270),디지털/가전 > 노트북,145000,15,색상,화이트,사이즈,270,STARLINE,MDL-0067,880244589051,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 067 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: 270, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,택배,국산,STARLINE 제조사,과세,판매중,전시안함,,12706815433
+69,68,[STARLINE] 더미 상품 068 (네이비/FREE),반려동물 > 강아지용품 > 사료,107500,23,색상,네이비,사이즈,FREE,STARLINE,MDL-0068,880492193430,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 068 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: FREE, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,택배,일본,STARLINE 제조사,면세,판매중,전시안함,,12706815510
+70,69,[NAVYFOX] 더미 상품 069 (레드/FREE),반려동물 > 강아지용품 > 사료,24500,81,색상,레드,사이즈,FREE,NAVYFOX,MDL-0069,880618785777,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 069 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: FREE, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,미국,NAVYFOX 제조사,면세,판매중,전시안함,,12706815578
+71,70,[URBANWEAR] 더미 상품 070 (베이지/270),생활/주방 > 주방용품 > 프라이팬,131500,117,색상,베이지,사이즈,270,URBANWEAR,MDL-0070,880354070513,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 070 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: 270, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,택배,국산,URBANWEAR 제조사,면세,품절,전시중,,12706815669
+72,71,[TECHONE] 더미 상품 071 (베이지/M),식품 > 과자/간식 > 과자,55000,21,색상,베이지,사이즈,M,TECHONE,MDL-0071,880275142133,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 071 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: M, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,롯데택배,베트남,TECHONE 제조사,과세,판매중,전시중,,12706815747
+73,72,[COOKMASTER] 더미 상품 072 (블랙/FREE),패션의류 > 상의 > 티셔츠,22500,175,색상,블랙,사이즈,FREE,COOKMASTER,MDL-0072,880466809931,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 072 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: FREE, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,한진택배,미국,COOKMASTER 제조사,면세,판매중,전시안함,,12706815823
+74,73,[GREENPET] 더미 상품 073 (화이트/FREE),패션의류 > 상의 > 티셔츠,120000,187,색상,화이트,사이즈,FREE,GREENPET,MDL-0073,880114482030,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 073 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: FREE, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,한진택배,독일,GREENPET 제조사,면세,판매중,전시안함,,12706815890
+75,74,[URBANWEAR] 더미 상품 074 (네이비/270),패션의류 > 하의 > 청바지,79000,61,색상,네이비,사이즈,270,URBANWEAR,MDL-0074,880619899174,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 074 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: 270, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,롯데택배,독일,URBANWEAR 제조사,면세,판매중,전시중,,12706815982
+76,75,[COOKMASTER] 더미 상품 075 (레드/250),디지털/가전 > 노트북,128500,20,색상,레드,사이즈,250,COOKMASTER,MDL-0075,880965177550,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 075 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: 250, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,한진택배,베트남,COOKMASTER 제조사,면세,품절,전시안함,,12706816049
+77,76,[HOMEPLUS] 더미 상품 076 (화이트/XL),식품 > 과자/간식 > 과자,15000,114,색상,화이트,사이즈,XL,HOMEPLUS,MDL-0076,880983502771,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 076 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: XL, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,베트남,HOMEPLUS 제조사,면세,판매중,전시안함,,12706816118
+78,77,[HOMEPLUS] 더미 상품 077 (베이지/FREE),패션의류 > 하의 > 청바지,44500,123,색상,베이지,사이즈,FREE,HOMEPLUS,MDL-0077,880567531709,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 077 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: FREE, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,베트남,HOMEPLUS 제조사,과세,판매중,전시중,,12706816189
+79,78,[URBANWEAR] 더미 상품 078 (베이지/FREE),패션잡화 > 가방 > 백팩,100000,94,색상,베이지,사이즈,FREE,URBANWEAR,MDL-0078,880990419424,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 078 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: FREE, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,CJ대한통운,베트남,URBANWEAR 제조사,과세,판매중,전시안함,,12706816256
+80,79,[COOKMASTER] 더미 상품 079 (그레이/M),패션의류 > 상의 > 티셔츠,130500,142,색상,그레이,사이즈,M,COOKMASTER,MDL-0079,880859798616,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 079 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: M, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,국산,COOKMASTER 제조사,과세,품절,전시중,,12706816331
+81,80,[MOON] 더미 상품 080 (레드/FREE),패션의류 > 상의 > 티셔츠,36000,91,색상,레드,사이즈,FREE,MOON,MDL-0080,880272702454,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 080 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: FREE, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,한진택배,미국,MOON 제조사,과세,판매중,전시안함,,12706816402
+82,81,[GREENPET] 더미 상품 081 (베이지/260),식품 > 과자/간식 > 과자,75500,115,색상,베이지,사이즈,260,GREENPET,MDL-0081,880769202092,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 081 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: 260, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,베트남,GREENPET 제조사,과세,판매중,전시중,,12706816475
+83,82,[NAVYFOX] 더미 상품 082 (레드/L),디지털/가전 > 노트북,28000,59,색상,레드,사이즈,L,NAVYFOX,MDL-0082,880866684426,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 082 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: L, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,한진택배,국산,NAVYFOX 제조사,면세,판매중,전시중,,12706816543
+84,83,[HOMEPLUS] 더미 상품 083 (블랙/L),패션잡화 > 가방 > 백팩,99000,44,색상,블랙,사이즈,L,HOMEPLUS,MDL-0083,880930080675,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 083 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: L, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,중국,HOMEPLUS 제조사,과세,품절,전시중,,12706816613
+85,84,[MOON] 더미 상품 084 (그레이/XL),식품 > 과자/간식 > 과자,142000,82,색상,그레이,사이즈,XL,MOON,MDL-0084,880551337737,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 084 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: XL, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,베트남,MOON 제조사,과세,품절,전시중,,12706816703
+86,85,[HOMEPLUS] 더미 상품 085 (블랙/S),패션잡화 > 가방 > 백팩,36000,190,색상,블랙,사이즈,S,HOMEPLUS,MDL-0085,880781117549,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 085 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: S, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,한진택배,미국,HOMEPLUS 제조사,면세,품절,전시안함,,12706816771
+87,86,[URBANWEAR] 더미 상품 086 (그레이/L),패션의류 > 상의 > 티셔츠,146000,46,색상,그레이,사이즈,L,URBANWEAR,MDL-0086,880952000874,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 086 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: L, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,독일,URBANWEAR 제조사,면세,판매중,전시안함,,12706816844
+88,87,[MOON] 더미 상품 087 (베이지/S),식품 > 과자/간식 > 과자,89500,98,색상,베이지,사이즈,S,MOON,MDL-0087,880875757981,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 087 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: S, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,베트남,MOON 제조사,면세,품절,전시안함,,12706816904
+89,88,[GREENPET] 더미 상품 088 (베이지/FREE),패션의류 > 상의 > 티셔츠,79500,85,색상,베이지,사이즈,FREE,GREENPET,MDL-0088,880480947048,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 088 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: FREE, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,베트남,GREENPET 제조사,면세,품절,전시안함,,12706816969
+90,89,[URBANWEAR] 더미 상품 089 (레드/250),반려동물 > 강아지용품 > 사료,48500,90,색상,레드,사이즈,250,URBANWEAR,MDL-0089,880225646065,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 089 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: 250, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,미국,URBANWEAR 제조사,과세,품절,전시중,,12706817041
+91,90,[MOON] 더미 상품 090 (레드/XL),생활/주방 > 주방용품 > 프라이팬,86000,183,색상,레드,사이즈,XL,MOON,MDL-0090,880101438119,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 090 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: XL, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,CJ대한통운,미국,MOON 제조사,과세,품절,전시중,,12706817113
+92,91,[MOON] 더미 상품 091 (네이비/260),디지털/가전 > 모니터,10500,91,색상,네이비,사이즈,260,MOON,MDL-0091,880373261250,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 091 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: 260, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,택배,중국,MOON 제조사,면세,판매중,전시안함,,12706817180
+93,92,[TECHONE] 더미 상품 092 (네이비/270),패션의류 > 상의 > 티셔츠,68000,198,색상,네이비,사이즈,270,TECHONE,MDL-0092,880573033891,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 092 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: 270, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,택배,베트남,TECHONE 제조사,과세,품절,전시중,,12706817246
+94,93,[GREENPET] 더미 상품 093 (그레이/260),생활/주방 > 주방용품 > 프라이팬,53500,156,색상,그레이,사이즈,260,GREENPET,MDL-0093,880191432649,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 093 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: 260, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,한진택배,베트남,GREENPET 제조사,과세,판매중,전시안함,,12706817324
+95,94,[MOON] 더미 상품 094 (화이트/S),디지털/가전 > 모니터,16500,94,색상,화이트,사이즈,S,MOON,MDL-0094,880149300102,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 094 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: S, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,베트남,MOON 제조사,면세,품절,전시중,,12706817384
+96,95,[URBANWEAR] 더미 상품 095 (화이트/M),패션의류 > 하의 > 청바지,142500,56,색상,화이트,사이즈,M,URBANWEAR,MDL-0095,880192366408,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 095 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: M, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,택배,국산,URBANWEAR 제조사,과세,품절,전시안함,,12706817462
+97,96,[STARLINE] 더미 상품 096 (베이지/XL),패션의류 > 하의 > 청바지,46000,99,색상,베이지,사이즈,XL,STARLINE,MDL-0096,880392197862,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 096 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: XL, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,독일,STARLINE 제조사,면세,품절,전시안함,,12706817537
+98,97,[URBANWEAR] 더미 상품 097 (그레이/270),디지털/가전 > 노트북,125500,160,색상,그레이,사이즈,270,URBANWEAR,MDL-0097,880144415339,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 097 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: 270, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,베트남,URBANWEAR 제조사,면세,판매중,전시안함,,12706817621
+99,98,[HOMEPLUS] 더미 상품 098 (블랙/S),디지털/가전 > 노트북,125500,169,색상,블랙,사이즈,S,HOMEPLUS,MDL-0098,880635474764,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 098 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: S, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,한진택배,독일,HOMEPLUS 제조사,면세,판매중,전시안함,,12706817704
+100,99,[COOKMASTER] 더미 상품 099 (그레이/260),생활/주방 > 주방용품 > 프라이팬,92500,197,색상,그레이,사이즈,260,COOKMASTER,MDL-0099,880460300450,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 099 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: 260, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,한진택배,국산,COOKMASTER 제조사,과세,품절,전시안함,,12706817762
+101,100,[TECHONE] 더미 상품 100 (화이트/XL),식품 > 과자/간식 > 과자,12000,38,색상,화이트,사이즈,XL,TECHONE,MDL-0100,880423573239,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 100 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: XL, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,CJ대한통운,독일,TECHONE 제조사,면세,품절,전시안함,,12706817822
+102,101,[URBANWEAR] 더미 상품 101 (그레이/S),패션잡화 > 가방 > 백팩,35500,122,색상,그레이,사이즈,S,URBANWEAR,MDL-0101,880466213408,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 101 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: S, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,미국,URBANWEAR 제조사,면세,품절,전시중,,12706817902
+103,102,[GREENPET] 더미 상품 102 (블랙/M),디지털/가전 > 노트북,53000,31,색상,블랙,사이즈,M,GREENPET,MDL-0102,880690137991,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 102 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: M, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,중국,GREENPET 제조사,면세,품절,전시안함,,12706817979
+104,103,[STARLINE] 더미 상품 103 (그레이/XL),반려동물 > 강아지용품 > 사료,7000,10,색상,그레이,사이즈,XL,STARLINE,MDL-0103,880110581947,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 103 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: XL, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,일본,STARLINE 제조사,면세,판매중,전시중,,12706818060
+105,104,[URBANWEAR] 더미 상품 104 (화이트/270),패션의류 > 상의 > 티셔츠,91000,15,색상,화이트,사이즈,270,URBANWEAR,MDL-0104,880515269401,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 104 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: 270, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,롯데택배,미국,URBANWEAR 제조사,면세,품절,전시안함,,12706818120
+106,105,[STARLINE] 더미 상품 105 (네이비/M),디지털/가전 > 모니터,61000,169,색상,네이비,사이즈,M,STARLINE,MDL-0105,880824878357,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 105 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: M, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,일본,STARLINE 제조사,과세,품절,전시안함,,12706818181
+107,106,[URBANWEAR] 더미 상품 106 (베이지/250),디지털/가전 > 노트북,53000,127,색상,베이지,사이즈,250,URBANWEAR,MDL-0106,880462134245,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 106 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: 250, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,택배,중국,URBANWEAR 제조사,면세,판매중,전시안함,,12706818246
+108,107,[MOON] 더미 상품 107 (화이트/M),식품 > 과자/간식 > 과자,55500,79,색상,화이트,사이즈,M,MOON,MDL-0107,880419133085,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 107 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: M, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,베트남,MOON 제조사,과세,품절,전시중,,12706818325
+109,108,[GREENPET] 더미 상품 108 (그레이/M),디지털/가전 > 노트북,83000,24,색상,그레이,사이즈,M,GREENPET,MDL-0108,880893748927,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 108 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: M, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,미국,GREENPET 제조사,면세,판매중,전시안함,,12706818388
+110,109,[NAVYFOX] 더미 상품 109 (그레이/260),반려동물 > 강아지용품 > 사료,78500,6,색상,그레이,사이즈,260,NAVYFOX,MDL-0109,880126189605,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 109 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: 260, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,CJ대한통운,독일,NAVYFOX 제조사,면세,판매중,전시안함,,12706818469
+111,110,[MOON] 더미 상품 110 (베이지/260),디지털/가전 > 모니터,78000,123,색상,베이지,사이즈,260,MOON,MDL-0110,880240776632,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 110 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: 260, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,중국,MOON 제조사,과세,품절,전시안함,,12706818530
+112,111,[MOON] 더미 상품 111 (블랙/260),패션의류 > 하의 > 청바지,136000,37,색상,블랙,사이즈,260,MOON,MDL-0111,880351165184,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 111 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: 260, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,한진택배,독일,MOON 제조사,과세,품절,전시중,,12706818597
+113,112,[COOKMASTER] 더미 상품 112 (그레이/S),디지털/가전 > 노트북,19500,73,색상,그레이,사이즈,S,COOKMASTER,MDL-0112,880328010635,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 112 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: S, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,한진택배,베트남,COOKMASTER 제조사,면세,판매중,전시중,,12706818654
+114,113,[COOKMASTER] 더미 상품 113 (블랙/S),패션잡화 > 가방 > 백팩,74500,107,색상,블랙,사이즈,S,COOKMASTER,MDL-0113,880176156211,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 113 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: S, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,한진택배,베트남,COOKMASTER 제조사,면세,품절,전시안함,,12706818722
+115,114,[HOMEPLUS] 더미 상품 114 (블랙/260),디지털/가전 > 모니터,36000,131,색상,블랙,사이즈,260,HOMEPLUS,MDL-0114,880556981558,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 114 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: 260, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,한진택배,중국,HOMEPLUS 제조사,면세,품절,전시중,,12706818791
+116,115,[URBANWEAR] 더미 상품 115 (그레이/FREE),디지털/가전 > 모니터,26000,161,색상,그레이,사이즈,FREE,URBANWEAR,MDL-0115,880743210937,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 115 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: FREE, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,롯데택배,중국,URBANWEAR 제조사,과세,품절,전시중,,12706818858
+117,116,[NAVYFOX] 더미 상품 116 (네이비/M),디지털/가전 > 노트북,109000,79,색상,네이비,사이즈,M,NAVYFOX,MDL-0116,880939051838,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 116 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: M, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,한진택배,미국,NAVYFOX 제조사,과세,품절,전시중,,12706818921
+118,117,[COOKMASTER] 더미 상품 117 (네이비/XL),패션의류 > 하의 > 청바지,144500,67,색상,네이비,사이즈,XL,COOKMASTER,MDL-0117,880178959791,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 117 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: XL, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,일본,COOKMASTER 제조사,면세,품절,전시안함,,12706818999
+119,118,[COOKMASTER] 더미 상품 118 (화이트/270),패션잡화 > 가방 > 백팩,117000,143,색상,화이트,사이즈,270,COOKMASTER,MDL-0118,880617994238,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 118 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: 270, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,롯데택배,독일,COOKMASTER 제조사,과세,품절,전시중,,12706819062
+120,119,[STARLINE] 더미 상품 119 (레드/270),생활/주방 > 주방용품 > 프라이팬,37000,136,색상,레드,사이즈,270,STARLINE,MDL-0119,880603161682,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 119 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: 270, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,일본,STARLINE 제조사,면세,품절,전시안함,,12706819124
+121,120,[STARLINE] 더미 상품 120 (레드/250),디지털/가전 > 모니터,145500,164,색상,레드,사이즈,250,STARLINE,MDL-0120,880204525514,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 120 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: 250, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,중국,STARLINE 제조사,면세,판매중,전시중,,12706819190
+122,121,[MOON] 더미 상품 121 (레드/260),디지털/가전 > 노트북,131000,145,색상,레드,사이즈,260,MOON,MDL-0121,880646765294,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 121 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: 260, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,롯데택배,미국,MOON 제조사,면세,품절,전시중,,12706819262
+123,122,[STARLINE] 더미 상품 122 (베이지/XL),디지털/가전 > 노트북,30000,30,색상,베이지,사이즈,XL,STARLINE,MDL-0122,880145627221,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 122 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: XL, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,중국,STARLINE 제조사,면세,판매중,전시중,,12706819340
+124,123,[HOMEPLUS] 더미 상품 123 (네이비/XL),식품 > 과자/간식 > 과자,78000,113,색상,네이비,사이즈,XL,HOMEPLUS,MDL-0123,880898580993,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 123 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: XL, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,한진택배,중국,HOMEPLUS 제조사,과세,판매중,전시중,,12706819417
+125,124,[URBANWEAR] 더미 상품 124 (그레이/FREE),패션의류 > 하의 > 청바지,6000,50,색상,그레이,사이즈,FREE,URBANWEAR,MDL-0124,880386688310,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 124 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: FREE, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,CJ대한통운,일본,URBANWEAR 제조사,면세,품절,전시중,,12706819493
+126,125,[TECHONE] 더미 상품 125 (화이트/M),식품 > 과자/간식 > 과자,86500,58,색상,화이트,사이즈,M,TECHONE,MDL-0125,880545881823,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 125 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: M, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,택배,독일,TECHONE 제조사,과세,품절,전시안함,,12706819557
+127,126,[GREENPET] 더미 상품 126 (베이지/XL),생활/주방 > 주방용품 > 프라이팬,86500,105,색상,베이지,사이즈,XL,GREENPET,MDL-0126,880109755833,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 126 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: XL, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,택배,국산,GREENPET 제조사,면세,품절,전시중,,12706819645
+128,127,[HOMEPLUS] 더미 상품 127 (네이비/L),패션의류 > 상의 > 티셔츠,105500,88,색상,네이비,사이즈,L,HOMEPLUS,MDL-0127,880936770769,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 127 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: L, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,롯데택배,독일,HOMEPLUS 제조사,면세,품절,전시중,,12706819730
+129,128,[STARLINE] 더미 상품 128 (화이트/M),패션잡화 > 가방 > 백팩,64000,176,색상,화이트,사이즈,M,STARLINE,MDL-0128,880998532675,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 128 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: M, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,CJ대한통운,국산,STARLINE 제조사,면세,판매중,전시안함,,12706819791
+130,129,[GREENPET] 더미 상품 129 (네이비/XL),식품 > 과자/간식 > 과자,70000,20,색상,네이비,사이즈,XL,GREENPET,MDL-0129,880886608888,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 129 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: XL, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,롯데택배,중국,GREENPET 제조사,면세,판매중,전시중,,12706819869
+131,130,[COOKMASTER] 더미 상품 130 (네이비/M),패션의류 > 하의 > 청바지,120500,171,색상,네이비,사이즈,M,COOKMASTER,MDL-0130,880849893505,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 130 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: M, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,한진택배,일본,COOKMASTER 제조사,면세,품절,전시중,,12706819943
+132,131,[COOKMASTER] 더미 상품 131 (네이비/250),패션의류 > 하의 > 청바지,77500,64,색상,네이비,사이즈,250,COOKMASTER,MDL-0131,880177716332,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 131 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: 250, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,롯데택배,중국,COOKMASTER 제조사,면세,판매중,전시안함,,12706820004
+133,132,[NAVYFOX] 더미 상품 132 (그레이/260),패션의류 > 상의 > 티셔츠,108000,43,색상,그레이,사이즈,260,NAVYFOX,MDL-0132,880150857301,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 132 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: 260, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,미국,NAVYFOX 제조사,과세,품절,전시중,,12706820080
+134,133,[HOMEPLUS] 더미 상품 133 (그레이/M),디지털/가전 > 노트북,22000,8,색상,그레이,사이즈,M,HOMEPLUS,MDL-0133,880508600289,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 133 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: M, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,중국,HOMEPLUS 제조사,면세,판매중,전시중,,12706820164
+135,134,[HOMEPLUS] 더미 상품 134 (베이지/270),생활/주방 > 주방용품 > 프라이팬,81500,22,색상,베이지,사이즈,270,HOMEPLUS,MDL-0134,880992608882,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 134 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: 270, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,중국,HOMEPLUS 제조사,과세,품절,전시중,,12706820235
+136,135,[COOKMASTER] 더미 상품 135 (베이지/L),패션잡화 > 가방 > 백팩,139500,192,색상,베이지,사이즈,L,COOKMASTER,MDL-0135,880604985914,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 135 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: L, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,독일,COOKMASTER 제조사,과세,품절,전시안함,,12706820303
+137,136,[GREENPET] 더미 상품 136 (베이지/M),디지털/가전 > 노트북,147000,5,색상,베이지,사이즈,M,GREENPET,MDL-0136,880299641615,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 136 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: M, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,중국,GREENPET 제조사,과세,판매중,전시안함,,12706820382
+138,137,[URBANWEAR] 더미 상품 137 (베이지/270),디지털/가전 > 모니터,7000,59,색상,베이지,사이즈,270,URBANWEAR,MDL-0137,880492201579,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 137 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: 270, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,미국,URBANWEAR 제조사,과세,품절,전시중,,12706820428
+139,138,[MOON] 더미 상품 138 (화이트/260),식품 > 과자/간식 > 과자,88500,3,색상,화이트,사이즈,260,MOON,MDL-0138,880592145569,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 138 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: 260, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,롯데택배,독일,MOON 제조사,과세,품절,전시안함,,12706820514
+140,139,[MOON] 더미 상품 139 (그레이/S),디지털/가전 > 노트북,148000,121,색상,그레이,사이즈,S,MOON,MDL-0139,880325428046,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 139 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: S, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,미국,MOON 제조사,면세,판매중,전시안함,,12706820599
+141,140,[MOON] 더미 상품 140 (레드/260),디지털/가전 > 모니터,59000,75,색상,레드,사이즈,260,MOON,MDL-0140,880495494663,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 140 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: 260, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,독일,MOON 제조사,과세,품절,전시중,,12706820677
+142,141,[GREENPET] 더미 상품 141 (네이비/L),패션의류 > 상의 > 티셔츠,45500,170,색상,네이비,사이즈,L,GREENPET,MDL-0141,880724463896,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 141 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: L, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,한진택배,베트남,GREENPET 제조사,면세,품절,전시안함,,12706820736
+143,142,[COOKMASTER] 더미 상품 142 (네이비/S),디지털/가전 > 모니터,46500,36,색상,네이비,사이즈,S,COOKMASTER,MDL-0142,880241326173,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 142 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: S, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,한진택배,중국,COOKMASTER 제조사,면세,판매중,전시안함,,12706820795
+144,143,[HOMEPLUS] 더미 상품 143 (베이지/270),생활/주방 > 주방용품 > 프라이팬,20000,139,색상,베이지,사이즈,270,HOMEPLUS,MDL-0143,880421301755,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 143 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: 270, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,롯데택배,독일,HOMEPLUS 제조사,면세,판매중,전시안함,,12706820891
+145,144,[STARLINE] 더미 상품 144 (네이비/S),식품 > 과자/간식 > 과자,96500,31,색상,네이비,사이즈,S,STARLINE,MDL-0144,880618499144,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 144 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: S, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,베트남,STARLINE 제조사,과세,판매중,전시중,,12706820954
+146,145,[URBANWEAR] 더미 상품 145 (블랙/260),식품 > 과자/간식 > 과자,30500,122,색상,블랙,사이즈,260,URBANWEAR,MDL-0145,880614104676,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 145 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: 260, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,한진택배,독일,URBANWEAR 제조사,과세,판매중,전시중,,12706821016
+147,146,[MOON] 더미 상품 146 (그레이/XL),생활/주방 > 주방용품 > 프라이팬,11000,107,색상,그레이,사이즈,XL,MOON,MDL-0146,880134346747,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 146 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: XL, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,중국,MOON 제조사,면세,품절,전시중,,12706821092
+148,147,[MOON] 더미 상품 147 (베이지/FREE),반려동물 > 강아지용품 > 사료,56000,71,색상,베이지,사이즈,FREE,MOON,MDL-0147,880175151980,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 147 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: FREE, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,일본,MOON 제조사,과세,판매중,전시안함,,12706821167
+149,148,[COOKMASTER] 더미 상품 148 (베이지/250),디지털/가전 > 노트북,138500,112,색상,베이지,사이즈,250,COOKMASTER,MDL-0148,880186707857,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 148 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: 250, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,베트남,COOKMASTER 제조사,면세,품절,전시중,,12706821234
+150,149,[STARLINE] 더미 상품 149 (베이지/XL),생활/주방 > 주방용품 > 프라이팬,54500,167,색상,베이지,사이즈,XL,STARLINE,MDL-0149,880869525018,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 149 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: XL, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,국산,STARLINE 제조사,과세,판매중,전시안함,,12706821304
+151,150,[GREENPET] 더미 상품 150 (화이트/S),반려동물 > 강아지용품 > 사료,93000,56,색상,화이트,사이즈,S,GREENPET,MDL-0150,880643808910,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 150 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: S, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,중국,GREENPET 제조사,면세,품절,전시중,,12706821380
+152,151,[HOMEPLUS] 더미 상품 151 (그레이/250),생활/주방 > 주방용품 > 프라이팬,114000,51,색상,그레이,사이즈,250,HOMEPLUS,MDL-0151,880240518715,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 151 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: 250, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,CJ대한통운,베트남,HOMEPLUS 제조사,면세,판매중,전시안함,,12706821446
+153,152,[NAVYFOX] 더미 상품 152 (화이트/270),패션의류 > 상의 > 티셔츠,106500,121,색상,화이트,사이즈,270,NAVYFOX,MDL-0152,880690326208,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 152 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: 270, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,베트남,NAVYFOX 제조사,과세,판매중,전시안함,,12706821509
+154,153,[TECHONE] 더미 상품 153 (화이트/XL),반려동물 > 강아지용품 > 사료,59000,15,색상,화이트,사이즈,XL,TECHONE,MDL-0153,880249004025,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 153 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: XL, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,일본,TECHONE 제조사,면세,판매중,전시안함,,12706821571
+155,154,[STARLINE] 더미 상품 154 (레드/270),패션의류 > 상의 > 티셔츠,27000,10,색상,레드,사이즈,270,STARLINE,MDL-0154,880423473335,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 154 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: 270, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,한진택배,국산,STARLINE 제조사,면세,판매중,전시중,,12706821643
+156,155,[URBANWEAR] 더미 상품 155 (블랙/250),패션의류 > 상의 > 티셔츠,101000,140,색상,블랙,사이즈,250,URBANWEAR,MDL-0155,880993959503,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 155 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: 250, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,일본,URBANWEAR 제조사,면세,품절,전시중,,12706821713
+157,156,[HOMEPLUS] 더미 상품 156 (블랙/250),패션의류 > 상의 > 티셔츠,148000,86,색상,블랙,사이즈,250,HOMEPLUS,MDL-0156,880986041234,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 156 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: 250, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,국산,HOMEPLUS 제조사,과세,품절,전시중,,12706821814
+158,157,[COOKMASTER] 더미 상품 157 (네이비/XL),패션잡화 > 가방 > 백팩,127000,21,색상,네이비,사이즈,XL,COOKMASTER,MDL-0157,880361686445,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 157 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: XL, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,국산,COOKMASTER 제조사,면세,품절,전시중,,12706821871
+159,158,[GREENPET] 더미 상품 158 (네이비/L),식품 > 과자/간식 > 과자,145000,112,색상,네이비,사이즈,L,GREENPET,MDL-0158,880582054244,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 158 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: L, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,독일,GREENPET 제조사,면세,판매중,전시중,,12706821943
+160,159,[MOON] 더미 상품 159 (화이트/S),식품 > 과자/간식 > 과자,79500,35,색상,화이트,사이즈,S,MOON,MDL-0159,880108159032,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 159 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: S, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,롯데택배,독일,MOON 제조사,과세,품절,전시중,,12706822016
+161,160,[TECHONE] 더미 상품 160 (네이비/XL),디지털/가전 > 모니터,145500,67,색상,네이비,사이즈,XL,TECHONE,MDL-0160,880853780621,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 160 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: XL, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,롯데택배,독일,TECHONE 제조사,면세,판매중,전시중,,12706822094
+162,161,[TECHONE] 더미 상품 161 (네이비/FREE),패션의류 > 하의 > 청바지,23500,67,색상,네이비,사이즈,FREE,TECHONE,MDL-0161,880854373735,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 161 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: FREE, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,일본,TECHONE 제조사,과세,품절,전시중,,12706822160
+163,162,[COOKMASTER] 더미 상품 162 (그레이/M),반려동물 > 강아지용품 > 사료,113000,195,색상,그레이,사이즈,M,COOKMASTER,MDL-0162,880337364532,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 162 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: M, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,베트남,COOKMASTER 제조사,과세,판매중,전시중,,12706822223
+164,163,[COOKMASTER] 더미 상품 163 (그레이/260),패션의류 > 상의 > 티셔츠,74500,42,색상,그레이,사이즈,260,COOKMASTER,MDL-0163,880486535803,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 163 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: 260, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,한진택배,중국,COOKMASTER 제조사,면세,품절,전시안함,,12706822294
+165,164,[GREENPET] 더미 상품 164 (블랙/L),패션잡화 > 가방 > 백팩,31000,138,색상,블랙,사이즈,L,GREENPET,MDL-0164,880341176344,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 164 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: L, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,미국,GREENPET 제조사,과세,판매중,전시안함,,12706822381
+166,165,[NAVYFOX] 더미 상품 165 (베이지/L),반려동물 > 강아지용품 > 사료,79000,177,색상,베이지,사이즈,L,NAVYFOX,MDL-0165,880831483805,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 165 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: L, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,중국,NAVYFOX 제조사,면세,품절,전시중,,12706822454
+167,166,[TECHONE] 더미 상품 166 (네이비/XL),반려동물 > 강아지용품 > 사료,112500,120,색상,네이비,사이즈,XL,TECHONE,MDL-0166,880805863470,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 166 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: XL, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,한진택배,국산,TECHONE 제조사,면세,판매중,전시중,,12706822537
+168,167,[URBANWEAR] 더미 상품 167 (레드/L),패션의류 > 상의 > 티셔츠,133000,96,색상,레드,사이즈,L,URBANWEAR,MDL-0167,880586773750,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 167 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: L, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,CJ대한통운,미국,URBANWEAR 제조사,과세,품절,전시중,,12706822616
+169,168,[URBANWEAR] 더미 상품 168 (그레이/S),패션의류 > 상의 > 티셔츠,46500,171,색상,그레이,사이즈,S,URBANWEAR,MDL-0168,880783248476,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 168 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: S, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,미국,URBANWEAR 제조사,과세,판매중,전시중,,12706822689
+170,169,[TECHONE] 더미 상품 169 (레드/M),생활/주방 > 주방용품 > 프라이팬,42500,154,색상,레드,사이즈,M,TECHONE,MDL-0169,880271108814,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 169 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: M, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,한진택배,독일,TECHONE 제조사,면세,판매중,전시안함,,12706822757
+171,170,[URBANWEAR] 더미 상품 170 (네이비/260),생활/주방 > 주방용품 > 프라이팬,60500,172,색상,네이비,사이즈,260,URBANWEAR,MDL-0170,880166943896,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 170 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: 260, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,한진택배,일본,URBANWEAR 제조사,과세,판매중,전시안함,,12706822834
+172,171,[NAVYFOX] 더미 상품 171 (네이비/XL),디지털/가전 > 모니터,93000,196,색상,네이비,사이즈,XL,NAVYFOX,MDL-0171,880427054630,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 171 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: XL, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,베트남,NAVYFOX 제조사,과세,판매중,전시중,,12706822895
+173,172,[TECHONE] 더미 상품 172 (화이트/L),패션잡화 > 가방 > 백팩,55500,88,색상,화이트,사이즈,L,TECHONE,MDL-0172,880368250699,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 172 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: L, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,CJ대한통운,베트남,TECHONE 제조사,면세,품절,전시중,,12706822968
+174,173,[URBANWEAR] 더미 상품 173 (베이지/270),반려동물 > 강아지용품 > 사료,135000,106,색상,베이지,사이즈,270,URBANWEAR,MDL-0173,880131668779,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 173 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: 270, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,한진택배,독일,URBANWEAR 제조사,과세,품절,전시안함,,12706823034
+175,174,[HOMEPLUS] 더미 상품 174 (그레이/XL),패션의류 > 하의 > 청바지,25000,70,색상,그레이,사이즈,XL,HOMEPLUS,MDL-0174,880609372404,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 174 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: XL, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,CJ대한통운,미국,HOMEPLUS 제조사,면세,품절,전시안함,,12706823099
+176,175,[COOKMASTER] 더미 상품 175 (블랙/250),생활/주방 > 주방용품 > 프라이팬,75500,125,색상,블랙,사이즈,250,COOKMASTER,MDL-0175,880621932507,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 175 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: 250, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,독일,COOKMASTER 제조사,면세,품절,전시중,,12706823159
+177,176,[GREENPET] 더미 상품 176 (블랙/XL),생활/주방 > 주방용품 > 프라이팬,76000,103,색상,블랙,사이즈,XL,GREENPET,MDL-0176,880515686124,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 176 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: XL, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,베트남,GREENPET 제조사,면세,판매중,전시중,,12706823251
+178,177,[GREENPET] 더미 상품 177 (그레이/S),패션의류 > 상의 > 티셔츠,33500,97,색상,그레이,사이즈,S,GREENPET,MDL-0177,880547797679,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 177 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: S, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,한진택배,국산,GREENPET 제조사,면세,판매중,전시중,,12706823319
+179,178,[TECHONE] 더미 상품 178 (베이지/250),패션의류 > 상의 > 티셔츠,121500,7,색상,베이지,사이즈,250,TECHONE,MDL-0178,880335030009,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 178 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: 250, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,국산,TECHONE 제조사,과세,품절,전시중,,12706823393
+180,179,[COOKMASTER] 더미 상품 179 (네이비/270),디지털/가전 > 모니터,58000,19,색상,네이비,사이즈,270,COOKMASTER,MDL-0179,880349257510,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 179 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: 270, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,한진택배,일본,COOKMASTER 제조사,과세,품절,전시안함,,12706823487
+181,180,[STARLINE] 더미 상품 180 (화이트/L),디지털/가전 > 노트북,93000,103,색상,화이트,사이즈,L,STARLINE,MDL-0180,880210107204,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 180 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: L, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,독일,STARLINE 제조사,면세,판매중,전시안함,,12706823564
+182,181,[URBANWEAR] 더미 상품 181 (블랙/260),패션의류 > 하의 > 청바지,111500,133,색상,블랙,사이즈,260,URBANWEAR,MDL-0181,880962286250,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 181 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: 260, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,한진택배,미국,URBANWEAR 제조사,면세,판매중,전시안함,,12706823658
+183,182,[MOON] 더미 상품 182 (화이트/S),생활/주방 > 주방용품 > 프라이팬,73000,184,색상,화이트,사이즈,S,MOON,MDL-0182,880519478482,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 182 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: S, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,택배,미국,MOON 제조사,과세,판매중,전시안함,,12706823739
+184,183,[MOON] 더미 상품 183 (화이트/260),생활/주방 > 주방용품 > 프라이팬,22000,186,색상,화이트,사이즈,260,MOON,MDL-0183,880201442156,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 183 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: 260, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,중국,MOON 제조사,과세,품절,전시중,,12706823846
+185,184,[GREENPET] 더미 상품 184 (화이트/250),반려동물 > 강아지용품 > 사료,38500,196,색상,화이트,사이즈,250,GREENPET,MDL-0184,880470100922,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 184 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: 250, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,일본,GREENPET 제조사,면세,품절,전시안함,,12706823928
+186,185,[STARLINE] 더미 상품 185 (블랙/250),디지털/가전 > 노트북,42000,48,색상,블랙,사이즈,250,STARLINE,MDL-0185,880812988556,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 185 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: 250, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,일본,STARLINE 제조사,면세,판매중,전시중,,12706823996
+187,186,[GREENPET] 더미 상품 186 (네이비/L),패션잡화 > 가방 > 백팩,125000,64,색상,네이비,사이즈,L,GREENPET,MDL-0186,880594028090,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 186 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: L, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,한진택배,독일,GREENPET 제조사,면세,품절,전시중,,12706824070
+188,187,[HOMEPLUS] 더미 상품 187 (화이트/250),생활/주방 > 주방용품 > 프라이팬,147000,62,색상,화이트,사이즈,250,HOMEPLUS,MDL-0187,880368011746,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 187 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: 250, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,중국,HOMEPLUS 제조사,면세,품절,전시안함,,12706824141
+189,188,[GREENPET] 더미 상품 188 (그레이/250),반려동물 > 강아지용품 > 사료,45000,167,색상,그레이,사이즈,250,GREENPET,MDL-0188,880328558758,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 188 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: 250, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,한진택배,국산,GREENPET 제조사,과세,판매중,전시안함,,12706824216
+190,189,[STARLINE] 더미 상품 189 (화이트/XL),디지털/가전 > 모니터,92000,122,색상,화이트,사이즈,XL,STARLINE,MDL-0189,880705845142,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 189 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: XL, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,베트남,STARLINE 제조사,과세,판매중,전시안함,,12706824277
+191,190,[COOKMASTER] 더미 상품 190 (그레이/M),식품 > 과자/간식 > 과자,42500,87,색상,그레이,사이즈,M,COOKMASTER,MDL-0190,880689936512,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 190 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: M, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,한진택배,국산,COOKMASTER 제조사,과세,품절,전시중,,12706824363
+192,191,[MOON] 더미 상품 191 (화이트/260),생활/주방 > 주방용품 > 프라이팬,124500,194,색상,화이트,사이즈,260,MOON,MDL-0191,880567658513,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 191 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: 260, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,CJ대한통운,중국,MOON 제조사,면세,판매중,전시안함,,12706824440
+193,192,[STARLINE] 더미 상품 192 (네이비/L),반려동물 > 강아지용품 > 사료,18500,163,색상,네이비,사이즈,L,STARLINE,MDL-0192,880631145483,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 192 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: L, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,일본,STARLINE 제조사,과세,품절,전시안함,,12706824515
+194,193,[MOON] 더미 상품 193 (블랙/XL),생활/주방 > 주방용품 > 프라이팬,78000,189,색상,블랙,사이즈,XL,MOON,MDL-0193,880299860017,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 193 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: XL, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,중국,MOON 제조사,면세,판매중,전시중,,12706824588
+195,194,[HOMEPLUS] 더미 상품 194 (레드/M),패션의류 > 하의 > 청바지,126500,68,색상,레드,사이즈,M,HOMEPLUS,MDL-0194,880249835798,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 194 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: M, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,택배,독일,HOMEPLUS 제조사,과세,판매중,전시중,,12706824653
+196,195,[HOMEPLUS] 더미 상품 195 (블랙/250),반려동물 > 강아지용품 > 사료,62500,121,색상,블랙,사이즈,250,HOMEPLUS,MDL-0195,880647402892,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 195 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: 250, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,택배,독일,HOMEPLUS 제조사,과세,판매중,전시중,,12706824726
+197,196,[HOMEPLUS] 더미 상품 196 (레드/250),디지털/가전 > 노트북,137000,126,색상,레드,사이즈,250,HOMEPLUS,MDL-0196,880156319499,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 196 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: 250, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,택배,독일,HOMEPLUS 제조사,면세,판매중,전시안함,,12706824797
+198,197,[TECHONE] 더미 상품 197 (블랙/260),반려동물 > 강아지용품 > 사료,93500,135,색상,블랙,사이즈,260,TECHONE,MDL-0197,880470200142,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 197 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: 260, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,CJ대한통운,미국,TECHONE 제조사,면세,판매중,전시중,,12706824864
+199,198,[STARLINE] 더미 상품 198 (베이지/FREE),생활/주방 > 주방용품 > 프라이팬,45500,187,색상,베이지,사이즈,FREE,STARLINE,MDL-0198,880180106499,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 198 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: FREE, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,한진택배,베트남,STARLINE 제조사,면세,판매중,전시중,,12706824950
+200,199,[STARLINE] 더미 상품 199 (베이지/M),디지털/가전 > 노트북,68500,57,색상,베이지,사이즈,M,STARLINE,MDL-0199,880288854237,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 199 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: M, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,롯데택배,미국,STARLINE 제조사,면세,품절,전시중,,12706825022
+201,200,[STARLINE] 더미 상품 200 (네이비/250),패션의류 > 하의 > 청바지,143000,134,색상,네이비,사이즈,250,STARLINE,MDL-0200,880539118970,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 200 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: 250, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,베트남,STARLINE 제조사,면세,판매중,전시중,,12706825100
+202,201,[HOMEPLUS] 더미 상품 201 (화이트/S),패션의류 > 상의 > 티셔츠,24500,199,색상,화이트,사이즈,S,HOMEPLUS,MDL-0201,880578005439,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 201 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: S, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,한진택배,독일,HOMEPLUS 제조사,면세,품절,전시중,,12706825179
+203,202,[STARLINE] 더미 상품 202 (블랙/270),디지털/가전 > 노트북,138000,50,색상,블랙,사이즈,270,STARLINE,MDL-0202,880162872673,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 202 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: 270, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,베트남,STARLINE 제조사,면세,품절,전시중,,12706825249
+204,203,[HOMEPLUS] 더미 상품 203 (레드/270),생활/주방 > 주방용품 > 프라이팬,96000,179,색상,레드,사이즈,270,HOMEPLUS,MDL-0203,880703202787,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 203 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: 270, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,중국,HOMEPLUS 제조사,면세,판매중,전시중,,12706825336
+205,204,[STARLINE] 더미 상품 204 (화이트/FREE),반려동물 > 강아지용품 > 사료,71500,125,색상,화이트,사이즈,FREE,STARLINE,MDL-0204,880675065046,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 204 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: FREE, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,국산,STARLINE 제조사,과세,판매중,전시안함,,12706825411
+206,205,[STARLINE] 더미 상품 205 (그레이/M),패션의류 > 하의 > 청바지,80500,33,색상,그레이,사이즈,M,STARLINE,MDL-0205,880153289894,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 205 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: M, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,택배,베트남,STARLINE 제조사,과세,품절,전시중,,12706825486
+207,206,[HOMEPLUS] 더미 상품 206 (네이비/L),디지털/가전 > 모니터,69000,149,색상,네이비,사이즈,L,HOMEPLUS,MDL-0206,880773021588,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 206 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: L, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,독일,HOMEPLUS 제조사,과세,품절,전시안함,,12706825552
+208,207,[COOKMASTER] 더미 상품 207 (화이트/250),반려동물 > 강아지용품 > 사료,73500,73,색상,화이트,사이즈,250,COOKMASTER,MDL-0207,880316631073,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 207 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: 250, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,베트남,COOKMASTER 제조사,면세,품절,전시중,,12706825629
+209,208,[NAVYFOX] 더미 상품 208 (그레이/270),패션잡화 > 가방 > 백팩,83000,102,색상,그레이,사이즈,270,NAVYFOX,MDL-0208,880128974853,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 208 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: 270, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,중국,NAVYFOX 제조사,과세,품절,전시안함,,12706825709
+210,209,[COOKMASTER] 더미 상품 209 (그레이/FREE),반려동물 > 강아지용품 > 사료,118000,122,색상,그레이,사이즈,FREE,COOKMASTER,MDL-0209,880601607399,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 209 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: FREE, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,택배,미국,COOKMASTER 제조사,면세,품절,전시안함,,12706825785
+211,210,[TECHONE] 더미 상품 210 (네이비/260),패션잡화 > 가방 > 백팩,6500,78,색상,네이비,사이즈,260,TECHONE,MDL-0210,880222599298,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 210 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: 260, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,미국,TECHONE 제조사,과세,판매중,전시안함,,12706825910
+212,211,[NAVYFOX] 더미 상품 211 (그레이/XL),반려동물 > 강아지용품 > 사료,110000,119,색상,그레이,사이즈,XL,NAVYFOX,MDL-0211,880364182338,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 211 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: XL, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,독일,NAVYFOX 제조사,면세,품절,전시중,,12706825990
+213,212,[HOMEPLUS] 더미 상품 212 (그레이/M),패션의류 > 하의 > 청바지,50000,195,색상,그레이,사이즈,M,HOMEPLUS,MDL-0212,880303276899,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 212 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: M, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,베트남,HOMEPLUS 제조사,면세,판매중,전시중,,12706826064
+214,213,[URBANWEAR] 더미 상품 213 (네이비/L),디지털/가전 > 노트북,43000,170,색상,네이비,사이즈,L,URBANWEAR,MDL-0213,880625159671,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 213 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: L, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,미국,URBANWEAR 제조사,과세,품절,전시안함,,12706826136
+215,214,[GREENPET] 더미 상품 214 (레드/FREE),패션의류 > 상의 > 티셔츠,38000,54,색상,레드,사이즈,FREE,GREENPET,MDL-0214,880211740829,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 214 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: FREE, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,롯데택배,독일,GREENPET 제조사,면세,품절,전시중,,12706826214
+216,215,[TECHONE] 더미 상품 215 (레드/S),패션의류 > 하의 > 청바지,90500,55,색상,레드,사이즈,S,TECHONE,MDL-0215,880274530770,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 215 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: S, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,국산,TECHONE 제조사,면세,품절,전시중,,12706826276
+217,216,[STARLINE] 더미 상품 216 (네이비/L),생활/주방 > 주방용품 > 프라이팬,143500,198,색상,네이비,사이즈,L,STARLINE,MDL-0216,880995515592,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 216 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: L, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,한진택배,베트남,STARLINE 제조사,면세,판매중,전시안함,,12706826349
+218,217,[STARLINE] 더미 상품 217 (화이트/250),디지털/가전 > 모니터,16000,101,색상,화이트,사이즈,250,STARLINE,MDL-0217,880898060482,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 217 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: 250, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,한진택배,중국,STARLINE 제조사,과세,판매중,전시중,,12706826420
+219,218,[HOMEPLUS] 더미 상품 218 (화이트/S),생활/주방 > 주방용품 > 프라이팬,108000,39,색상,화이트,사이즈,S,HOMEPLUS,MDL-0218,880465240282,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 218 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: S, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,중국,HOMEPLUS 제조사,면세,품절,전시안함,,12706826508
+220,219,[MOON] 더미 상품 219 (베이지/M),디지털/가전 > 모니터,107500,133,색상,베이지,사이즈,M,MOON,MDL-0219,880649924613,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 219 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: M, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,롯데택배,국산,MOON 제조사,과세,품절,전시중,,12706826591
+221,220,[URBANWEAR] 더미 상품 220 (베이지/XL),생활/주방 > 주방용품 > 프라이팬,121500,196,색상,베이지,사이즈,XL,URBANWEAR,MDL-0220,880877524791,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 220 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: XL, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,미국,URBANWEAR 제조사,과세,판매중,전시중,,12706826651
+222,221,[NAVYFOX] 더미 상품 221 (레드/250),패션의류 > 하의 > 청바지,51000,189,색상,레드,사이즈,250,NAVYFOX,MDL-0221,880456521286,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 221 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: 250, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,롯데택배,일본,NAVYFOX 제조사,면세,품절,전시중,,12706826723
+223,222,[NAVYFOX] 더미 상품 222 (화이트/XL),생활/주방 > 주방용품 > 프라이팬,99500,50,색상,화이트,사이즈,XL,NAVYFOX,MDL-0222,880719382009,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 222 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: XL, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,한진택배,미국,NAVYFOX 제조사,과세,판매중,전시안함,,12706826788
+224,223,[GREENPET] 더미 상품 223 (네이비/260),패션의류 > 하의 > 청바지,138500,72,색상,네이비,사이즈,260,GREENPET,MDL-0223,880241134954,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 223 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: 260, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,한진택배,미국,GREENPET 제조사,면세,품절,전시안함,,12706826862
+225,224,[HOMEPLUS] 더미 상품 224 (베이지/L),패션의류 > 상의 > 티셔츠,82500,76,색상,베이지,사이즈,L,HOMEPLUS,MDL-0224,880102066975,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 224 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: L, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,롯데택배,국산,HOMEPLUS 제조사,과세,품절,전시안함,,12706826917
+226,225,[NAVYFOX] 더미 상품 225 (화이트/M),생활/주방 > 주방용품 > 프라이팬,129500,155,색상,화이트,사이즈,M,NAVYFOX,MDL-0225,880107317004,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 225 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: M, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,국산,NAVYFOX 제조사,면세,판매중,전시중,,12706826992
+227,226,[URBANWEAR] 더미 상품 226 (네이비/270),반려동물 > 강아지용품 > 사료,72500,69,색상,네이비,사이즈,270,URBANWEAR,MDL-0226,880135270706,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 226 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: 270, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,한진택배,일본,URBANWEAR 제조사,면세,판매중,전시중,,12706827047
+228,227,[HOMEPLUS] 더미 상품 227 (블랙/M),생활/주방 > 주방용품 > 프라이팬,135000,48,색상,블랙,사이즈,M,HOMEPLUS,MDL-0227,880899863814,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 227 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: M, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,국산,HOMEPLUS 제조사,과세,판매중,전시안함,,12706827168
+229,228,[HOMEPLUS] 더미 상품 228 (레드/XL),디지털/가전 > 모니터,79500,97,색상,레드,사이즈,XL,HOMEPLUS,MDL-0228,880460551057,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 228 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: XL, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,택배,미국,HOMEPLUS 제조사,면세,판매중,전시중,,12706827287
+230,229,[URBANWEAR] 더미 상품 229 (레드/S),식품 > 과자/간식 > 과자,125000,134,색상,레드,사이즈,S,URBANWEAR,MDL-0229,880472081682,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 229 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: S, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,한진택배,일본,URBANWEAR 제조사,과세,판매중,전시안함,,12706827375
+231,230,[GREENPET] 더미 상품 230 (레드/250),식품 > 과자/간식 > 과자,6000,140,색상,레드,사이즈,250,GREENPET,MDL-0230,880424270513,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 230 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: 250, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,한진택배,중국,GREENPET 제조사,과세,품절,전시중,,12706827437
+232,231,[MOON] 더미 상품 231 (화이트/260),패션잡화 > 가방 > 백팩,100500,73,색상,화이트,사이즈,260,MOON,MDL-0231,880594187402,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 231 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: 260, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,한진택배,일본,MOON 제조사,과세,품절,전시안함,,12706827508
+233,232,[GREENPET] 더미 상품 232 (화이트/260),디지털/가전 > 노트북,13000,90,색상,화이트,사이즈,260,GREENPET,MDL-0232,880645484115,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 232 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: 260, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,중국,GREENPET 제조사,면세,품절,전시중,,12706827574
+234,233,[NAVYFOX] 더미 상품 233 (화이트/M),생활/주방 > 주방용품 > 프라이팬,32000,145,색상,화이트,사이즈,M,NAVYFOX,MDL-0233,880339349662,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 233 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: M, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,중국,NAVYFOX 제조사,면세,판매중,전시안함,,12706827656
+235,234,[URBANWEAR] 더미 상품 234 (레드/FREE),디지털/가전 > 노트북,19000,79,색상,레드,사이즈,FREE,URBANWEAR,MDL-0234,880414291203,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 234 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: FREE, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,한진택배,독일,URBANWEAR 제조사,과세,판매중,전시안함,,12706827716
+236,235,[GREENPET] 더미 상품 235 (화이트/260),반려동물 > 강아지용품 > 사료,83000,92,색상,화이트,사이즈,260,GREENPET,MDL-0235,880378124958,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 235 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: 260, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,중국,GREENPET 제조사,과세,품절,전시중,,12706827791
+237,236,[COOKMASTER] 더미 상품 236 (화이트/260),생활/주방 > 주방용품 > 프라이팬,49000,93,색상,화이트,사이즈,260,COOKMASTER,MDL-0236,880716627540,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 236 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: 260, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,CJ대한통운,국산,COOKMASTER 제조사,면세,품절,전시중,,12706827863
+238,237,[COOKMASTER] 더미 상품 237 (블랙/L),디지털/가전 > 모니터,44000,99,색상,블랙,사이즈,L,COOKMASTER,MDL-0237,880687536973,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 237 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: L, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,한진택배,국산,COOKMASTER 제조사,면세,품절,전시안함,,12706827936
+239,238,[STARLINE] 더미 상품 238 (네이비/250),디지털/가전 > 모니터,8500,120,색상,네이비,사이즈,250,STARLINE,MDL-0238,880471998198,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 238 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: 250, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,국산,STARLINE 제조사,과세,품절,전시중,,12706827992
+240,239,[HOMEPLUS] 더미 상품 239 (베이지/L),패션잡화 > 가방 > 백팩,91500,157,색상,베이지,사이즈,L,HOMEPLUS,MDL-0239,880384697849,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 239 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: L, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,택배,중국,HOMEPLUS 제조사,과세,품절,전시중,,12706828067
+241,240,[MOON] 더미 상품 240 (블랙/S),패션의류 > 하의 > 청바지,75000,85,색상,블랙,사이즈,S,MOON,MDL-0240,880857180553,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 240 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: S, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,한진택배,독일,MOON 제조사,면세,품절,전시중,,12706828142
+242,241,[GREENPET] 더미 상품 241 (그레이/250),디지털/가전 > 모니터,128000,25,색상,그레이,사이즈,250,GREENPET,MDL-0241,880580559147,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 241 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: 250, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,한진택배,중국,GREENPET 제조사,과세,품절,전시중,,12706828239
+243,242,[STARLINE] 더미 상품 242 (레드/250),반려동물 > 강아지용품 > 사료,135000,55,색상,레드,사이즈,250,STARLINE,MDL-0242,880922007855,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 242 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: 250, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,국산,STARLINE 제조사,면세,판매중,전시안함,,12706828314
+244,243,[COOKMASTER] 더미 상품 243 (블랙/FREE),패션의류 > 하의 > 청바지,143500,42,색상,블랙,사이즈,FREE,COOKMASTER,MDL-0243,880221512445,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 243 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: FREE, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,미국,COOKMASTER 제조사,면세,품절,전시중,,12706828390
+245,244,[HOMEPLUS] 더미 상품 244 (블랙/XL),패션의류 > 하의 > 청바지,61500,92,색상,블랙,사이즈,XL,HOMEPLUS,MDL-0244,880417971574,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 244 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: XL, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,미국,HOMEPLUS 제조사,과세,품절,전시안함,,12706828470
+246,245,[TECHONE] 더미 상품 245 (블랙/L),반려동물 > 강아지용품 > 사료,62000,1,색상,블랙,사이즈,L,TECHONE,MDL-0245,880843789832,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 245 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: L, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,택배,일본,TECHONE 제조사,과세,품절,전시안함,,12706828556
+247,246,[STARLINE] 더미 상품 246 (네이비/M),패션의류 > 상의 > 티셔츠,105000,122,색상,네이비,사이즈,M,STARLINE,MDL-0246,880157070607,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 246 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: M, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,택배,미국,STARLINE 제조사,면세,품절,전시안함,,12706828632
+248,247,[STARLINE] 더미 상품 247 (화이트/FREE),디지털/가전 > 모니터,40500,45,색상,화이트,사이즈,FREE,STARLINE,MDL-0247,880100197738,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 247 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: FREE, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,미국,STARLINE 제조사,과세,판매중,전시중,,12706828700
+249,248,[NAVYFOX] 더미 상품 248 (네이비/250),반려동물 > 강아지용품 > 사료,80000,30,색상,네이비,사이즈,250,NAVYFOX,MDL-0248,880813106232,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 248 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: 250, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,중국,NAVYFOX 제조사,과세,품절,전시안함,,12706828771
+250,249,[URBANWEAR] 더미 상품 249 (블랙/L),반려동물 > 강아지용품 > 사료,6000,27,색상,블랙,사이즈,L,URBANWEAR,MDL-0249,880611323354,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 249 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: L, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,택배,독일,URBANWEAR 제조사,과세,품절,전시중,,12706828839
+251,250,[URBANWEAR] 더미 상품 250 (레드/M),패션잡화 > 가방 > 백팩,57500,134,색상,레드,사이즈,M,URBANWEAR,MDL-0250,880877054265,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 250 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: M, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,롯데택배,중국,URBANWEAR 제조사,과세,판매중,전시안함,,12706828905
+252,251,[TECHONE] 더미 상품 251 (베이지/XL),패션의류 > 상의 > 티셔츠,53000,120,색상,베이지,사이즈,XL,TECHONE,MDL-0251,880210910904,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 251 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: XL, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,한진택배,국산,TECHONE 제조사,면세,판매중,전시안함,,12706828996
+253,252,[URBANWEAR] 더미 상품 252 (베이지/S),패션의류 > 하의 > 청바지,108000,117,색상,베이지,사이즈,S,URBANWEAR,MDL-0252,880729941753,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 252 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: S, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,미국,URBANWEAR 제조사,과세,판매중,전시안함,,12706829063
+254,253,[URBANWEAR] 더미 상품 253 (네이비/270),패션의류 > 상의 > 티셔츠,50500,168,색상,네이비,사이즈,270,URBANWEAR,MDL-0253,880423173027,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 253 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: 270, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,CJ대한통운,베트남,URBANWEAR 제조사,면세,판매중,전시안함,,12706829119
+255,254,[COOKMASTER] 더미 상품 254 (네이비/M),생활/주방 > 주방용품 > 프라이팬,82500,199,색상,네이비,사이즈,M,COOKMASTER,MDL-0254,880233168833,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 254 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: M, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,한진택배,일본,COOKMASTER 제조사,면세,품절,전시중,,12706829198
+256,255,[GREENPET] 더미 상품 255 (레드/L),식품 > 과자/간식 > 과자,58500,198,색상,레드,사이즈,L,GREENPET,MDL-0255,880690736223,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 255 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: L, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,CJ대한통운,중국,GREENPET 제조사,면세,품절,전시안함,,12706829276
+257,256,[STARLINE] 더미 상품 256 (화이트/FREE),패션잡화 > 가방 > 백팩,51000,142,색상,화이트,사이즈,FREE,STARLINE,MDL-0256,880969018082,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 256 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: FREE, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,독일,STARLINE 제조사,과세,품절,전시중,,12706829351
+258,257,[MOON] 더미 상품 257 (블랙/XL),식품 > 과자/간식 > 과자,16000,93,색상,블랙,사이즈,XL,MOON,MDL-0257,880964962605,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 257 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: XL, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,독일,MOON 제조사,면세,품절,전시안함,,12706829428
+259,258,[TECHONE] 더미 상품 258 (베이지/L),패션의류 > 상의 > 티셔츠,138500,158,색상,베이지,사이즈,L,TECHONE,MDL-0258,880158010812,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 258 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: L, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,택배,일본,TECHONE 제조사,면세,판매중,전시중,,12706829512
+260,259,[URBANWEAR] 더미 상품 259 (블랙/S),식품 > 과자/간식 > 과자,130000,187,색상,블랙,사이즈,S,URBANWEAR,MDL-0259,880871360364,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 259 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: S, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,국산,URBANWEAR 제조사,과세,품절,전시중,,12706829569
+261,260,[MOON] 더미 상품 260 (그레이/L),디지털/가전 > 노트북,43000,103,색상,그레이,사이즈,L,MOON,MDL-0260,880673159841,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 260 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: L, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,롯데택배,일본,MOON 제조사,면세,판매중,전시안함,,12706829626
+262,261,[COOKMASTER] 더미 상품 261 (레드/L),디지털/가전 > 노트북,105000,135,색상,레드,사이즈,L,COOKMASTER,MDL-0261,880751568578,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 261 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: L, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,택배,베트남,COOKMASTER 제조사,면세,품절,전시중,,12706829692
+263,262,[URBANWEAR] 더미 상품 262 (그레이/270),디지털/가전 > 노트북,145000,148,색상,그레이,사이즈,270,URBANWEAR,MDL-0262,880203948575,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 262 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: 270, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,한진택배,미국,URBANWEAR 제조사,면세,품절,전시중,,12706829766
+264,263,[NAVYFOX] 더미 상품 263 (레드/XL),반려동물 > 강아지용품 > 사료,149500,147,색상,레드,사이즈,XL,NAVYFOX,MDL-0263,880359755904,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 263 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: XL, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,미국,NAVYFOX 제조사,과세,품절,전시안함,,12706829827
+265,264,[HOMEPLUS] 더미 상품 264 (베이지/FREE),식품 > 과자/간식 > 과자,93500,176,색상,베이지,사이즈,FREE,HOMEPLUS,MDL-0264,880503092152,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 264 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: FREE, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,독일,HOMEPLUS 제조사,과세,판매중,전시중,,12706829900
+266,265,[NAVYFOX] 더미 상품 265 (그레이/FREE),패션의류 > 하의 > 청바지,75500,143,색상,그레이,사이즈,FREE,NAVYFOX,MDL-0265,880651296238,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 265 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: FREE, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,택배,일본,NAVYFOX 제조사,과세,판매중,전시안함,,12706829972
+267,266,[HOMEPLUS] 더미 상품 266 (화이트/250),패션잡화 > 가방 > 백팩,40000,12,색상,화이트,사이즈,250,HOMEPLUS,MDL-0266,880803102982,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 266 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: 250, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,CJ대한통운,일본,HOMEPLUS 제조사,과세,판매중,전시안함,,12706830049
+268,267,[HOMEPLUS] 더미 상품 267 (레드/L),패션의류 > 하의 > 청바지,122500,46,색상,레드,사이즈,L,HOMEPLUS,MDL-0267,880574664031,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 267 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: L, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,국산,HOMEPLUS 제조사,면세,품절,전시안함,,12706830115
+269,268,[URBANWEAR] 더미 상품 268 (네이비/L),식품 > 과자/간식 > 과자,122500,174,색상,네이비,사이즈,L,URBANWEAR,MDL-0268,880831765285,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 268 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: L, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,베트남,URBANWEAR 제조사,면세,품절,전시중,,12706830188
+270,269,[GREENPET] 더미 상품 269 (그레이/270),패션의류 > 상의 > 티셔츠,95000,129,색상,그레이,사이즈,270,GREENPET,MDL-0269,880657391336,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 269 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: 270, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,독일,GREENPET 제조사,과세,품절,전시중,,12706830267
+271,270,[COOKMASTER] 더미 상품 270 (네이비/250),패션의류 > 상의 > 티셔츠,47500,180,색상,네이비,사이즈,250,COOKMASTER,MDL-0270,880751368295,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 270 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: 250, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,중국,COOKMASTER 제조사,과세,품절,전시중,,12706830347
+272,271,[GREENPET] 더미 상품 271 (블랙/XL),생활/주방 > 주방용품 > 프라이팬,125500,173,색상,블랙,사이즈,XL,GREENPET,MDL-0271,880308607859,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 271 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: XL, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,베트남,GREENPET 제조사,면세,품절,전시안함,,12706830420
+273,272,[TECHONE] 더미 상품 272 (레드/M),반려동물 > 강아지용품 > 사료,66500,98,색상,레드,사이즈,M,TECHONE,MDL-0272,880233256142,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 272 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: M, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,한진택배,미국,TECHONE 제조사,과세,품절,전시중,,12706830497
+274,273,[STARLINE] 더미 상품 273 (블랙/270),디지털/가전 > 노트북,40500,33,색상,블랙,사이즈,270,STARLINE,MDL-0273,880696249637,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 273 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: 270, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,한진택배,베트남,STARLINE 제조사,면세,품절,전시안함,,12706830575
+275,274,[URBANWEAR] 더미 상품 274 (화이트/S),생활/주방 > 주방용품 > 프라이팬,119500,101,색상,화이트,사이즈,S,URBANWEAR,MDL-0274,880728546726,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 274 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: S, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,택배,미국,URBANWEAR 제조사,과세,품절,전시중,,12706830653
+276,275,[URBANWEAR] 더미 상품 275 (그레이/FREE),디지털/가전 > 모니터,128000,49,색상,그레이,사이즈,FREE,URBANWEAR,MDL-0275,880590207551,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 275 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: FREE, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,한진택배,미국,URBANWEAR 제조사,면세,품절,전시중,,12706830738
+277,276,[HOMEPLUS] 더미 상품 276 (네이비/M),식품 > 과자/간식 > 과자,120500,2,색상,네이비,사이즈,M,HOMEPLUS,MDL-0276,880486802253,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 276 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: M, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,한진택배,중국,HOMEPLUS 제조사,과세,판매중,전시중,,12706830802
+278,277,[NAVYFOX] 더미 상품 277 (레드/250),디지털/가전 > 노트북,49000,160,색상,레드,사이즈,250,NAVYFOX,MDL-0277,880324676052,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 277 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: 250, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,택배,미국,NAVYFOX 제조사,면세,품절,전시안함,,12706830863
+279,278,[URBANWEAR] 더미 상품 278 (네이비/XL),디지털/가전 > 모니터,39000,159,색상,네이비,사이즈,XL,URBANWEAR,MDL-0278,880159998687,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 278 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: XL, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,독일,URBANWEAR 제조사,면세,품절,전시중,,12706830942
+280,279,[STARLINE] 더미 상품 279 (레드/M),생활/주방 > 주방용품 > 프라이팬,83500,188,색상,레드,사이즈,M,STARLINE,MDL-0279,880720911879,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 279 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: M, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,국산,STARLINE 제조사,면세,판매중,전시중,,12706831011
+281,280,[COOKMASTER] 더미 상품 280 (네이비/FREE),디지털/가전 > 모니터,27500,57,색상,네이비,사이즈,FREE,COOKMASTER,MDL-0280,880145634266,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 280 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: FREE, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,미국,COOKMASTER 제조사,과세,판매중,전시안함,,12706831077
+282,281,[TECHONE] 더미 상품 281 (그레이/270),패션의류 > 상의 > 티셔츠,146000,43,색상,그레이,사이즈,270,TECHONE,MDL-0281,880806962619,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 281 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: 270, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,택배,베트남,TECHONE 제조사,과세,판매중,전시안함,,12706831148
+283,282,[GREENPET] 더미 상품 282 (그레이/270),패션의류 > 하의 > 청바지,89000,110,색상,그레이,사이즈,270,GREENPET,MDL-0282,880297673935,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 282 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: 270, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,택배,일본,GREENPET 제조사,과세,판매중,전시중,,12706831229
+284,283,[HOMEPLUS] 더미 상품 283 (화이트/L),패션잡화 > 가방 > 백팩,78000,119,색상,화이트,사이즈,L,HOMEPLUS,MDL-0283,880660839362,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 283 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: L, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,한진택배,베트남,HOMEPLUS 제조사,과세,품절,전시안함,,12706831304
+285,284,[STARLINE] 더미 상품 284 (그레이/250),식품 > 과자/간식 > 과자,145000,148,색상,그레이,사이즈,250,STARLINE,MDL-0284,880631697645,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 284 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: 250, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,CJ대한통운,일본,STARLINE 제조사,면세,품절,전시중,,12706831361
+286,285,[URBANWEAR] 더미 상품 285 (화이트/250),생활/주방 > 주방용품 > 프라이팬,107000,144,색상,화이트,사이즈,250,URBANWEAR,MDL-0285,880873310007,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 285 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: 250, 카테고리: 생활/주방 > 주방용품 > 프라이팬.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,미국,URBANWEAR 제조사,과세,품절,전시안함,,12706831434
+287,286,[URBANWEAR] 더미 상품 286 (레드/L),식품 > 과자/간식 > 과자,82500,88,색상,레드,사이즈,L,URBANWEAR,MDL-0286,880667526958,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 286 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: L, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,택배,독일,URBANWEAR 제조사,과세,품절,전시중,,12706831581
+288,287,[URBANWEAR] 더미 상품 287 (화이트/270),패션의류 > 상의 > 티셔츠,109500,147,색상,화이트,사이즈,270,URBANWEAR,MDL-0287,880927804547,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 287 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: 270, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,한진택배,국산,URBANWEAR 제조사,과세,판매중,전시안함,,12706831650
+289,288,[GREENPET] 더미 상품 288 (화이트/XL),패션의류 > 하의 > 청바지,50000,153,색상,화이트,사이즈,XL,GREENPET,MDL-0288,880650335152,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 288 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: XL, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,베트남,GREENPET 제조사,면세,판매중,전시중,,12706831718
+290,289,[MOON] 더미 상품 289 (그레이/M),패션의류 > 상의 > 티셔츠,63500,87,색상,그레이,사이즈,M,MOON,MDL-0289,880242605651,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 289 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: M, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,CJ대한통운,일본,MOON 제조사,면세,품절,전시중,,12706831793
+291,290,[GREENPET] 더미 상품 290 (블랙/XL),반려동물 > 강아지용품 > 사료,30500,36,색상,블랙,사이즈,XL,GREENPET,MDL-0290,880487791017,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 290 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: XL, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,택배,미국,GREENPET 제조사,면세,판매중,전시안함,,12706831863
+292,291,[GREENPET] 더미 상품 291 (블랙/250),디지털/가전 > 노트북,39000,86,색상,블랙,사이즈,250,GREENPET,MDL-0291,880918081829,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 291 입니다.
+실제 판매용이 아닙니다.
+색상: 블랙, 사이즈: 250, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,독일,GREENPET 제조사,면세,판매중,전시안함,,12706831948
+293,292,[STARLINE] 더미 상품 292 (화이트/260),식품 > 과자/간식 > 과자,39000,129,색상,화이트,사이즈,260,STARLINE,MDL-0292,880655431980,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 292 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: 260, 카테고리: 식품 > 과자/간식 > 과자.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,택배,중국,STARLINE 제조사,과세,품절,전시안함,,12706832021
+294,293,[TECHONE] 더미 상품 293 (그레이/260),패션의류 > 상의 > 티셔츠,77000,157,색상,그레이,사이즈,260,TECHONE,MDL-0293,880708529290,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 293 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: 260, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,택배,베트남,TECHONE 제조사,면세,품절,전시중,,12706832092
+295,294,[MOON] 더미 상품 294 (화이트/M),패션의류 > 하의 > 청바지,133000,188,색상,화이트,사이즈,M,MOON,MDL-0294,880349347229,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 294 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: M, 카테고리: 패션의류 > 하의 > 청바지.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,미국,MOON 제조사,과세,판매중,전시안함,,12706832179
+296,295,[STARLINE] 더미 상품 295 (네이비/FREE),디지털/가전 > 모니터,105000,197,색상,네이비,사이즈,FREE,STARLINE,MDL-0295,880515870195,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 295 입니다.
+실제 판매용이 아닙니다.
+색상: 네이비, 사이즈: FREE, 카테고리: 디지털/가전 > 모니터.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,미국,STARLINE 제조사,과세,품절,전시안함,,12706832257
+297,296,[URBANWEAR] 더미 상품 296 (그레이/XL),패션잡화 > 가방 > 백팩,144000,133,색상,그레이,사이즈,XL,URBANWEAR,MDL-0296,880107902795,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 296 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: XL, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,롯데택배,국산,URBANWEAR 제조사,면세,판매중,전시안함,,12706832317
+298,297,[NAVYFOX] 더미 상품 297 (그레이/S),패션의류 > 상의 > 티셔츠,93500,32,색상,그레이,사이즈,S,NAVYFOX,MDL-0297,880634048291,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 297 입니다.
+실제 판매용이 아닙니다.
+색상: 그레이, 사이즈: S, 카테고리: 패션의류 > 상의 > 티셔츠.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,한진택배,중국,NAVYFOX 제조사,면세,판매중,전시중,,12706832391
+299,298,[GREENPET] 더미 상품 298 (베이지/XL),반려동물 > 강아지용품 > 사료,63000,35,색상,베이지,사이즈,XL,GREENPET,MDL-0298,880883887689,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 298 입니다.
+실제 판매용이 아닙니다.
+색상: 베이지, 사이즈: XL, 카테고리: 반려동물 > 강아지용품 > 사료.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,0,롯데택배,일본,GREENPET 제조사,과세,품절,전시중,,12706832464
+300,299,[GREENPET] 더미 상품 299 (레드/250),디지털/가전 > 노트북,15500,183,색상,레드,사이즈,250,GREENPET,MDL-0299,880496377689,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 299 입니다.
+실제 판매용이 아닙니다.
+색상: 레드, 사이즈: 250, 카테고리: 디지털/가전 > 노트북.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,3000,CJ대한통운,중국,GREENPET 제조사,면세,품절,전시안함,,12706832536
+301,300,[TECHONE] 더미 상품 300 (화이트/270),패션잡화 > 가방 > 백팩,13000,152,색상,화이트,사이즈,270,TECHONE,MDL-0300,880660943457,"네이버 스마트스토어 상품자동등록 API 테스트용 더미 상품 300 입니다.
+실제 판매용이 아닙니다.
+색상: 화이트, 사이즈: 270, 카테고리: 패션잡화 > 가방 > 백팩.",https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,https://m.savoda.co.kr/web/product/big/202410/fba8c8cd5843c2394566028331c1abd4.jpg,2500,CJ대한통운,베트남,TECHONE 제조사,면세,품절,전시중,,12706832622

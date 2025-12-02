@@ -44,6 +44,14 @@ public class ProductRequest {
     private Boolean naverShoppingRegistration;
     private DeliveryInfo deliveryInfo;
     
+    // 엑셀 업로드용 추가 필드
+    private String brandName; // 브랜드
+    private String modelName; // 모델명 (상품정보제공고시)
+    private String manufacturer; // 제조사 (상품정보제공고시)
+    private String originArea; // 원산지 (예: "국내산", "중국산" 등)
+    private String taxType; // 과세구분 (TAX, TAX_FREE 등)
+    private String categoryPath; // 카테고리 경로 (예: "식품 > 과자/간식 > 과자") - 카테고리별 원산지 정보 처리용
+    
     @Getter
     @Setter
     @NoArgsConstructor
