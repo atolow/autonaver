@@ -46,36 +46,18 @@ public class OAuthController {
      * @param storeName 스토어 이름 (Query Parameter 또는 Form Data, 선택)
      * @return 스토어 정보
      */
-    @PostMapping(value = "/authenticate", consumes = {
-            org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED_VALUE,
-            org.springframework.http.MediaType.APPLICATION_JSON_VALUE
-    })
+    @PostMapping(value = "/authenticate")
     public ResponseEntity<?> authenticate(
-            @RequestBody(required = false) AuthenticateRequest request,
             @RequestParam(required = false) String type,
             @RequestParam(required = false) String accountId,
             @RequestParam(required = false) String vendorId,
             @RequestParam(required = false) String storeName) {
         
-        // JSON Body가 있으면 우선 사용, 없으면 Form Data 또는 Query Parameters 사용
-        String finalType = null;
-        String finalAccountId = null;
-        String finalVendorId = null;
-        String finalStoreName = null;
-        
-        // JSON Body가 있으면 JSON 우선 사용
-        if (request != null) {
-            finalType = request.getType();
-            finalAccountId = request.getAccountId();
-            finalVendorId = request.getVendorId();
-            finalStoreName = request.getStoreName();
-        }
-        
-        // JSON Body에 없으면 Form Data 또는 Query Parameters 사용
-        if (finalType == null) finalType = type;
-        if (finalAccountId == null) finalAccountId = accountId;
-        if (finalVendorId == null) finalVendorId = vendorId;
-        if (finalStoreName == null) finalStoreName = storeName;
+        // Form Data 또는 Query Parameters 사용
+        String finalType = type;
+        String finalAccountId = accountId;
+        String finalVendorId = vendorId;
+        String finalStoreName = storeName;
         
         try {
             // 스토어가 이미 등록되어 있는지 확인
@@ -133,11 +115,10 @@ public class OAuthController {
     @PostMapping(value = "/authenticate/json", consumes = org.springframework.http.MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> authenticateJson(@RequestBody AuthenticateRequest request) {
         return authenticate(
-                request,
-                null, // type은 request에서 가져옴
-                null, // accountId는 request에서 가져옴
-                null, // vendorId는 request에서 가져옴
-                null  // storeName은 request에서 가져옴
+                request.getType(),
+                request.getAccountId(),
+                request.getVendorId(),
+                request.getStoreName()
         );
     }
 }

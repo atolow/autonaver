@@ -225,7 +225,6 @@
                     <label>인증 타입</label>
                     <select id="type">
                         <option value="SELF" selected>SELF (판매자 리소스)</option>
-                        <option value="SELF">SELF (자기 자신의 리소스)</option>
                     </select>
                     <small style="color: #666; font-size: 12px;">기본값: SELF</small>
                 </div>
@@ -244,16 +243,7 @@
                     </small>
                 </div>
                 
-                <div class="form-group">
-                    <label>판매자 ID (vendorId)</label>
-                    <input type="text" id="vendorId" placeholder="선택사항 (없으면 accountId 사용)">
-                    <small style="color: #666; font-size: 12px;">선택사항입니다</small>
-                </div>
-                
-                <div class="form-group">
-                    <label>스토어 이름</label>
-                    <input type="text" id="storeName" placeholder="기본값: 내 스토어" value="내 스토어">
-                </div>
+
             </div>
             
             <button onclick="registerStore()" id="registerButton">토큰 발급 / 갱신</button>
@@ -291,10 +281,7 @@
             
             <button onclick="uploadExcel()" id="uploadButton">엑셀 파일 업로드</button>
             <div id="uploadResult" class="result"></div>
-            
-            <div style="margin-top: 15px;">
-                <a href="/swagger-ui.html" target="_blank" class="link-button">📚 Swagger UI에서도 테스트하기</a>
-            </div>
+
         </div>
     </div>
     
