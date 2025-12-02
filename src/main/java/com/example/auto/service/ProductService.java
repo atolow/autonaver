@@ -28,11 +28,79 @@ public class ProductService {
     private final NaverCommerceClient naverCommerceClient;
     private final StoreService storeService;
     
+    // 원산지 코드 정보 캐시 (한 번 조회 후 재사용)
+    private Map<String, Object> originAreaCodesCache = null;
+    
+    // 원산지 이름 -> 코드 매핑 캐시 (빠른 조회용)
+    private Map<String, String> originNameToCodeMap = null;
+    
     /**
      * 현재 등록된 스토어 조회 (독립 실행형용)
      */
     public java.util.Optional<com.example.auto.domain.Store> getCurrentStore() {
         return storeService.getCurrentStore();
+    }
+    
+    /**
+     * 원산지 코드 정보 조회 (캐시 사용)
+     * 
+     * @param accessToken Access Token
+     * @return 원산지 코드 정보 Map
+     */
+    private Map<String, Object> getOriginAreaCodesCached(String accessToken) {
+        if (originAreaCodesCache == null) {
+            try {
+                log.info("원산지 코드 정보 조회 시작...");
+                Map<String, Object> response = naverCommerceClient.getOriginAreaCodes(accessToken).block();
+                
+                if (response != null) {
+                    originAreaCodesCache = response;
+                    log.info("원산지 코드 정보 조회 성공: {}", response);
+                    
+                    // originAreaCodeNames 배열 확인 및 매핑 생성
+                    if (response.containsKey("originAreaCodeNames")) {
+                        @SuppressWarnings("unchecked")
+                        List<Map<String, Object>> codes = (List<Map<String, Object>>) response.get("originAreaCodeNames");
+                        if (codes != null && !codes.isEmpty()) {
+                            log.info("원산지 코드 개수: {}", codes.size());
+                            
+                            // 원산지 이름 -> 코드 매핑 생성
+                            originNameToCodeMap = new HashMap<>();
+                            for (Map<String, Object> codeInfo : codes) {
+                                String code = (String) codeInfo.get("code");
+                                String name = (String) codeInfo.get("name");
+                                
+                                if (code != null && name != null) {
+                                    // 국가명 추출 (예: "수입산:아시아>베트남" -> "베트남")
+                                    String countryName = extractCountryName(name);
+                                    if (countryName != null && !countryName.isEmpty()) {
+                                        originNameToCodeMap.put(countryName.toLowerCase(), code);
+                                    }
+                                    
+                                    // 전체 이름도 매핑 (예: "베트남" -> "0200014")
+                                    originNameToCodeMap.put(name.toLowerCase(), code);
+                                }
+                            }
+                            
+                            log.info("원산지 이름->코드 매핑 생성 완료: {}개", originNameToCodeMap.size());
+                            log.info("원산지 코드 예시 (처음 5개):");
+                            for (int i = 0; i < Math.min(5, codes.size()); i++) {
+                                Map<String, Object> codeInfo = codes.get(i);
+                                log.info("  - code: {}, name: {}", codeInfo.get("code"), codeInfo.get("name"));
+                            }
+                        }
+                    } else {
+                        log.warn("원산지 코드 응답에 originAreaCodeNames가 없습니다. 전체 응답: {}", response);
+                    }
+                } else {
+                    log.warn("원산지 코드 정보 조회 응답이 null입니다.");
+                }
+            } catch (Exception e) {
+                log.error("원산지 코드 정보 조회 실패", e);
+                // 에러가 발생해도 계속 진행 (기본값 사용)
+            }
+        }
+        return originAreaCodesCache;
     }
     
     /**
@@ -55,6 +123,9 @@ public class ProductService {
         }
         
         log.info("상품 등록 시작: 스토어={}, 상품명={}", store.getStoreName(), request.getName());
+        
+        // 원산지 코드 정보 조회 (첫 호출 시에만, 캐시 사용)
+        getOriginAreaCodesCached(store.getAccessToken());
         
         // 이미지가 있으면 먼저 네이버 서버에 업로드
         if (request.getImages() != null && !request.getImages().isEmpty()) {
@@ -840,21 +911,21 @@ public class ProductService {
                         // 기존 originAreaInfo에서 원산지 정보 추출
                         // 1. importCountry가 있으면 해외 원산지이므로 그것을 사용
                         // 2. 없으면 content 사용
-                        // 3. 둘 다 없으면 originAreaCode 확인 (04가 아니면 해외 원산지로 추정)
+                        // 3. 둘 다 없으면 originAreaCode 확인 (00이 아니면 해외 원산지로 추정)
                         Object importCountryObj = existingOriginAreaInfo.get("importCountry");
                         Object contentObj = existingOriginAreaInfo.get("content");
                         Object originAreaCodeObj = existingOriginAreaInfo.get("originAreaCode");
                         
                         if (importCountryObj != null && !importCountryObj.toString().trim().isEmpty()) {
-                            // importCountry가 있으면 해외 원산지
+                            // importCountry가 있으면 해외 원산지 (API 문서에는 없지만 기존 데이터 호환성)
                             originAreaToUse = importCountryObj.toString().trim();
                             log.info("기존 originAreaInfo에서 importCountry 추출: {}", originAreaToUse);
                         } else if (contentObj != null && !contentObj.toString().trim().isEmpty()) {
                             // content 사용
                             originAreaToUse = contentObj.toString().trim();
                             log.info("기존 originAreaInfo에서 content 추출: {}", originAreaToUse);
-                        } else if (originAreaCodeObj != null && !"04".equals(originAreaCodeObj.toString().trim())) {
-                            // originAreaCode가 "04"가 아니면 해외 원산지로 추정
+                        } else if (originAreaCodeObj != null && !"00".equals(originAreaCodeObj.toString().trim())) {
+                            // originAreaCode가 "00"(국산)이 아니면 해외 원산지로 추정
                             // 하지만 원산지 이름을 알 수 없으므로 기본값 사용
                             originAreaToUse = "해외산";
                             log.warn("기존 originAreaInfo에서 원산지 이름을 찾을 수 없지만 originAreaCode={}이므로 해외 원산지로 추정", 
@@ -1620,7 +1691,7 @@ public class ProductService {
             // detailAttribute에 originAreaInfo가 없으면 추가
             if (!detailAttribute.containsKey("originAreaInfo")) {
                 Map<String, Object> originAreaInfo = new HashMap<>();
-                originAreaInfo.put("originAreaCode", "04"); // 국내 (04: 국내)
+                originAreaInfo.put("originAreaCode", "00"); // API 문서: 00=국산
                 originAreaInfo.put("content", "국내산");
                 detailAttribute.put("originAreaInfo", originAreaInfo);
             }
@@ -1632,7 +1703,7 @@ public class ProductService {
         // 네이버 API 요구사항: specificProducts[0].originAreaInfo가 필수
         if (!map.containsKey("originAreaInfo")) {
             Map<String, Object> originAreaInfo = new HashMap<>();
-            originAreaInfo.put("originAreaCode", "04"); // 국내 (04: 국내)
+            originAreaInfo.put("originAreaCode", "00"); // API 문서: 00=국산
             originAreaInfo.put("content", "국내산");
             map.put("originAreaInfo", originAreaInfo);
         }
@@ -1762,14 +1833,41 @@ public class ProductService {
             String trimmedOriginArea = originArea.trim();
             originAreaInfo.put("content", trimmedOriginArea);
             
-            // 원산지 코드 추론
-            String originAreaCode = determineOriginAreaCode(trimmedOriginArea);
+            // 원산지 코드 추론 (원산지 코드 조회 API를 통해 구체적인 국가 코드 찾기)
+            // 원산지 코드 조회 API가 호출되었는지 확인하고, 매핑이 있으면 사용
+            String originAreaCode = null;
+            if (originNameToCodeMap != null && !originNameToCodeMap.isEmpty()) {
+                String lowerCaseOrigin = trimmedOriginArea.toLowerCase();
+                
+                // 정확히 일치하는 경우
+                if (originNameToCodeMap.containsKey(lowerCaseOrigin)) {
+                    originAreaCode = originNameToCodeMap.get(lowerCaseOrigin);
+                    log.info("원산지 코드 매핑 발견: {} -> {}", trimmedOriginArea, originAreaCode);
+                } else {
+                    // 부분 일치 검색 (예: "베트남"이 포함된 경우)
+                    for (Map.Entry<String, String> entry : originNameToCodeMap.entrySet()) {
+                        String key = entry.getKey();
+                        if (key.contains(lowerCaseOrigin) || lowerCaseOrigin.contains(key)) {
+                            originAreaCode = entry.getValue();
+                            log.info("원산지 코드 부분 일치 발견: {} -> {} (매핑 키: {})", trimmedOriginArea, originAreaCode, key);
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            // 매핑을 찾지 못한 경우 기본 로직 사용
+            if (originAreaCode == null) {
+                originAreaCode = determineOriginAreaCode(trimmedOriginArea);
+                log.debug("원산지 코드 매핑을 찾지 못함: {}. 기본 로직 사용: {}", trimmedOriginArea, originAreaCode);
+            }
+            
             // originAreaCode는 필수 필드입니다 (네이버 API 요구사항)
             originAreaInfo.put("originAreaCode", originAreaCode);
             log.debug("originAreaCode 설정: originArea={}, originAreaCode={}", trimmedOriginArea, originAreaCode);
             
-            // 해외 원산지인지 확인
-            boolean isForeignOrigin = !"04".equals(originAreaCode);
+            // 해외 원산지인지 확인 (수입산: "02" 또는 "02"로 시작하는 코드)
+            boolean isForeignOrigin = originAreaCode.startsWith("02");
             
             // 카테고리별 특수 필드 처리 (해산물 여부 판단)
             boolean isMarineCategory = false;
@@ -1801,24 +1899,27 @@ public class ProductService {
                 isMarineCategory = false;
             }
             
-            // 해외 원산지인 경우 수입국/수입사 필수 필드 채우기
-            // originAreaCode=02 (수입산)일 때 네이버 API가 importCountry와 importer를 필수로 요구함
-            // 하지만 네이버가 필드명이나 형식을 다르게 기대할 수 있으므로 여러 필드명 시도
+            // 해외 원산지인 경우 수입사 필수 필드 채우기
+            // API 문서: originAreaCode=02 (수입산)일 때 importer 필드가 필수
+            // 주의: API 문서에는 importCountry 필드가 없지만, 에러 메시지에서 요구할 수 있음
+            // 일단 API 문서대로 importer만 설정하고, 에러가 발생하면 추가 조사 필요
             if (isForeignOrigin) {
-                // 임시 해결책: 네이버 API가 수입 구조(originAreaCode=02)를 제대로 처리하지 못하는 경우
-                // 해외 원산지도 국내산(originAreaCode=04)으로 처리하여 400 에러 방지
-                // 주의: 이것은 임시 방편이며, 실제 원산지 정보와 다를 수 있음
-                // 나중에 네이버 API 문서 확인 후 수입 구조를 제대로 구현해야 함
+                // 수입사: 필수 필드 (API 문서 명시)
+                // 기본값 설정 (추후 엑셀/설정값으로 교체 가능)
+                originAreaInfo.put("importer", "수입사명"); // TODO: 엑셀/설정/Store에서 가져오도록 확장
                 
-                // originAreaCode를 "04"로 변경하여 국내산으로 처리
-                originAreaInfo.put("originAreaCode", "04");
-                log.warn("해외 원산지 임시 처리: originArea={}를 국내산(04)으로 처리하여 400 에러 방지. " +
-                        "실제 원산지 정보는 content 필드({})에 보존됨", trimmedOriginArea, trimmedOriginArea);
+                // TODO: 에러 메시지 "수입국 항목을 입력해 주세요"가 계속 발생하면
+                // 원산지 코드 조회 API(/v1/product-origin-areas)를 호출하여
+                // 수입국 코드 정보를 확인하고 적절한 필드명/값을 사용해야 함
+                // 현재는 API 문서에 없는 importCountry 필드를 추가하지 않음
                 
-                // 수입 관련 필드는 제거 (국내산으로 처리하므로 불필요)
-                // originAreaInfo.put("importCountry", trimmedOriginArea);
-                // originAreaInfo.put("importer", "수입사명");
+                log.info("해외 원산지 감지: originArea={}, originAreaCode={}, importer={}", 
+                        trimmedOriginArea, originAreaCode, originAreaInfo.get("importer"));
             }
+            
+            // content 필드는 항상 설정됨 (원산지 표시 내용)
+            // API 문서: originAreaCode가 '04'(기타-직접 입력)인 경우 content 필수
+            // 하지만 다른 코드에서도 content는 유용하므로 항상 설정
             
             // 해산물이 아닌 카테고리에서는 해역명 관련 필드를 명시적으로 제거
             // (에러: OceanTypeNotFullySelected, NotMarineProduct 방지)
@@ -1837,16 +1938,16 @@ public class ProductService {
                 log.debug("해산물 카테고리이지만 해역명 정보는 제공하지 않습니다.");
             }
         } else {
-            // 기본값: 국내산
-            originAreaInfo.put("originAreaCode", "04");
+            // 기본값: 국산
+            originAreaInfo.put("originAreaCode", "00"); // API 문서: 00=국산
             originAreaInfo.put("content", "국내산");
         }
         
         // 최종 확인: originAreaCode가 반드시 포함되어 있어야 함
         if (!originAreaInfo.containsKey("originAreaCode")) {
             log.error("createOriginAreaInfo 반환 시 originAreaCode가 없습니다! originAreaInfo={}", originAreaInfo);
-            // 기본값 설정
-            originAreaInfo.put("originAreaCode", "04");
+            // 기본값 설정: 국산
+            originAreaInfo.put("originAreaCode", "00");
         }
         
         log.debug("createOriginAreaInfo 반환: originAreaInfo={}", originAreaInfo);
@@ -1854,35 +1955,72 @@ public class ProductService {
     }
     
     /**
-     * 원산지 문자열로부터 원산지 유형 코드를 추론합니다.
+     * 원산지 이름에서 국가명 추출
+     * 예: "수입산:아시아>베트남" -> "베트남"
      * 
-     * 중요: originAreaCode는 국가별 코드가 아니라 원산지 유형 코드입니다.
-     * - "04": 국내산
-     * - "02": 수입산(해외산) - 모든 해외 국가에 공통 적용
+     * @param name 원산지 이름
+     * @return 국가명
+     */
+    private String extractCountryName(String name) {
+        if (name == null || name.isEmpty()) {
+            return null;
+        }
+        
+        // ">" 기호로 분리하여 마지막 부분 추출
+        if (name.contains(">")) {
+            String[] parts = name.split(">");
+            if (parts.length > 0) {
+                return parts[parts.length - 1].trim();
+            }
+        }
+        
+        // ":" 기호로 분리하여 마지막 부분 추출
+        if (name.contains(":")) {
+            String[] parts = name.split(":");
+            if (parts.length > 1) {
+                String lastPart = parts[parts.length - 1].trim();
+                // ">" 기호가 있으면 다시 분리
+                if (lastPart.contains(">")) {
+                    String[] subParts = lastPart.split(">");
+                    return subParts[subParts.length - 1].trim();
+                }
+                return lastPart;
+            }
+        }
+        
+        return name.trim();
+    }
+    
+    /**
+     * 원산지 문자열로부터 원산지 코드를 추론합니다.
      * 
-     * 국가 정보는 importCountry 필드에 별도로 저장됩니다.
+     * 네이버 API 문서에 따른 originAreaCode 값:
+     * - "00": 국산
+     * - "01": 원양산
+     * - "02": 수입산
+     * - "03": 기타-상세 설명에 표시
+     * - "04": 기타-직접 입력 (content 필수)
+     * - "05": 원산지 표기 의무 대상 아님
      * 
      * @param originArea 원산지 문자열 (예: "국내산", "중국", "일본" 등)
-     * @return 원산지 유형 코드 (04=국내산, 02=수입산)
+     * @return 원산지 코드 (00=국산, 02=수입산)
      */
     private String determineOriginAreaCode(String originArea) {
         if (originArea == null || originArea.trim().isEmpty()) {
-            return "04"; // 기본값: 국내산
+            return "00"; // 기본값: 국산
         }
         
         String trimmed = originArea.trim();
         
         // 국내산 판단 (명시적으로 국내산인 경우만)
         if (trimmed.contains("국내") || trimmed.contains("한국") || trimmed.contains("국산")) {
-            return "04"; // 국내산
+            return "00"; // 국산
         }
         
         // 이하는 전부 해외산(수입산) 취급
-        // 절대 국가별로 코드를 쪼개지 않음!
-        // 국가 정보는 importCountry 필드에만 저장됨
-        // originAreaCode는 원산지 유형(국내/수입)만 구분
-        log.debug("해외 원산지로 판단: {}. originAreaCode=02(수입산) 사용, 국가는 importCountry에 저장", trimmed);
-        return "02"; // 수입산(해외산) - 모든 해외 국가에 공통 적용
+        // API 문서에 따르면 수입산은 "02" 사용
+        log.debug("해외 원산지로 판단: {}. originAreaCode=02(수입산) 사용", trimmed);
+        return "02"; // 수입산
     }
 }
 

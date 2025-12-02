@@ -603,6 +603,62 @@ public class NaverCommerceClient {
     }
 
     /**
+     * 원산지 코드 정보 전체 조회
+     * GET /v1/product-origin-areas
+     * 
+     * @param accessToken Access Token
+     * @return 원산지 코드 정보 리스트
+     */
+    /**
+     * 원산지 코드 정보 전체 조회
+     * GET /v1/product-origin-areas
+     * 
+     * 응답 구조:
+     * {
+     *   "originAreaCodeNames": [
+     *     {
+     *       "code": "00",
+     *       "name": "국산"
+     *     },
+     *     ...
+     *   ]
+     * }
+     * 
+     * @param accessToken Access Token
+     * @return 원산지 코드 정보 Map (originAreaCodeNames 포함)
+     */
+    public Mono<Map<String, Object>> getOriginAreaCodes(String accessToken) {
+        return webClient.get()
+                .uri(EXTERNAL_PREFIX + "/v1/product-origin-areas")
+                .header("Authorization", "Bearer " + accessToken)
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {
+                })
+                .doOnSuccess(response -> {
+                    if (response != null && response.containsKey("originAreaCodeNames")) {
+                        @SuppressWarnings("unchecked")
+                        List<Map<String, Object>> codes = (List<Map<String, Object>>) response.get("originAreaCodeNames");
+                        log.info("원산지 코드 정보 조회 성공: {}개", codes != null ? codes.size() : 0);
+                        if (codes != null && !codes.isEmpty()) {
+                            log.debug("원산지 코드 예시: {}", codes.get(0));
+                        }
+                    } else {
+                        log.warn("원산지 코드 정보 응답 구조가 예상과 다릅니다: {}", response);
+                    }
+                })
+                .doOnError(error -> {
+                    if (error instanceof WebClientResponseException ex) {
+                        String responseBody = ex.getResponseBodyAsString();
+                        log.error("원산지 코드 정보 조회 실패: status={}", ex.getStatusCode());
+                        log.error("응답 본문: {}", responseBody != null ? responseBody : "null");
+                    } else {
+                        log.error("원산지 코드 정보 조회 실패", error);
+                    }
+                });
+    }
+    
+    /**
      * 재고 조회
      */
     public Mono<Map<String, Object>> getInventory(String accessToken,
