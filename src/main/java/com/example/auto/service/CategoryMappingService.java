@@ -216,27 +216,27 @@ public class CategoryMappingService {
         categoryMappingCache = new HashMap<>();
         
         // 패션의류
-//        categoryMappingCache.put("패션의류 > 상의 > 티셔츠", "50000805");
-//        categoryMappingCache.put("패션의류 > 하의 > 청바지", "50000806");
-//        categoryMappingCache.put("패션의류 > 하의 > 슬랙스", "50000807");
-
+        categoryMappingCache.put("패션의류 > 상의 > 티셔츠", "50000805");
+        categoryMappingCache.put("패션의류 > 하의 > 청바지", "50000806");
+        categoryMappingCache.put("패션의류 > 하의 > 슬랙스", "50000807");
+        
         // 패션잡화
-//        categoryMappingCache.put("패션잡화 > 가방 > 백팩", "50000808");
-//        categoryMappingCache.put("패션잡화 > 가방 > 토트백", "50000809");
-
+        categoryMappingCache.put("패션잡화 > 가방 > 백팩", "50000808");
+        categoryMappingCache.put("패션잡화 > 가방 > 토트백", "50000809");
+        
         // 식품
-//        categoryMappingCache.put("식품 > 과자/간식 > 과자", "50000810");
-//        categoryMappingCache.put("식품 > 과자/간식 > 초콜릿", "50000811");
-
+        categoryMappingCache.put("식품 > 과자/간식 > 과자", "50000810");
+        categoryMappingCache.put("식품 > 과자/간식 > 초콜릿", "50000811");
+        
         // 디지털/가전
-//        categoryMappingCache.put("디지털/가전 > 모니터", "50000812");
-//        categoryMappingCache.put("디지털/가전 > 노트북", "50000813");
-
+        categoryMappingCache.put("디지털/가전 > 모니터", "50000812");
+        categoryMappingCache.put("디지털/가전 > 노트북", "50000813");
+        
         // 생활/주방
-//        categoryMappingCache.put("생활/주방 > 주방용품 > 프라이팬", "50000814");
-
+        categoryMappingCache.put("생활/주방 > 주방용품 > 프라이팬", "50000814");
+        
         // 반려동물
-//        categoryMappingCache.put("반려동물 > 강아지용품 > 사료", "50000815");
+        categoryMappingCache.put("반려동물 > 강아지용품 > 사료", "50000815");
         
         log.info("하드코딩된 카테고리 매핑 초기화 완료: {}개", categoryMappingCache.size());
     }
