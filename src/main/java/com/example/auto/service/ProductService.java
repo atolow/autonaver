@@ -618,34 +618,34 @@ public class ProductService {
             }
         }
         
-        // KC 인증이 필요한 경우 기본 인증 정보 추가
-        // 에러 메시지 분석 결과 다음 필드들이 필요:
-        // - name: 인증기관 (필수) - "인증기관 항목을 입력해 주세요."
-        // - certificationNumber: 인증번호 (필수) - "인증번호 항목을 입력해 주세요."
-        // - certificationType: 인증유형 (필수) - "인증유형 항목을 입력해 주세요."
-        // - kindType: 인증 종류 (필수) - "KC 인증대상 인증 종류를 선택하셔야 합니다."
-        // 참고: 에러 메시지에서 certificationType이 필수라고 명시됨
+        // KC 인증 대상 카테고리 처리
+        // API 문서에 따르면:
+        // - productCertificationInfos 배열의 각 항목에 certificationInfoId (integer<int64>) required
+        // - certificationInfoId를 모를 경우, productCertificationInfos를 비우고 kcCertifiedProductExclusionYn을 TRUE로 설정하여 인증 대상에서 제외
+        // - certificationTargetExcludeContent의 kcCertifiedProductExclusionYn이 'KC 인증 대상' 카테고리 상품인 경우 필수
+        //   가능한 값: FALSE(KC 인증 대상), TRUE(KC 인증 대상 아님), KC_EXEMPTION_OBJECT(안전기준준수, 구매대행, 병행수입)
         if (isKcCertificationRequired) {
-            Map<String, Object> kcCert = new HashMap<>();
-            // 인증기관 (필수)
-            kcCert.put("name", "한국기계전기전자시험연구원"); // 기본값: 한국기계전기전자시험연구원
-            // 인증번호 (필수) - 실제 인증번호가 없으면 기본값 사용
-            kcCert.put("certificationNumber", "SU07001-18001"); // 기본값 (실제 인증번호로 교체 필요)
-            // 인증유형 (필수) - 에러 메시지에서 요구됨
-            // KC 인증의 경우 "KC" 또는 다른 값일 수 있음
-            // 모니터 등 전자제품의 경우 "KC_ELECTRIC" 또는 "KC_TELECOM" 등일 수 있음
-            kcCert.put("certificationType", "KC_ELECTRIC"); // 전자제품용 KC 인증
-            // 인증 종류 (필수) - "KC 인증대상 인증 종류를 선택하셔야 합니다."
-            // 모니터 등 전자제품의 경우 "KC" 또는 구체적인 값 사용 가능
-            // 에러 메시지에서 "KC 인증대상 인증 종류"라고 하므로, 구체적인 종류 값이 필요할 수 있음
-            kcCert.put("kindType", "KC_ELECTRIC"); // 전자제품용 KC 인증 종류
-            productCertificationInfos.add(kcCert);
-            log.warn("KC 인증 정보 추가 (기본값 사용): 카테고리={}, name=한국기계전기전자시험연구원, certificationNumber=SU07001-18001, certificationType=KC, kindType=KC", 
+            // certificationInfoId를 모르는 경우, productCertificationInfos를 비우고 인증 대상에서 제외
+            // 실제 KC 인증 정보가 있는 경우에만 productCertificationInfos에 추가해야 함
+            // 현재는 certificationInfoId를 모르므로 인증 대상에서 제외 처리
+            log.warn("KC 인증 대상 카테고리 감지: 카테고리={}, certificationInfoId를 모르므로 인증 대상에서 제외 처리", 
                     categoryPath != null ? categoryPath : leafCategoryId);
-            log.warn("실제 KC 인증번호가 있으면 엑셀에 추가하거나 설정값으로 변경하세요.");
+            log.warn("실제 KC 인증 정보(certificationInfoId, certificationNumber 등)가 있으면 엑셀에 추가하거나 설정값으로 변경하세요.");
         }
         
         detailAttribute.put("productCertificationInfos", productCertificationInfos);
+        
+        // certificationTargetExcludeContent 추가 (KC 인증 대상 카테고리인 경우 필수)
+        // API 문서: 'KC 인증 대상' 카테고리 상품인 경우 kcCertifiedProductExclusionYn 필수
+        if (isKcCertificationRequired) {
+            Map<String, Object> certificationTargetExcludeContent = new HashMap<>();
+            // certificationInfoId를 모르는 경우, 인증 대상에서 제외 처리
+            // kcCertifiedProductExclusionYn: FALSE(KC 인증 대상), TRUE(KC 인증 대상 아님), KC_EXEMPTION_OBJECT(안전기준준수, 구매대행, 병행수입)
+            // certificationInfoId가 없으므로 TRUE로 설정하여 인증 대상에서 제외
+            certificationTargetExcludeContent.put("kcCertifiedProductExclusionYn", "TRUE");
+            detailAttribute.put("certificationTargetExcludeContent", certificationTargetExcludeContent);
+            log.info("certificationTargetExcludeContent 추가: kcCertifiedProductExclusionYn=TRUE (인증 대상에서 제외)");
+        }
         
         // 원산지 정보 (필수) - 카테고리별 자동 처리
         Map<String, Object> originAreaInfo = createOriginAreaInfo(

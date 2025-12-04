@@ -293,12 +293,13 @@ public class CategoryMappingService {
         
         // 유사한 경로 찾기 (엑셀 경로와 API 경로가 약간 다를 수 있음)
         // 예: 엑셀 "패션의류 > 상의 > 티셔츠" vs API "패션의류>여성의류>티셔츠"
+        // 예: 엑셀 "식품 > 과자/간식 > 과자" vs API "식품>과자/베이커리>과자" 등
         String[] searchParts = trimmedPath.split("[>]");
         if (searchParts.length > 0) {
             String lastPart = searchParts[searchParts.length - 1].trim();
             String firstPart = searchParts[0].trim();
             
-            // 마지막 부분(리프 카테고리)이 정확히 일치하는 경로 찾기
+            // 1단계: 마지막 부분(리프 카테고리)과 첫 부분(최상위 카테고리)이 정확히 일치하는 경로 찾기
             for (Map.Entry<String, String> entry : categoryMappingCache.entrySet()) {
                 String entryKey = entry.getKey();
                 String[] entryParts = entryKey.split("[>]");
@@ -320,7 +321,32 @@ public class CategoryMappingService {
                 }
             }
             
-            // 마지막 부분만 일치하는 경우 (최후의 수단)
+            // 2단계: 첫 부분만 일치하고 마지막 부분이 유사한 경로 찾기
+            // 예: "식품 > 과자/간식 > 과자" -> "식품>과자/베이커리>과자" 등
+            for (Map.Entry<String, String> entry : categoryMappingCache.entrySet()) {
+                String entryKey = entry.getKey();
+                String[] entryParts = entryKey.split("[>]");
+                
+                if (entryParts.length > 0) {
+                    String entryLastPart = entryParts[entryParts.length - 1].trim();
+                    String entryFirstPart = entryParts[0].trim();
+                    
+                    // 첫 부분이 일치하고, 마지막 부분이 포함 관계이거나 유사하면 매칭
+                    if (entryFirstPart.equals(firstPart) && 
+                        (entryLastPart.contains(lastPart) || lastPart.contains(entryLastPart) || 
+                         entryLastPart.equalsIgnoreCase(lastPart))) {
+                        // 경로 단계 수가 같거나 비슷하면 매칭
+                        if (entryParts.length == searchParts.length || 
+                            (entryParts.length >= searchParts.length - 1 && entryParts.length <= searchParts.length + 1)) {
+                            log.info("카테고리 매핑 성공 (유사 경로 매칭 - 첫/마지막 부분 유사): '{}' -> '{}' (ID: {})", 
+                                    trimmedPath, entryKey, entry.getValue());
+                            return entry.getValue();
+                        }
+                    }
+                }
+            }
+            
+            // 3단계: 마지막 부분만 일치하는 경우 (최후의 수단)
             for (Map.Entry<String, String> entry : categoryMappingCache.entrySet()) {
                 String entryKey = entry.getKey();
                 String[] entryParts = entryKey.split("[>]");
@@ -328,6 +354,22 @@ public class CategoryMappingService {
                     log.warn("카테고리 부분 매칭 (마지막 부분만 일치): '{}' -> '{}' (ID: {})", 
                             trimmedPath, entryKey, entry.getValue());
                     return entry.getValue();
+                }
+            }
+            
+            // 4단계: 마지막 부분이 포함 관계인 경우
+            // 예: "과자" -> "과자/베이커리" 또는 "과자/베이커리" -> "과자"
+            for (Map.Entry<String, String> entry : categoryMappingCache.entrySet()) {
+                String entryKey = entry.getKey();
+                String[] entryParts = entryKey.split("[>]");
+                if (entryParts.length > 0) {
+                    String entryLastPart = entryParts[entryParts.length - 1].trim();
+                    // 마지막 부분이 서로 포함 관계이면 매칭
+                    if (entryLastPart.contains(lastPart) || lastPart.contains(entryLastPart)) {
+                        log.warn("카테고리 부분 매칭 (마지막 부분 포함 관계): '{}' -> '{}' (ID: {})", 
+                                trimmedPath, entryKey, entry.getValue());
+                        return entry.getValue();
+                    }
                 }
             }
         }
