@@ -8,7 +8,7 @@
         </encoder>
     </appender>
 
-    <!-- ERROR 로그 전용 파일 -->
+    <!-- WARN + ERROR 전용 파일 -->
     <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>logs/error.log</file>
 
@@ -27,6 +27,14 @@
             <onMatch>ACCEPT</onMatch>
             <onMismatch>DENY</onMismatch>
         </filter>
+
+        <!-- WARN만 기록 -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+
     </appender>
 
     <!-- 전체 로그는 콘솔로 -->

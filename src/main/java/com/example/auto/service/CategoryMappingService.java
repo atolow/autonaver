@@ -372,6 +372,81 @@ public class CategoryMappingService {
                     }
                 }
             }
+            
+            // 5단계: 첫 부분이 일치하고, 중간/마지막 부분에 키워드가 포함된 경로 찾기
+            // 예: "식품 > 밀키트 > 반조리" -> "식품>...>밀키트..." 또는 "식품>...>반조리..."
+            if (searchParts.length >= 2) {
+                // 검색할 키워드 추출 (중간 부분과 마지막 부분)
+                String[] keywords = new String[searchParts.length - 1];
+                for (int i = 1; i < searchParts.length; i++) {
+                    keywords[i - 1] = searchParts[i].trim().toLowerCase();
+                }
+                
+                for (Map.Entry<String, String> entry : categoryMappingCache.entrySet()) {
+                    String entryKey = entry.getKey();
+                    String[] entryParts = entryKey.split("[>]");
+                    
+                    if (entryParts.length > 0) {
+                        String entryFirstPart = entryParts[0].trim();
+                        
+                        // 첫 부분이 일치하는 경우
+                        if (entryFirstPart.equals(firstPart)) {
+                            // 전체 경로를 소문자로 변환하여 키워드 검색
+                            String entryKeyLower = entryKey.toLowerCase();
+                            boolean allKeywordsFound = true;
+                            
+                            // 모든 키워드가 경로에 포함되어 있는지 확인
+                            for (String keyword : keywords) {
+                                if (!entryKeyLower.contains(keyword)) {
+                                    allKeywordsFound = false;
+                                    break;
+                                }
+                            }
+                            
+                            // 모든 키워드가 포함되어 있고, 경로 단계 수가 비슷하면 매칭
+                            if (allKeywordsFound && 
+                                (entryParts.length == searchParts.length || 
+                                 entryParts.length >= searchParts.length - 1 && entryParts.length <= searchParts.length + 1)) {
+                                log.info("카테고리 매핑 성공 (키워드 기반 매칭): '{}' -> '{}' (ID: {})", 
+                                        trimmedPath, entryKey, entry.getValue());
+                                return entry.getValue();
+                            }
+                        }
+                    }
+                }
+                
+                // 6단계: 첫 부분이 일치하고, 일부 키워드만 포함된 경로 찾기 (더 유연한 매칭)
+                for (Map.Entry<String, String> entry : categoryMappingCache.entrySet()) {
+                    String entryKey = entry.getKey();
+                    String[] entryParts = entryKey.split("[>]");
+                    
+                    if (entryParts.length > 0) {
+                        String entryFirstPart = entryParts[0].trim();
+                        
+                        // 첫 부분이 일치하는 경우
+                        if (entryFirstPart.equals(firstPart)) {
+                            String entryKeyLower = entryKey.toLowerCase();
+                            int matchedKeywords = 0;
+                            
+                            // 키워드 중 몇 개가 포함되어 있는지 확인
+                            for (String keyword : keywords) {
+                                if (entryKeyLower.contains(keyword)) {
+                                    matchedKeywords++;
+                                }
+                            }
+                            
+                            // 키워드의 절반 이상이 포함되어 있고, 경로 단계 수가 비슷하면 매칭
+                            if (matchedKeywords >= (keywords.length + 1) / 2 && 
+                                (entryParts.length == searchParts.length || 
+                                 entryParts.length >= searchParts.length - 1 && entryParts.length <= searchParts.length + 1)) {
+                                log.warn("카테고리 매핑 성공 (부분 키워드 매칭, {}/{} 키워드 일치): '{}' -> '{}' (ID: {})", 
+                                        matchedKeywords, keywords.length, trimmedPath, entryKey, entry.getValue());
+                                return entry.getValue();
+                            }
+                        }
+                    }
+                }
+            }
         }
         
         // 정확한 매핑이 없으면 null 반환하여 에러 발생시키기

@@ -278,6 +278,20 @@ public class NaverCommerceClient {
                                 if (errorResponse.containsKey("invalidInputs")) {
                                     Object invalidInputs = errorResponse.get("invalidInputs");
                                     log.error("유효하지 않은 입력 필드: {}", invalidInputs);
+                                    
+                                    // 권한 관련 에러 감지 및 명확한 메시지 출력
+                                    if (invalidInputs instanceof List) {
+                                        @SuppressWarnings("unchecked")
+                                        List<Map<String, Object>> inputs = (List<Map<String, Object>>) invalidInputs;
+                                        for (Map<String, Object> input : inputs) {
+                                            Object type = input.get("type");
+                                            if (type != null && type.toString().contains("NotAuthority")) {
+                                                log.error("⚠️ 카테고리 판매 권한 에러: 해당 카테고리는 네이버 스마트스토어센터에서 판매 권한 신청이 필요합니다.");
+                                                log.error("⚠️ 해결 방법: 스마트스토어센터 > 상품관리 > 카테고리 권한 신청 메뉴에서 권한을 신청해주세요.");
+                                                log.error("⚠️ 권한이 없는 카테고리로는 상품을 등록할 수 없습니다.");
+                                            }
+                                        }
+                                    }
                                 }
 
                                 if (errorResponse.containsKey("timestamp")) {

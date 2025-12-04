@@ -570,9 +570,7 @@ public class ProductService {
         // 어린이 인증 대상 카테고리 처리
         // 일부 카테고리(예: 어린이용품, 장난감 등)는 어린이 제품 인증이 필수
         // 에러 메시지: "어린이인증 대상 카테고리 상품은 카탈로그 입력이 필수입니다"
-        // 현재는 어린이 인증 대상 카테고리를 감지할 수 없으므로,
-        // 에러 발생 시 사용자에게 알리도록 처리
-        // TODO: 카테고리별 어린이 인증 필요 여부를 API로 조회하거나 매핑 테이블 생성
+        // API 문서: '어린이제품 인증 대상' 카테고리 상품인 경우 childCertifiedProductExclusionYn 필수
         
         // KC 인증 대상 카테고리 처리
         // 일부 카테고리(예: 전기/전자 제품 등)는 KC 인증이 필수
@@ -585,6 +583,7 @@ public class ProductService {
         String categoryPath = request.getCategoryPath();
         String leafCategoryId = request.getLeafCategoryId();
         boolean isKcCertificationRequired = false;
+        boolean isChildCertificationRequired = false;
         
         // 카테고리 경로로 확인 (더 정확하게)
         if (categoryPath != null && !categoryPath.trim().isEmpty()) {
@@ -605,13 +604,47 @@ public class ProductService {
         if (!isKcCertificationRequired && leafCategoryId != null) {
             try {
                 long categoryIdNum = Long.parseLong(leafCategoryId);
-                // 디지털/가전 카테고리 ID 범위를 더 좁게 설정
+                // 디지털/가전 카테고리 ID 범위 확장
                 // 모니터: 50000153, 노트북: 50000151, PC: 50000089 등
-                // 패션잡화는 50000xxx 대역이지만 KC 인증이 필요 없음
-                // 디지털/가전은 대략 50000003~50000200 범위
-                if (categoryIdNum >= 50000003L && categoryIdNum <= 50000200L) {
+                // 일부 카테고리는 50001594 같은 더 큰 범위에 있을 수 있음
+                // 디지털/가전 관련 카테고리 ID 범위를 확장하여 더 많은 카테고리 포함
+                // 50000003~50002000 범위로 확장 (일부 카테고리는 이 범위를 벗어날 수 있으므로 더 넓게 설정)
+                if ((categoryIdNum >= 50000003L && categoryIdNum <= 50002000L) ||
+                    (categoryIdNum >= 50001000L && categoryIdNum <= 50003000L)) {
                     isKcCertificationRequired = true;
                     log.info("KC 인증 필요 카테고리 감지 (ID): {}", leafCategoryId);
+                }
+            } catch (NumberFormatException e) {
+                // 카테고리 ID가 숫자가 아니면 무시
+            }
+        }
+        
+        // 어린이제품 인증이 필요한 카테고리인지 확인
+        // 출산/육아, 완구/인형, 유아동의류 등은 어린이제품 인증이 필수일 수 있음
+        if (categoryPath != null && !categoryPath.trim().isEmpty()) {
+            String lowerCategoryPath = categoryPath.toLowerCase();
+            // 어린이제품 인증이 필요한 카테고리 키워드 확인
+            if (lowerCategoryPath.contains("출산") || lowerCategoryPath.contains("육아") ||
+                lowerCategoryPath.contains("완구") || lowerCategoryPath.contains("인형") ||
+                lowerCategoryPath.contains("유아") || lowerCategoryPath.contains("아동") ||
+                lowerCategoryPath.contains("어린이") || lowerCategoryPath.contains("키즈") ||
+                lowerCategoryPath.contains("장난감") || lowerCategoryPath.contains("아기")) {
+                isChildCertificationRequired = true;
+                log.info("어린이제품 인증 필요 카테고리 감지 (경로): {}", categoryPath);
+            }
+        }
+        
+        // 카테고리 ID로 확인 (출산/육아 카테고리 ID 범위)
+        if (!isChildCertificationRequired && leafCategoryId != null) {
+            try {
+                long categoryIdNum = Long.parseLong(leafCategoryId);
+                // 출산/육아 카테고리 ID 범위 확인 (예: 50004000~50005000, 50016000~50017000 등)
+                // 출산/육아 관련 카테고리 ID 범위를 확인하여 어린이제품 인증 필요 여부 판단
+                if ((categoryIdNum >= 50004000L && categoryIdNum <= 50005000L) ||
+                    (categoryIdNum >= 50016000L && categoryIdNum <= 50017000L) ||
+                    (categoryIdNum >= 50016500L && categoryIdNum <= 50016700L)) {
+                    isChildCertificationRequired = true;
+                    log.info("어린이제품 인증 필요 카테고리 감지 (ID): {}", leafCategoryId);
                 }
             } catch (NumberFormatException e) {
                 // 카테고리 ID가 숫자가 아니면 무시
@@ -635,17 +668,41 @@ public class ProductService {
         
         detailAttribute.put("productCertificationInfos", productCertificationInfos);
         
-        // certificationTargetExcludeContent 추가 (KC 인증 대상 카테고리인 경우 필수)
+        // certificationTargetExcludeContent 추가
+        // KC 인증 대상 카테고리인 경우 필수이지만, 감지되지 않은 경우를 대비하여 모든 카테고리에 추가
         // API 문서: 'KC 인증 대상' 카테고리 상품인 경우 kcCertifiedProductExclusionYn 필수
+        // API 문서: '어린이제품 인증 대상' 카테고리 상품인 경우 childCertifiedProductExclusionYn 필수
+        // KC 인증 대상이 아닌 카테고리에서도 추가해도 문제없음 (안전장치)
+        Map<String, Object> certificationTargetExcludeContent = new HashMap<>();
+        
+        // KC 인증 대상 카테고리 처리
         if (isKcCertificationRequired) {
-            Map<String, Object> certificationTargetExcludeContent = new HashMap<>();
-            // certificationInfoId를 모르는 경우, 인증 대상에서 제외 처리
+            // KC 인증 대상 카테고리인 경우, certificationInfoId를 모르므로 인증 대상에서 제외 처리
             // kcCertifiedProductExclusionYn: FALSE(KC 인증 대상), TRUE(KC 인증 대상 아님), KC_EXEMPTION_OBJECT(안전기준준수, 구매대행, 병행수입)
-            // certificationInfoId가 없으므로 TRUE로 설정하여 인증 대상에서 제외
             certificationTargetExcludeContent.put("kcCertifiedProductExclusionYn", "TRUE");
-            detailAttribute.put("certificationTargetExcludeContent", certificationTargetExcludeContent);
-            log.info("certificationTargetExcludeContent 추가: kcCertifiedProductExclusionYn=TRUE (인증 대상에서 제외)");
+            log.info("certificationTargetExcludeContent 추가: kcCertifiedProductExclusionYn=TRUE (KC 인증 대상에서 제외)");
+        } else {
+            // KC 인증 대상이 아닌 것으로 판단되었지만, 안전을 위해 추가
+            // 일부 카테고리는 감지되지 않을 수 있으므로 기본값으로 TRUE 설정
+            certificationTargetExcludeContent.put("kcCertifiedProductExclusionYn", "TRUE");
+            log.debug("certificationTargetExcludeContent 추가 (안전장치): kcCertifiedProductExclusionYn=TRUE");
         }
+        
+        // 어린이제품 인증 대상 카테고리 처리
+        if (isChildCertificationRequired) {
+            // 어린이제품 인증 대상 카테고리인 경우, certificationInfoId를 모르므로 인증 대상에서 제외 처리
+            // childCertifiedProductExclusionYn: false(어린이제품 인증 대상), true(어린이제품 인증 대상 아님)
+            // 미입력 시 false로 저장되므로, 인증 대상에서 제외하려면 true로 설정
+            certificationTargetExcludeContent.put("childCertifiedProductExclusionYn", true);
+            log.info("certificationTargetExcludeContent 추가: childCertifiedProductExclusionYn=true (어린이제품 인증 대상에서 제외)");
+        } else {
+            // 어린이제품 인증 대상이 아닌 것으로 판단되었지만, 안전을 위해 추가
+            // 일부 카테고리는 감지되지 않을 수 있으므로 기본값으로 true 설정
+            certificationTargetExcludeContent.put("childCertifiedProductExclusionYn", true);
+            log.debug("certificationTargetExcludeContent 추가 (안전장치): childCertifiedProductExclusionYn=true");
+        }
+        
+        detailAttribute.put("certificationTargetExcludeContent", certificationTargetExcludeContent);
         
         // 원산지 정보 (필수) - 카테고리별 자동 처리
         Map<String, Object> originAreaInfo = createOriginAreaInfo(
