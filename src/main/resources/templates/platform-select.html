@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>플랫폼 선택 - 상품 관리 시스템</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 50px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 50px;
+            font-size: 1.1em;
+        }
+        
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .platform-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            cursor: pointer;
+        }
+        
+        .platform-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            border-color: #667eea;
+        }
+        
+        .platform-card.naver {
+            background: linear-gradient(135deg, #03c75a 0%, #00a652 100%);
+            color: white;
+        }
+        
+        .platform-card.coupang {
+            background: linear-gradient(135deg, #fa622f 0%, #e84c27 100%);
+            color: white;
+        }
+        
+        .platform-card.eleven-street {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+        }
+        
+        .platform-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        
+        .platform-name {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .platform-description {
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+        
+        .status-available {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .status-updating {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛍️ 상품 관리 시스템</h1>
+        <p class="subtitle">플랫폼을 선택하여 시작하세요</p>
+        
+        <div class="platform-grid">
+            <a href="/naver" class="platform-card naver">
+                <div class="platform-icon">🟢</div>
+                <div class="platform-name">네이버</div>
+                <div class="platform-description">네이버 스마트스토어 상품 관리</div>
+                <span class="status-badge status-available">사용 가능</span>
+            </a>
+            
+            <a href="/coupang" class="platform-card coupang">
+                <div class="platform-icon">🟠</div>
+                <div class="platform-name">쿠팡</div>
+                <div class="platform-description">쿠팡 상품 관리</div>
+                <span class="status-badge status-updating">업데이트 중</span>
+            </a>
+            
+            <a href="/ELEVEN_STREET" class="platform-card eleven-street">
+                <div class="platform-icon">🟡</div>
+                <div class="platform-name">11번가</div>
+                <div class="platform-description">11번가 상품 관리</div>
+                <span class="status-badge status-updating">업데이트 중</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+

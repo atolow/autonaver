@@ -1,6 +1,6 @@
-package com.example.auto.client;
+package com.example.auto.naver.client;
 
-import com.example.auto.config.NaverCommerceProperties;
+import com.example.auto.naver.config.NaverCommerceProperties;
 import com.example.auto.util.SignatureUtil;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

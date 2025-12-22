@@ -1,9 +1,17 @@
-package com.example.auto.service;
+package com.example.auto.naver.service;
 
-import com.example.auto.client.NaverCommerceClient;
 import com.example.auto.domain.Store;
 import com.example.auto.dto.GroupProductRequest;
 import com.example.auto.dto.ProductRequest;
+import com.example.auto.dto.ProductSearchRequest;
+import com.example.auto.naver.client.NaverCommerceClient;
+import com.example.auto.naver.constants.NaverApiConstants;
+import com.example.auto.naver.util.NaverCategoryValidator;
+import com.example.auto.naver.util.NaverStatusConverter;
+import com.example.auto.naver.service.NaverCategoryCertificationService;
+import com.example.auto.naver.service.NaverOriginAreaService;
+import com.example.auto.platform.ProductService;
+import com.example.auto.service.StoreService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,16 +25,18 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 상품 관리 서비스
+ * 네이버 상품 관리 서비스
  */
 @Slf4j
-@Service
+@Service("naverProductService")
 @RequiredArgsConstructor
 @Transactional
-public class ProductService {
+public class NaverProductService implements ProductService {
     
     private final NaverCommerceClient naverCommerceClient;
     private final StoreService storeService;
+    private final NaverCategoryCertificationService categoryCertificationService;
+    private final NaverOriginAreaService originAreaService;
     
     // 원산지 코드 정보 캐시 (한 번 조회 후 재사용)
     private Map<String, Object> originAreaCodesCache = null;
@@ -138,7 +148,7 @@ public class ProductService {
                     // Rate Limit 방지를 위해 이미지 업로드 사이에 딜레이 추가 (첫 번째 이미지 제외)
                     if (i > 0) {
                         try {
-                            Thread.sleep(300); // 300ms 딜레이 (Rate Limit 방지)
+                            Thread.sleep(NaverApiConstants.IMAGE_UPLOAD_DELAY_MS); // Rate Limit 방지
                         } catch (InterruptedException e) {
                             Thread.currentThread().interrupt();
                             log.warn("이미지 업로드 딜레이 중단됨");
@@ -150,7 +160,7 @@ public class ProductService {
                             store.getAccessToken(),
                             store.getVendorId(),
                             imageUrl.trim(),
-                            3 // 최대 3회 재시도
+                            NaverApiConstants.MAX_RETRIES // 최대 재시도 횟수
                     );
                     
                     if (uploadedUrl != null && !uploadedUrl.isEmpty()) {
@@ -210,7 +220,7 @@ public class ProductService {
      */
     private String uploadImageWithRetry(String accessToken, String vendorId, String imageUrl, int maxRetries) {
         int retryCount = 0;
-        long baseDelayMs = 1000; // 기본 딜레이 1초
+        long baseDelayMs = NaverApiConstants.RETRY_BASE_DELAY_MS; // 기본 딜레이
         
         while (retryCount <= maxRetries) {
             try {
@@ -345,16 +355,16 @@ public class ProductService {
                     channelProductMap.put("storeKeepExclusiveProduct", scp.getStoreKeepExclusiveProduct());
                 }
                 channelProductMap.put("naverShoppingRegistration", 
-                        scp.getNaverShoppingRegistration() != null ? scp.getNaverShoppingRegistration() : false);
+                        scp.getNaverShoppingRegistration() != null ? scp.getNaverShoppingRegistration() : NaverApiConstants.DEFAULT_NAVER_SHOPPING_REGISTRATION);
                 channelProductMap.put("channelProductDisplayStatusType", 
-                        scp.getChannelProductDisplayStatusType() != null ? scp.getChannelProductDisplayStatusType() : "ON");
+                        scp.getChannelProductDisplayStatusType() != null ? scp.getChannelProductDisplayStatusType() : NaverApiConstants.DEFAULT_DISPLAY_STATUS_TYPE);
                 
                 naverData.put("smartstoreChannelProduct", channelProductMap);
             } else {
                 // 기본값
                 Map<String, Object> channelProductMap = new HashMap<>();
-                channelProductMap.put("naverShoppingRegistration", false);
-                channelProductMap.put("channelProductDisplayStatusType", "ON");
+                channelProductMap.put("naverShoppingRegistration", NaverApiConstants.DEFAULT_NAVER_SHOPPING_REGISTRATION);
+                channelProductMap.put("channelProductDisplayStatusType", NaverApiConstants.DEFAULT_DISPLAY_STATUS_TYPE);
                 naverData.put("smartstoreChannelProduct", channelProductMap);
             }
             
@@ -368,18 +378,9 @@ public class ProductService {
         // 중요: 네이버 API 문서에 따르면 상품 등록 시에는 SALE(판매 중)만 입력할 수 있습니다.
         // OUTOFSTOCK(품절)은 재고가 0일 때 시스템이 자동으로 설정하는 상태입니다.
         // 따라서 상품 등록 시에는 항상 SALE로 설정합니다.
-        String statusType = request.getStatusType();
-        if (statusType != null && !statusType.trim().isEmpty()) {
-            String upper = statusType.trim().toUpperCase();
-            if (!"SALE".equals(upper)) {
-                log.warn("상품 등록 시에는 statusType '{}'를 사용할 수 없습니다. SALE로 변환합니다. (재고가 0이면 시스템이 자동으로 OUTOFSTOCK으로 설정합니다.)", statusType);
-                statusType = "SALE";
-            }
-        } else {
-            statusType = "SALE";
-        }
+        String statusType = NaverStatusConverter.convertStatusType(request.getStatusType());
         originProduct.put("statusType", statusType);
-        originProduct.put("saleType", request.getSaleType() != null ? request.getSaleType() : "NEW");
+        originProduct.put("saleType", request.getSaleType() != null ? request.getSaleType() : NaverApiConstants.DEFAULT_SALE_TYPE);
         originProduct.put("leafCategoryId", request.getLeafCategoryId());
         originProduct.put("name", request.getName());
         originProduct.put("detailContent", request.getDetailContent());
@@ -395,7 +396,7 @@ public class ProductService {
         if (request.getTaxType() != null && !request.getTaxType().trim().isEmpty()) {
             originProduct.put("taxType", request.getTaxType().trim().toUpperCase());
         } else {
-            originProduct.put("taxType", "TAX"); // 기본값: 과세
+            originProduct.put("taxType", NaverApiConstants.DEFAULT_TAX_TYPE); // 기본값: 과세
         }
         
         // 이미지 정보 (필수)
@@ -459,25 +460,25 @@ public class ProductService {
         
         // 배송 정보
         Map<String, Object> deliveryInfo = new HashMap<>();
-        String deliveryType = "DELIVERY"; // 기본값
+        String deliveryType = NaverApiConstants.DEFAULT_DELIVERY_TYPE; // 기본값
         
         if (request.getDeliveryInfo() != null) {
             deliveryType = request.getDeliveryInfo().getDeliveryType() != null 
                     ? request.getDeliveryInfo().getDeliveryType() 
-                    : "DELIVERY";
+                    : NaverApiConstants.DEFAULT_DELIVERY_TYPE;
             deliveryInfo.put("deliveryType", deliveryType);
-            deliveryInfo.put("deliveryAttributeType", "NORMAL"); // 일반 배송
+            deliveryInfo.put("deliveryAttributeType", NaverApiConstants.DELIVERY_ATTRIBUTE_TYPE_NORMAL); // 일반 배송
             
             // DELIVERY일 때 deliveryCompany 필수 (택배사 코드)
             // 네이버 API의 정확한 택배사 코드는 "주문 > 발주/발송 처리 > 발송 처리 API" 참고 필요
             // 주요 택배사 코드: CJGLS(CJ대한통운), HANJIN(한진택배), KGB(로젠택배), HYUNDAI(롯데택배), EPOST(우체국택배)
-            if ("DELIVERY".equals(deliveryType)) {
+            if (NaverApiConstants.DeliveryType.DELIVERY.equals(deliveryType)) {
                 String deliveryCompany = request.getDeliveryInfo().getDeliveryCompany();
                 if (deliveryCompany != null && !deliveryCompany.trim().isEmpty()) {
                     deliveryInfo.put("deliveryCompany", deliveryCompany.trim());
                 } else {
                     // 기본값: CJ대한통운 (CJGLS)
-                    deliveryInfo.put("deliveryCompany", "CJGLS");
+                    deliveryInfo.put("deliveryCompany", NaverApiConstants.DeliveryCompany.CJGLS);
                 }
             }
             
@@ -497,25 +498,25 @@ public class ProductService {
                 deliveryFee.put("freeConditionalAmount", freeConditionalAmount);
                 
                 // CONDITIONAL_FREE일 때도 deliveryFeePayType이 필요할 수 있음
-                deliveryFee.put("deliveryFeePayType", "PREPAID"); // 선결제
+                deliveryFee.put("deliveryFeePayType", NaverApiConstants.DeliveryFeePayType.PREPAID); // 선결제
             } else {
-                // 기본값: 일반 배송비 (4500원)
-                deliveryFee.put("deliveryFeeType", "PAID"); // 유료 배송
-                deliveryFee.put("baseFee", 4500); // 기본 배송비 4500원
-                deliveryFee.put("deliveryFeePayType", "PREPAID"); // 선결제 (필수)
+                // 기본값: 일반 배송비
+                deliveryFee.put("deliveryFeeType", NaverApiConstants.DeliveryFeeType.PAID); // 유료 배송
+                deliveryFee.put("baseFee", NaverApiConstants.DEFAULT_DELIVERY_FEE); // 기본 배송비
+                deliveryFee.put("deliveryFeePayType", NaverApiConstants.DeliveryFeePayType.PREPAID); // 선결제 (필수)
             }
             deliveryInfo.put("deliveryFee", deliveryFee);
         } else {
             // 기본 배송 정보
-            deliveryInfo.put("deliveryType", "DELIVERY");
-            deliveryInfo.put("deliveryAttributeType", "NORMAL");
+            deliveryInfo.put("deliveryType", NaverApiConstants.DEFAULT_DELIVERY_TYPE);
+            deliveryInfo.put("deliveryAttributeType", NaverApiConstants.DELIVERY_ATTRIBUTE_TYPE_NORMAL);
             // DELIVERY일 때 deliveryCompany 필수 - 기본값: CJ대한통운 (CJGLS)
-            deliveryInfo.put("deliveryCompany", "CJGLS");
+            deliveryInfo.put("deliveryCompany", NaverApiConstants.DeliveryCompany.CJGLS);
             
             Map<String, Object> deliveryFee = new HashMap<>();
-            deliveryFee.put("deliveryFeeType", "PAID"); // 유료 배송
-            deliveryFee.put("baseFee", 4500); // 기본 배송비 4500원
-            deliveryFee.put("deliveryFeePayType", "PREPAID"); // 선결제 (필수)
+            deliveryFee.put("deliveryFeeType", NaverApiConstants.DeliveryFeeType.PAID); // 유료 배송
+            deliveryFee.put("baseFee", NaverApiConstants.DEFAULT_DELIVERY_FEE); // 기본 배송비
+            deliveryFee.put("deliveryFeePayType", NaverApiConstants.DeliveryFeePayType.PREPAID); // 선결제 (필수)
             deliveryInfo.put("deliveryFee", deliveryFee);
         }
         
@@ -567,147 +568,19 @@ public class ProductService {
             productInfoProvidedNotice.put("etc", etc);
         detailAttribute.put("productInfoProvidedNotice", productInfoProvidedNotice);
         
-        // 어린이 인증 대상 카테고리 처리
-        // 일부 카테고리(예: 어린이용품, 장난감 등)는 어린이 제품 인증이 필수
-        // 에러 메시지: "어린이인증 대상 카테고리 상품은 카탈로그 입력이 필수입니다"
-        // API 문서: '어린이제품 인증 대상' 카테고리 상품인 경우 childCertifiedProductExclusionYn 필수
-        
-        // KC 인증 대상 카테고리 처리
-        // 일부 카테고리(예: 전기/전자 제품 등)는 KC 인증이 필수
-        // 에러 메시지: "KC 인증대상 인증 종류를 선택하셔야 합니다."
-        // API 문서에 따르면 productCertificationInfos 배열에 항목이 있고, 각 항목에 kindType이 필요함
-        List<Map<String, Object>> productCertificationInfos = new ArrayList<>();
-        
-        // KC 인증이 필요한 카테고리인지 확인
-        // 전기/전자 제품 카테고리 (예: 디지털/가전, 모니터 등)는 KC 인증이 필수일 수 있음
-        String categoryPath = request.getCategoryPath();
-        String leafCategoryId = request.getLeafCategoryId();
-        boolean isKcCertificationRequired = false;
-        boolean isChildCertificationRequired = false;
-        
-        // 카테고리 경로로 확인 (더 정확하게)
-        if (categoryPath != null && !categoryPath.trim().isEmpty()) {
-            String lowerCategoryPath = categoryPath.toLowerCase();
-            // KC 인증이 필요한 카테고리 키워드 확인 (디지털/가전 카테고리만)
-            if ((lowerCategoryPath.contains("디지털") || lowerCategoryPath.contains("가전")) &&
-                (lowerCategoryPath.contains("모니터") || lowerCategoryPath.contains("노트북") ||
-                 lowerCategoryPath.contains("pc") || lowerCategoryPath.contains("컴퓨터") ||
-                 lowerCategoryPath.contains("tv") || lowerCategoryPath.contains("스마트폰") ||
-                 lowerCategoryPath.contains("태블릿") || lowerCategoryPath.contains("카메라") ||
-                 lowerCategoryPath.contains("전기") || lowerCategoryPath.contains("전자"))) {
-                isKcCertificationRequired = true;
-                log.info("KC 인증 필요 카테고리 감지 (경로): {}", categoryPath);
-            }
-        }
-        
-        // 카테고리 ID로 확인 (더 정확한 범위)
-        if (!isKcCertificationRequired && leafCategoryId != null) {
-            try {
-                long categoryIdNum = Long.parseLong(leafCategoryId);
-                // 디지털/가전 카테고리 ID 범위 확장
-                // 모니터: 50000153, 노트북: 50000151, PC: 50000089 등
-                // 일부 카테고리는 50001594 같은 더 큰 범위에 있을 수 있음
-                // 디지털/가전 관련 카테고리 ID 범위를 확장하여 더 많은 카테고리 포함
-                // 50000003~50002000 범위로 확장 (일부 카테고리는 이 범위를 벗어날 수 있으므로 더 넓게 설정)
-                if ((categoryIdNum >= 50000003L && categoryIdNum <= 50002000L) ||
-                    (categoryIdNum >= 50001000L && categoryIdNum <= 50003000L)) {
-                    isKcCertificationRequired = true;
-                    log.info("KC 인증 필요 카테고리 감지 (ID): {}", leafCategoryId);
-                }
-            } catch (NumberFormatException e) {
-                // 카테고리 ID가 숫자가 아니면 무시
-            }
-        }
-        
-        // 어린이제품 인증이 필요한 카테고리인지 확인
-        // 출산/육아, 완구/인형, 유아동의류 등은 어린이제품 인증이 필수일 수 있음
-        if (categoryPath != null && !categoryPath.trim().isEmpty()) {
-            String lowerCategoryPath = categoryPath.toLowerCase();
-            // 어린이제품 인증이 필요한 카테고리 키워드 확인
-            if (lowerCategoryPath.contains("출산") || lowerCategoryPath.contains("육아") ||
-                lowerCategoryPath.contains("완구") || lowerCategoryPath.contains("인형") ||
-                lowerCategoryPath.contains("유아") || lowerCategoryPath.contains("아동") ||
-                lowerCategoryPath.contains("어린이") || lowerCategoryPath.contains("키즈") ||
-                lowerCategoryPath.contains("장난감") || lowerCategoryPath.contains("아기")) {
-                isChildCertificationRequired = true;
-                log.info("어린이제품 인증 필요 카테고리 감지 (경로): {}", categoryPath);
-            }
-        }
-        
-        // 카테고리 ID로 확인 (출산/육아 카테고리 ID 범위)
-        if (!isChildCertificationRequired && leafCategoryId != null) {
-            try {
-                long categoryIdNum = Long.parseLong(leafCategoryId);
-                // 출산/육아 카테고리 ID 범위 확인 (예: 50004000~50005000, 50016000~50017000 등)
-                // 출산/육아 관련 카테고리 ID 범위를 확인하여 어린이제품 인증 필요 여부 판단
-                if ((categoryIdNum >= 50004000L && categoryIdNum <= 50005000L) ||
-                    (categoryIdNum >= 50016000L && categoryIdNum <= 50017000L) ||
-                    (categoryIdNum >= 50016500L && categoryIdNum <= 50016700L)) {
-                    isChildCertificationRequired = true;
-                    log.info("어린이제품 인증 필요 카테고리 감지 (ID): {}", leafCategoryId);
-                }
-            } catch (NumberFormatException e) {
-                // 카테고리 ID가 숫자가 아니면 무시
-            }
-        }
-        
-        // KC 인증 대상 카테고리 처리
-        // API 문서에 따르면:
-        // - productCertificationInfos 배열의 각 항목에 certificationInfoId (integer<int64>) required
-        // - certificationInfoId를 모를 경우, productCertificationInfos를 비우고 kcCertifiedProductExclusionYn을 TRUE로 설정하여 인증 대상에서 제외
-        // - certificationTargetExcludeContent의 kcCertifiedProductExclusionYn이 'KC 인증 대상' 카테고리 상품인 경우 필수
-        //   가능한 값: FALSE(KC 인증 대상), TRUE(KC 인증 대상 아님), KC_EXEMPTION_OBJECT(안전기준준수, 구매대행, 병행수입)
-        if (isKcCertificationRequired) {
-            // certificationInfoId를 모르는 경우, productCertificationInfos를 비우고 인증 대상에서 제외
-            // 실제 KC 인증 정보가 있는 경우에만 productCertificationInfos에 추가해야 함
-            // 현재는 certificationInfoId를 모르므로 인증 대상에서 제외 처리
-            log.warn("KC 인증 대상 카테고리 감지: 카테고리={}, certificationInfoId를 모르므로 인증 대상에서 제외 처리", 
-                    categoryPath != null ? categoryPath : leafCategoryId);
-            log.warn("실제 KC 인증 정보(certificationInfoId, certificationNumber 등)가 있으면 엑셀에 추가하거나 설정값으로 변경하세요.");
-        }
-        
-        detailAttribute.put("productCertificationInfos", productCertificationInfos);
-        
-        // certificationTargetExcludeContent 추가
-        // KC 인증 대상 카테고리인 경우 필수이지만, 감지되지 않은 경우를 대비하여 모든 카테고리에 추가
-        // API 문서: 'KC 인증 대상' 카테고리 상품인 경우 kcCertifiedProductExclusionYn 필수
-        // API 문서: '어린이제품 인증 대상' 카테고리 상품인 경우 childCertifiedProductExclusionYn 필수
-        // KC 인증 대상이 아닌 카테고리에서도 추가해도 문제없음 (안전장치)
-        Map<String, Object> certificationTargetExcludeContent = new HashMap<>();
-        
-        // KC 인증 대상 카테고리 처리
-        if (isKcCertificationRequired) {
-            // KC 인증 대상 카테고리인 경우, certificationInfoId를 모르므로 인증 대상에서 제외 처리
-            // kcCertifiedProductExclusionYn: FALSE(KC 인증 대상), TRUE(KC 인증 대상 아님), KC_EXEMPTION_OBJECT(안전기준준수, 구매대행, 병행수입)
-            certificationTargetExcludeContent.put("kcCertifiedProductExclusionYn", "TRUE");
-            log.info("certificationTargetExcludeContent 추가: kcCertifiedProductExclusionYn=TRUE (KC 인증 대상에서 제외)");
-        } else {
-            // KC 인증 대상이 아닌 것으로 판단되었지만, 안전을 위해 추가
-            // 일부 카테고리는 감지되지 않을 수 있으므로 기본값으로 TRUE 설정
-            certificationTargetExcludeContent.put("kcCertifiedProductExclusionYn", "TRUE");
-            log.debug("certificationTargetExcludeContent 추가 (안전장치): kcCertifiedProductExclusionYn=TRUE");
-        }
-        
-        // 어린이제품 인증 대상 카테고리 처리
-        if (isChildCertificationRequired) {
-            // 어린이제품 인증 대상 카테고리인 경우, certificationInfoId를 모르므로 인증 대상에서 제외 처리
-            // childCertifiedProductExclusionYn: false(어린이제품 인증 대상), true(어린이제품 인증 대상 아님)
-            // 미입력 시 false로 저장되므로, 인증 대상에서 제외하려면 true로 설정
-            certificationTargetExcludeContent.put("childCertifiedProductExclusionYn", true);
-            log.info("certificationTargetExcludeContent 추가: childCertifiedProductExclusionYn=true (어린이제품 인증 대상에서 제외)");
-        } else {
-            // 어린이제품 인증 대상이 아닌 것으로 판단되었지만, 안전을 위해 추가
-            // 일부 카테고리는 감지되지 않을 수 있으므로 기본값으로 true 설정
-            certificationTargetExcludeContent.put("childCertifiedProductExclusionYn", true);
-            log.debug("certificationTargetExcludeContent 추가 (안전장치): childCertifiedProductExclusionYn=true");
-        }
-        
-        detailAttribute.put("certificationTargetExcludeContent", certificationTargetExcludeContent);
+        // 카테고리별 인증 정보 생성
+        Map<String, Object> certificationInfo = categoryCertificationService.createCertificationInfo(
+                request.getCategoryPath(),
+                request.getLeafCategoryId()
+        );
+        detailAttribute.put("productCertificationInfos", certificationInfo.get("productCertificationInfos"));
+        detailAttribute.put("certificationTargetExcludeContent", certificationInfo.get("certificationTargetExcludeContent"));
         
         // 원산지 정보 (필수) - 카테고리별 자동 처리
-        Map<String, Object> originAreaInfo = createOriginAreaInfo(
+        Map<String, Object> originAreaInfo = originAreaService.createOriginAreaInfo(
                 request.getOriginArea(), 
-                request.getCategoryPath()
+                request.getCategoryPath(),
+                originNameToCodeMap
         );
         // 해산물이 아닌 상품에서 해역명 필드가 포함되어 있으면 제거 (안전장치)
         if (originAreaInfo.containsKey("oceanName") || originAreaInfo.containsKey("oceanType") || originAreaInfo.containsKey("oceanArea")) {
@@ -722,7 +595,7 @@ public class ProductService {
             // originAreaCode가 없으면 다시 생성
             String originArea = request.getOriginArea();
             if (originArea != null && !originArea.trim().isEmpty()) {
-                String originAreaCode = determineOriginAreaCode(originArea.trim());
+                String originAreaCode = originAreaService.determineOriginAreaCode(originArea.trim());
                 originAreaInfo.put("originAreaCode", originAreaCode);
                 log.warn("originAreaCode 재설정: originArea={}, originAreaCode={}", originArea, originAreaCode);
             }
@@ -739,19 +612,8 @@ public class ProductService {
         // channelProductDisplayStatusType: 네이버 API 문서에 따르면 ON, SUSPENSION만 입력 가능합니다.
         // 가능한 값: WAIT(전시 대기), ON(전시 중), SUSPENSION(전시 중지)
         // DISPLAY, HIDE, OFF는 유효하지 않은 값입니다.
-        String displayStatus = request.getChannelProductDisplayStatusType();
-        if (displayStatus != null && !displayStatus.trim().isEmpty()) {
-            String upper = displayStatus.trim().toUpperCase();
-            if ("ON".equals(upper) || "SUSPENSION".equals(upper) || "WAIT".equals(upper)) {
-                smartstoreChannelProduct.put("channelProductDisplayStatusType", upper);
-            } else {
-                // DISPLAY, HIDE, OFF 등은 유효하지 않으므로 ON으로 변환
-                log.warn("channelProductDisplayStatusType '{}'는 유효하지 않습니다. ON으로 변환합니다. (유효한 값: ON, SUSPENSION)", displayStatus);
-                smartstoreChannelProduct.put("channelProductDisplayStatusType", "ON");
-            }
-        } else {
-            smartstoreChannelProduct.put("channelProductDisplayStatusType", "ON"); // 기본값: 전시 중
-        }
+        String displayStatus = NaverStatusConverter.convertDisplayStatusType(request.getChannelProductDisplayStatusType());
+        smartstoreChannelProduct.put("channelProductDisplayStatusType", displayStatus);
         
         // 최종 구조
         naverData.put("originProduct", originProduct);
@@ -814,15 +676,15 @@ public class ProductService {
             Map<String, Object> deliveryInfoMap = (Map<String, Object>) originProduct.getDeliveryInfo();
             
             // deliveryType 확인
-            String deliveryType = (String) deliveryInfoMap.getOrDefault("deliveryType", "DELIVERY");
+            String deliveryType = (String) deliveryInfoMap.getOrDefault("deliveryType", NaverApiConstants.DEFAULT_DELIVERY_TYPE);
             
             // DELIVERY일 때 deliveryCompany 필수 (없으면 기본값 사용)
             // 주요 택배사 코드: CJGLS(CJ대한통운), HANJIN(한진택배), KGB(로젠택배), HYUNDAI(롯데택배), EPOST(우체국택배)
-            if ("DELIVERY".equals(deliveryType)) {
+            if (NaverApiConstants.DeliveryType.DELIVERY.equals(deliveryType)) {
                 Object deliveryCompany = deliveryInfoMap.get("deliveryCompany");
                 if (deliveryCompany == null || deliveryCompany.toString().trim().isEmpty() || "CUSTOM".equals(deliveryCompany)) {
                     // 기본값: CJ대한통운 (CJGLS)
-                    deliveryInfoMap.put("deliveryCompany", "CJGLS");
+                    deliveryInfoMap.put("deliveryCompany", NaverApiConstants.DeliveryCompany.CJGLS);
                 }
             }
             
@@ -834,9 +696,9 @@ public class ProductService {
                     String deliveryFeeType = (String) deliveryFee.get("deliveryFeeType");
                     
                     // PAID일 때 deliveryFeePayType 필수 확인 및 추가
-                    if ("PAID".equals(deliveryFeeType)) {
+                    if (NaverApiConstants.DeliveryFeeType.PAID.equals(deliveryFeeType)) {
                         if (!deliveryFee.containsKey("deliveryFeePayType")) {
-                            deliveryFee.put("deliveryFeePayType", "PREPAID"); // 선결제 (필수)
+                            deliveryFee.put("deliveryFeePayType", NaverApiConstants.DeliveryFeePayType.PREPAID); // 선결제 (필수)
                         }
                     }
                     
@@ -844,7 +706,7 @@ public class ProductService {
                     if ("CONDITIONAL_FREE".equals(deliveryFeeType)) {
                         // deliveryFeePayType 필수 추가
                         if (!deliveryFee.containsKey("deliveryFeePayType")) {
-                            deliveryFee.put("deliveryFeePayType", "PREPAID"); // 선결제 (필수)
+                            deliveryFee.put("deliveryFeePayType", NaverApiConstants.DeliveryFeePayType.PREPAID); // 선결제 (필수)
                         }
                         
                         // freeConditionalAmount가 baseFee 이상인지 검증
@@ -883,10 +745,10 @@ public class ProductService {
             if (!deliveryInfoMap.containsKey("claimDeliveryInfo")) {
                 Map<String, Object> claimDeliveryInfo = new HashMap<>();
                 claimDeliveryInfo.put("deliveryType", deliveryType);
-                claimDeliveryInfo.put("deliveryAttributeType", "NORMAL");
+                claimDeliveryInfo.put("deliveryAttributeType", NaverApiConstants.DELIVERY_ATTRIBUTE_TYPE_NORMAL);
                 // claimDeliveryInfo에는 deliveryCompany가 필수가 아님
                 Map<String, Object> claimDeliveryFee = new HashMap<>();
-                claimDeliveryFee.put("deliveryFeeType", "FREE");
+                claimDeliveryFee.put("deliveryFeeType", NaverApiConstants.DeliveryFeeType.FREE);
                 claimDeliveryInfo.put("deliveryFee", claimDeliveryFee);
                 // 필수: 반품/교환 배송비
                 claimDeliveryInfo.put("returnDeliveryFee", 0); // 반품 배송비 (무료)
@@ -910,22 +772,22 @@ public class ProductService {
         } else {
             // deliveryInfo가 없으면 기본값 추가
             Map<String, Object> deliveryInfo = new HashMap<>();
-            deliveryInfo.put("deliveryType", "DELIVERY");
-            deliveryInfo.put("deliveryAttributeType", "NORMAL");
+            deliveryInfo.put("deliveryType", NaverApiConstants.DEFAULT_DELIVERY_TYPE);
+            deliveryInfo.put("deliveryAttributeType", NaverApiConstants.DELIVERY_ATTRIBUTE_TYPE_NORMAL);
             // DELIVERY일 때 deliveryCompany 필수 - 기본값: CJ대한통운 (CJGLS)
-            deliveryInfo.put("deliveryCompany", "CJGLS");
+            deliveryInfo.put("deliveryCompany", NaverApiConstants.DeliveryCompany.CJGLS);
             Map<String, Object> deliveryFee = new HashMap<>();
-            deliveryFee.put("deliveryFeeType", "PAID"); // 유료 배송
-            deliveryFee.put("baseFee", 4500); // 기본 배송비 4500원
-            deliveryFee.put("deliveryFeePayType", "PREPAID"); // 선결제 (필수)
+            deliveryFee.put("deliveryFeeType", NaverApiConstants.DeliveryFeeType.PAID); // 유료 배송
+            deliveryFee.put("baseFee", NaverApiConstants.DEFAULT_DELIVERY_FEE); // 기본 배송비
+            deliveryFee.put("deliveryFeePayType", NaverApiConstants.DeliveryFeePayType.PREPAID); // 선결제 (필수)
             deliveryInfo.put("deliveryFee", deliveryFee);
             
             Map<String, Object> claimDeliveryInfo = new HashMap<>();
-            claimDeliveryInfo.put("deliveryType", "DELIVERY");
-            claimDeliveryInfo.put("deliveryAttributeType", "NORMAL");
+            claimDeliveryInfo.put("deliveryType", NaverApiConstants.DEFAULT_DELIVERY_TYPE);
+            claimDeliveryInfo.put("deliveryAttributeType", NaverApiConstants.DELIVERY_ATTRIBUTE_TYPE_NORMAL);
             // claimDeliveryInfo에는 deliveryCompany가 필수가 아님
             Map<String, Object> claimDeliveryFee = new HashMap<>();
-            claimDeliveryFee.put("deliveryFeeType", "FREE");
+            claimDeliveryFee.put("deliveryFeeType", NaverApiConstants.DeliveryFeeType.FREE);
             claimDeliveryInfo.put("deliveryFee", claimDeliveryFee);
             // 필수: 반품/교환 배송비
             claimDeliveryInfo.put("returnDeliveryFee", 0); // 반품 배송비 (무료)
@@ -1034,9 +896,9 @@ public class ProductService {
             // 2. originAreaInfo가 없으면 기본값 생성
             if (!detailAttributeMap.containsKey("originAreaInfo")) {
                 if (originAreaToUse == null) {
-                    originAreaToUse = "국내산";
+                    originAreaToUse = NaverApiConstants.DEFAULT_ORIGIN_AREA;
                 }
-                Map<String, Object> originAreaInfo = createOriginAreaInfo(originAreaToUse, categoryPath);
+                Map<String, Object> originAreaInfo = originAreaService.createOriginAreaInfo(originAreaToUse, categoryPath, originNameToCodeMap);
                 detailAttributeMap.put("originAreaInfo", originAreaInfo);
             } else {
                 // originAreaInfo가 이미 있으면 createOriginAreaInfo를 사용하여 재생성
@@ -1061,7 +923,7 @@ public class ProductService {
                             // content 사용
                             originAreaToUse = contentObj.toString().trim();
                             log.info("기존 originAreaInfo에서 content 추출: {}", originAreaToUse);
-                        } else if (originAreaCodeObj != null && !"00".equals(originAreaCodeObj.toString().trim())) {
+                        } else if (originAreaCodeObj != null && !NaverApiConstants.OriginAreaCode.DOMESTIC.equals(originAreaCodeObj.toString().trim())) {
                             // originAreaCode가 "00"(국산)이 아니면 해외 원산지로 추정
                             // 하지만 원산지 이름을 알 수 없으므로 기본값 사용
                             originAreaToUse = "해외산";
@@ -1069,7 +931,7 @@ public class ProductService {
                                     originAreaCodeObj.toString().trim());
                         } else {
                             // 둘 다 없으면 기본값
-                            originAreaToUse = "국내산";
+                            originAreaToUse = NaverApiConstants.DEFAULT_ORIGIN_AREA;
                             log.warn("기존 originAreaInfo에서 원산지 정보를 찾을 수 없어 기본값(국내산) 사용");
                         }
                     }
@@ -1078,16 +940,16 @@ public class ProductService {
                     // 이렇게 하면 해산물이 아닌 경우 oceanName/oceanType 제거,
                     // 해외 원산지인 경우 importCountry 추가됨 (importer는 제외)
                     // 기존 originAreaInfo에 해역명 필드가 있을 수 있으므로 재생성하여 제거
-                    Map<String, Object> originAreaInfo = createOriginAreaInfo(originAreaToUse, categoryPath);
+                    Map<String, Object> originAreaInfo = originAreaService.createOriginAreaInfo(originAreaToUse, categoryPath, originNameToCodeMap);
                     detailAttributeMap.put("originAreaInfo", originAreaInfo);
                     log.info("originAreaInfo 재생성 완료: originArea={}, categoryPath={}, 재생성된 originAreaInfo={}", 
                             originAreaToUse, categoryPath, originAreaInfo);
                 } else {
                     // null인 경우 기본값 생성
                     if (originAreaToUse == null) {
-                        originAreaToUse = "국내산";
+                        originAreaToUse = NaverApiConstants.DEFAULT_ORIGIN_AREA;
                     }
-                    Map<String, Object> originAreaInfo = createOriginAreaInfo(originAreaToUse, categoryPath);
+                    Map<String, Object> originAreaInfo = originAreaService.createOriginAreaInfo(originAreaToUse, categoryPath, originNameToCodeMap);
                     detailAttributeMap.put("originAreaInfo", originAreaInfo);
                 }
             }
@@ -1107,7 +969,7 @@ public class ProductService {
             detailAttribute.put("afterServiceInfo", afterServiceInfo);
             
             // originAreaInfo는 createOriginAreaInfo를 사용하여 생성
-            Map<String, Object> originAreaInfo = createOriginAreaInfo("국내산", null);
+            Map<String, Object> originAreaInfo = originAreaService.createOriginAreaInfo(NaverApiConstants.DEFAULT_ORIGIN_AREA, null, originNameToCodeMap);
             detailAttribute.put("originAreaInfo", originAreaInfo);
             
             // 필수: 상품정보제공고시
@@ -1285,238 +1147,6 @@ public class ProductService {
     }
     
     /**
-     * 브랜드 조회
-     * 전체 브랜드 목록을 조회합니다.
-     * 
-     * @param storeId 스토어 ID
-     * @return 브랜드 목록 (배열을 Map으로 래핑)
-     */
-    public Map<String, Object> getProductBrands(Long storeId) {
-        Store store = storeService.getStoreById(storeId)
-                .orElseThrow(() -> new IllegalArgumentException("스토어를 찾을 수 없습니다: " + storeId));
-        
-        if (store.getAccessToken() == null || store.getAccessToken().isEmpty()) {
-            throw new IllegalArgumentException("스토어의 Access Token이 설정되지 않았습니다.");
-        }
-        
-        if (!store.isActive()) {
-            throw new IllegalArgumentException("비활성화된 스토어입니다.");
-        }
-        
-        log.info("브랜드 조회: 스토어={}", store.getStoreName());
-        
-        // 네이버 API 호출 (동기 방식) - 배열로 반환됨
-        List<Map<String, Object>> brandsList = naverCommerceClient.getProductBrands(
-                store.getAccessToken(),
-                store.getVendorId()
-        ).block();
-        
-        // 배열을 Map으로 래핑하여 반환
-        Map<String, Object> result = new HashMap<>();
-        result.put("brands", brandsList != null ? brandsList : new ArrayList<>());
-        
-        log.info("브랜드 조회 완료: 스토어={}, 브랜드 개수={}", store.getStoreName(), 
-                brandsList != null ? brandsList.size() : 0);
-        
-        return result;
-    }
-    
-    /**
-     * 전체 사이즈 타입 조회
-     * 전체 사이즈 타입 목록을 조회합니다.
-     * 
-     * @param storeId 스토어 ID
-     * @return 사이즈 타입 목록 (배열을 Map으로 래핑)
-     */
-    public Map<String, Object> getProductSizes(Long storeId) {
-        Store store = storeService.getStoreById(storeId)
-                .orElseThrow(() -> new IllegalArgumentException("스토어를 찾을 수 없습니다: " + storeId));
-        
-        if (store.getAccessToken() == null || store.getAccessToken().isEmpty()) {
-            throw new IllegalArgumentException("스토어의 Access Token이 설정되지 않았습니다.");
-        }
-        
-        if (!store.isActive()) {
-            throw new IllegalArgumentException("비활성화된 스토어입니다.");
-        }
-        
-        log.info("사이즈 타입 조회: 스토어={}", store.getStoreName());
-        
-        // 네이버 API 호출 (동기 방식) - 배열로 반환됨
-        List<Map<String, Object>> sizesList = naverCommerceClient.getProductSizes(
-                store.getAccessToken(),
-                store.getVendorId()
-        ).block();
-        
-        // 배열을 Map으로 래핑하여 반환
-        Map<String, Object> result = new HashMap<>();
-        result.put("sizes", sizesList != null ? sizesList : new ArrayList<>());
-        
-        log.info("사이즈 타입 조회 완료: 스토어={}, 사이즈 타입 개수={}", store.getStoreName(), 
-                sizesList != null ? sizesList.size() : 0);
-        
-        return result;
-    }
-    
-    /**
-     * 상품 목록 조회
-     * 검색 조건에 따라 상품 목록을 조회합니다.
-     * 
-     * @param storeId 스토어 ID
-     * @param searchRequest 검색 요청 데이터
-     * @return 상품 목록
-     */
-    public Map<String, Object> searchProducts(Long storeId, com.example.auto.dto.ProductSearchRequest searchRequest) {
-        Store store = storeService.getStoreById(storeId)
-                .orElseThrow(() -> new IllegalArgumentException("스토어를 찾을 수 없습니다: " + storeId));
-        
-        if (store.getAccessToken() == null || store.getAccessToken().isEmpty()) {
-            throw new IllegalArgumentException("스토어의 Access Token이 설정되지 않았습니다.");
-        }
-        
-        if (!store.isActive()) {
-            throw new IllegalArgumentException("비활성화된 스토어입니다.");
-        }
-        
-        log.info("상품 목록 조회: 스토어={}, searchKeywordType={}, page={}, size={}", 
-                store.getStoreName(), 
-                searchRequest.getSearchKeywordType(),
-                searchRequest.getPage(),
-                searchRequest.getSize());
-        
-        // DTO를 Map으로 변환
-        Map<String, Object> searchMap = convertSearchRequestToMap(searchRequest);
-        
-        // 네이버 API 호출 (동기 방식)
-        Map<String, Object> result = naverCommerceClient.searchProducts(
-                store.getAccessToken(),
-                store.getVendorId(),
-                searchMap
-        ).block();
-        
-        log.info("상품 목록 조회 완료: 스토어={}", store.getStoreName());
-        
-        return result;
-    }
-    
-    /**
-     * ProductSearchRequest를 Map으로 변환
-     */
-    private Map<String, Object> convertSearchRequestToMap(com.example.auto.dto.ProductSearchRequest request) {
-        Map<String, Object> map = new HashMap<>();
-        
-        if (request.getSearchKeywordType() != null) {
-            map.put("searchKeywordType", request.getSearchKeywordType());
-        }
-        if (request.getChannelProductNos() != null && !request.getChannelProductNos().isEmpty()) {
-            map.put("channelProductNos", request.getChannelProductNos());
-        }
-        if (request.getOriginProductNos() != null && !request.getOriginProductNos().isEmpty()) {
-            map.put("originProductNos", request.getOriginProductNos());
-        }
-        if (request.getGroupProductNos() != null && !request.getGroupProductNos().isEmpty()) {
-            map.put("groupProductNos", request.getGroupProductNos());
-        }
-        if (request.getSellerManagementCode() != null && !request.getSellerManagementCode().trim().isEmpty()) {
-            map.put("sellerManagementCode", request.getSellerManagementCode().trim());
-        }
-        if (request.getProductStatusTypes() != null && !request.getProductStatusTypes().isEmpty()) {
-            map.put("productStatusTypes", request.getProductStatusTypes());
-        }
-        if (request.getPage() != null) {
-            map.put("page", request.getPage());
-        }
-        if (request.getSize() != null) {
-            map.put("size", request.getSize());
-        }
-        if (request.getOrderType() != null && !request.getOrderType().trim().isEmpty()) {
-            map.put("orderType", request.getOrderType());
-        }
-        if (request.getPeriodType() != null && !request.getPeriodType().trim().isEmpty()) {
-            map.put("periodType", request.getPeriodType());
-        }
-        if (request.getFromDate() != null && !request.getFromDate().trim().isEmpty()) {
-            map.put("fromDate", request.getFromDate().trim());
-        }
-        if (request.getToDate() != null && !request.getToDate().trim().isEmpty()) {
-            map.put("toDate", request.getToDate().trim());
-        }
-        
-        return map;
-    }
-    
-    /**
-     * 원상품 조회
-     * 원상품 번호로 원상품 정보를 조회합니다.
-     * 
-     * @param storeId 스토어 ID
-     * @param originProductNo 원상품 번호
-     * @return 원상품 정보
-     */
-    public Map<String, Object> getOriginProduct(Long storeId, Long originProductNo) {
-        Store store = storeService.getStoreById(storeId)
-                .orElseThrow(() -> new IllegalArgumentException("스토어를 찾을 수 없습니다: " + storeId));
-        
-        if (store.getAccessToken() == null || store.getAccessToken().isEmpty()) {
-            throw new IllegalArgumentException("스토어의 Access Token이 설정되지 않았습니다.");
-        }
-        
-        if (!store.isActive()) {
-            throw new IllegalArgumentException("비활성화된 스토어입니다.");
-        }
-        
-        log.info("원상품 조회: 스토어={}, originProductNo={}", store.getStoreName(), originProductNo);
-        
-        // 네이버 API 호출 (동기 방식)
-        Map<String, Object> result = naverCommerceClient.getOriginProduct(
-                store.getAccessToken(),
-                store.getVendorId(),
-                originProductNo
-        ).block();
-        
-        log.info("원상품 조회 완료: 스토어={}, originProductNo={}", store.getStoreName(), originProductNo);
-        
-        return result;
-    }
-    
-    /**
-     * 그룹상품 요청 결과 조회
-     * 그룹상품 등록/수정 API의 처리 상태를 조회합니다.
-     * 
-     * @param storeId 스토어 ID
-     * @param type 요청 타입 (CREATE: 그룹상품 등록, UPDATE: 그룹상품 수정)
-     * @param requestId 조회할 요청 ID
-     * @return 그룹상품 요청 결과
-     */
-    public Map<String, Object> getGroupProductStatus(Long storeId, String type, String requestId) {
-        Store store = storeService.getStoreById(storeId)
-                .orElseThrow(() -> new IllegalArgumentException("스토어를 찾을 수 없습니다: " + storeId));
-        
-        if (store.getAccessToken() == null || store.getAccessToken().isEmpty()) {
-            throw new IllegalArgumentException("스토어의 Access Token이 설정되지 않았습니다.");
-        }
-        
-        if (!store.isActive()) {
-            throw new IllegalArgumentException("비활성화된 스토어입니다.");
-        }
-        
-        log.info("그룹상품 요청 결과 조회: 스토어={}, type={}, requestId={}", 
-                store.getStoreName(), type, requestId);
-        
-        // 네이버 API 호출 (동기 방식)
-        Map<String, Object> result = naverCommerceClient.getGroupProductStatus(
-                store.getAccessToken(),
-                store.getVendorId(),
-                type,
-                requestId
-        ).block();
-        
-        log.info("그룹상품 요청 결과 조회 완료: 스토어={}", store.getStoreName());
-        
-        return result;
-    }
-    
-    /**
      * 그룹상품 요청을 네이버 API 형식으로 변환
      * 실제 API 구조: { "groupProduct": { ... } }
      */
@@ -1661,8 +1291,8 @@ public class ProductService {
             groupProduct.put("guideId", request.getGuideId());
             
             // 기본값
-            groupProduct.put("saleType", "NEW");
-            groupProduct.put("taxType", "TAX");
+            groupProduct.put("saleType", NaverApiConstants.DEFAULT_SALE_TYPE);
+            groupProduct.put("taxType", NaverApiConstants.DEFAULT_TAX_TYPE);
             groupProduct.put("minorPurchasable", false);
             groupProduct.put("itselfProductionProductYn", false);
             
@@ -1827,9 +1457,11 @@ public class ProductService {
             
             // detailAttribute에 originAreaInfo가 없으면 추가
             if (!detailAttribute.containsKey("originAreaInfo")) {
-                Map<String, Object> originAreaInfo = new HashMap<>();
-                originAreaInfo.put("originAreaCode", "00"); // API 문서: 00=국산
-                originAreaInfo.put("content", "국내산");
+                Map<String, Object> originAreaInfo = originAreaService.createOriginAreaInfo(
+                        NaverApiConstants.DEFAULT_ORIGIN_AREA, 
+                        null, 
+                        null
+                );
                 detailAttribute.put("originAreaInfo", originAreaInfo);
             }
             
@@ -1839,9 +1471,11 @@ public class ProductService {
         // 필수: originAreaInfo (원산지 정보) - specificProducts의 최상위에 필수
         // 네이버 API 요구사항: specificProducts[0].originAreaInfo가 필수
         if (!map.containsKey("originAreaInfo")) {
-            Map<String, Object> originAreaInfo = new HashMap<>();
-            originAreaInfo.put("originAreaCode", "00"); // API 문서: 00=국산
-            originAreaInfo.put("content", "국내산");
+            Map<String, Object> originAreaInfo = originAreaService.createOriginAreaInfo(
+                    NaverApiConstants.DEFAULT_ORIGIN_AREA, 
+                    null, 
+                    null
+            );
             map.put("originAreaInfo", originAreaInfo);
         }
         
@@ -1866,8 +1500,8 @@ public class ProductService {
         Map<String, Object> map = new HashMap<>();
         
         // 필수 필드 (네이버 API 요구사항)
-            map.put("naverShoppingRegistration", false);
-        map.put("channelProductDisplayStatusType", "ON");
+            map.put("naverShoppingRegistration", NaverApiConstants.DEFAULT_NAVER_SHOPPING_REGISTRATION);
+        map.put("channelProductDisplayStatusType", NaverApiConstants.DEFAULT_DISPLAY_STATUS_TYPE);
         log.debug("필수 필드 추가: naverShoppingRegistration=false, channelProductDisplayStatusType=ON");
         
         // 선택 필드: bbsSeq (공지사항) - 있으면 포함
@@ -1918,6 +1552,151 @@ public class ProductService {
         
         log.debug("windowChannel 변환 완료 - 총 {}개 필드: {}", map.size(), map.keySet());
         return map;
+    }
+    
+    /**
+     * 브랜드 조회
+     * 전체 브랜드 목록을 조회합니다.
+     * 
+     * @param storeId 스토어 ID
+     * @return 브랜드 목록 (배열을 Map으로 래핑)
+     */
+    public Map<String, Object> getProductBrands(Long storeId) {
+        Store store = storeService.getStoreById(storeId)
+                .orElseThrow(() -> new IllegalArgumentException("스토어를 찾을 수 없습니다: " + storeId));
+        
+        if (store.getAccessToken() == null || store.getAccessToken().isEmpty()) {
+            throw new IllegalArgumentException("스토어의 Access Token이 설정되지 않았습니다.");
+        }
+        
+        if (!store.isActive()) {
+            throw new IllegalArgumentException("비활성화된 스토어입니다.");
+        }
+        
+        log.info("브랜드 조회: 스토어={}", store.getStoreName());
+        
+        // 네이버 API 호출 (동기 방식) - 배열로 반환됨
+        List<Map<String, Object>> brandsList = naverCommerceClient.getProductBrands(
+                store.getAccessToken(),
+                store.getVendorId()
+        ).block();
+        
+        // 배열을 Map으로 래핑하여 반환
+        Map<String, Object> result = new HashMap<>();
+        result.put("brands", brandsList != null ? brandsList : new ArrayList<>());
+        
+        log.info("브랜드 조회 완료: 스토어={}, 브랜드 개수={}", store.getStoreName(), 
+                brandsList != null ? brandsList.size() : 0);
+        
+        return result;
+    }
+    
+    /**
+     * 전체 사이즈 타입 조회
+     * 전체 사이즈 타입 목록을 조회합니다.
+     * 
+     * @param storeId 스토어 ID
+     * @return 사이즈 타입 목록 (배열을 Map으로 래핑)
+     */
+    public Map<String, Object> getProductSizes(Long storeId) {
+        Store store = storeService.getStoreById(storeId)
+                .orElseThrow(() -> new IllegalArgumentException("스토어를 찾을 수 없습니다: " + storeId));
+        
+        if (store.getAccessToken() == null || store.getAccessToken().isEmpty()) {
+            throw new IllegalArgumentException("스토어의 Access Token이 설정되지 않았습니다.");
+        }
+        
+        if (!store.isActive()) {
+            throw new IllegalArgumentException("비활성화된 스토어입니다.");
+        }
+        
+        log.info("사이즈 타입 조회: 스토어={}", store.getStoreName());
+        
+        // 네이버 API 호출 (동기 방식) - 배열로 반환됨
+        List<Map<String, Object>> sizesList = naverCommerceClient.getProductSizes(
+                store.getAccessToken(),
+                store.getVendorId()
+        ).block();
+        
+        // 배열을 Map으로 래핑하여 반환
+        Map<String, Object> result = new HashMap<>();
+        result.put("sizes", sizesList != null ? sizesList : new ArrayList<>());
+        
+        log.info("사이즈 타입 조회 완료: 스토어={}, 사이즈 타입 개수={}", store.getStoreName(), 
+                sizesList != null ? sizesList.size() : 0);
+        
+        return result;
+    }
+    
+    /**
+     * 원상품 조회
+     * 원상품 번호로 원상품 정보를 조회합니다.
+     * 
+     * @param storeId 스토어 ID
+     * @param originProductNo 원상품 번호
+     * @return 원상품 정보
+     */
+    public Map<String, Object> getOriginProduct(Long storeId, Long originProductNo) {
+        Store store = storeService.getStoreById(storeId)
+                .orElseThrow(() -> new IllegalArgumentException("스토어를 찾을 수 없습니다: " + storeId));
+        
+        if (store.getAccessToken() == null || store.getAccessToken().isEmpty()) {
+            throw new IllegalArgumentException("스토어의 Access Token이 설정되지 않았습니다.");
+        }
+        
+        if (!store.isActive()) {
+            throw new IllegalArgumentException("비활성화된 스토어입니다.");
+        }
+        
+        log.info("원상품 조회: 스토어={}, originProductNo={}", store.getStoreName(), originProductNo);
+        
+        // 네이버 API 호출 (동기 방식)
+        Map<String, Object> result = naverCommerceClient.getOriginProduct(
+                store.getAccessToken(),
+                store.getVendorId(),
+                originProductNo
+        ).block();
+        
+        log.info("원상품 조회 완료: 스토어={}, originProductNo={}", store.getStoreName(), originProductNo);
+        
+        return result;
+    }
+    
+    /**
+     * 그룹상품 요청 결과 조회
+     * 그룹상품 등록/수정 API의 처리 상태를 조회합니다.
+     * 
+     * @param storeId 스토어 ID
+     * @param type 요청 타입 (CREATE: 그룹상품 등록, UPDATE: 그룹상품 수정)
+     * @param requestId 조회할 요청 ID
+     * @return 그룹상품 요청 결과
+     */
+    public Map<String, Object> getGroupProductStatus(Long storeId, String type, String requestId) {
+        Store store = storeService.getStoreById(storeId)
+                .orElseThrow(() -> new IllegalArgumentException("스토어를 찾을 수 없습니다: " + storeId));
+        
+        if (store.getAccessToken() == null || store.getAccessToken().isEmpty()) {
+            throw new IllegalArgumentException("스토어의 Access Token이 설정되지 않았습니다.");
+        }
+        
+        if (!store.isActive()) {
+            throw new IllegalArgumentException("비활성화된 스토어입니다.");
+        }
+        
+        log.info("그룹상품 요청 결과 조회: 스토어={}, type={}, requestId={}", 
+                store.getStoreName(), type, requestId);
+        
+        // 네이버 API 호출 (동기 방식)
+        Map<String, Object> result = naverCommerceClient.getGroupProductStatus(
+                store.getAccessToken(),
+                store.getVendorId(),
+                type,
+                requestId
+        ).block();
+        
+        log.info("그룹상품 요청 결과 조회 완료: 스토어={}", store.getStoreName());
+        
+        return result;
     }
     
     /**
@@ -2003,140 +1782,16 @@ public class ProductService {
     }
     
     /**
-     * 카테고리별 원산지 정보를 자동 생성합니다.
-     * 카테고리와 원산지에 따라 필요한 필드를 자동으로 추가합니다.
-     * 
-     * @param originArea 원산지 (예: "국내산", "중국", "일본" 등)
-     * @param categoryPath 카테고리 경로 (예: "식품 > 과자/간식 > 과자")
-     * @return 원산지 정보 Map
+     * 카테고리 조회 결과를 응답 형식으로 변환
      */
-    private Map<String, Object> createOriginAreaInfo(String originArea, String categoryPath) {
-        Map<String, Object> originAreaInfo = new HashMap<>();
-        
-        // 원산지 기본 정보 설정
-        if (originArea != null && !originArea.trim().isEmpty()) {
-            String trimmedOriginArea = originArea.trim();
-            originAreaInfo.put("content", trimmedOriginArea);
-            
-            // 원산지 코드 추론 (원산지 코드 조회 API를 통해 구체적인 국가 코드 찾기)
-            // 원산지 코드 조회 API가 호출되었는지 확인하고, 매핑이 있으면 사용
-            String originAreaCode = null;
-            if (originNameToCodeMap != null && !originNameToCodeMap.isEmpty()) {
-                String lowerCaseOrigin = trimmedOriginArea.toLowerCase();
-                
-                // 정확히 일치하는 경우
-                if (originNameToCodeMap.containsKey(lowerCaseOrigin)) {
-                    originAreaCode = originNameToCodeMap.get(lowerCaseOrigin);
-                    log.info("원산지 코드 매핑 발견: {} -> {}", trimmedOriginArea, originAreaCode);
-                } else {
-                    // 부분 일치 검색 (예: "베트남"이 포함된 경우)
-                    for (Map.Entry<String, String> entry : originNameToCodeMap.entrySet()) {
-                        String key = entry.getKey();
-                        if (key.contains(lowerCaseOrigin) || lowerCaseOrigin.contains(key)) {
-                            originAreaCode = entry.getValue();
-                            log.info("원산지 코드 부분 일치 발견: {} -> {} (매핑 키: {})", trimmedOriginArea, originAreaCode, key);
-                            break;
-                        }
-                    }
-                }
-            }
-            
-            // 매핑을 찾지 못한 경우 기본 로직 사용
-            if (originAreaCode == null) {
-                originAreaCode = determineOriginAreaCode(trimmedOriginArea);
-                log.debug("원산지 코드 매핑을 찾지 못함: {}. 기본 로직 사용: {}", trimmedOriginArea, originAreaCode);
-            }
-            
-            // originAreaCode는 필수 필드입니다 (네이버 API 요구사항)
-            originAreaInfo.put("originAreaCode", originAreaCode);
-            log.debug("originAreaCode 설정: originArea={}, originAreaCode={}", trimmedOriginArea, originAreaCode);
-            
-            // 해외 원산지인지 확인 (수입산: "02" 또는 "02"로 시작하는 코드)
-            boolean isForeignOrigin = originAreaCode.startsWith("02");
-            
-            // 카테고리별 특수 필드 처리 (해산물 여부 판단)
-            boolean isMarineCategory = false;
-            if (categoryPath != null && !categoryPath.trim().isEmpty()) {
-                String trimmedCategoryPath = categoryPath.trim();
-                
-                // 숫자 ID인지 확인 (카테고리 ID는 보통 숫자)
-                boolean isNumericCategoryId = trimmedCategoryPath.matches("^\\d+$");
-                
-                if (!isNumericCategoryId) {
-                    // 한글 카테고리 경로인 경우에만 해산물 여부 판단
-                    isMarineCategory = trimmedCategoryPath.contains("해산물") || 
-                                      trimmedCategoryPath.contains("수산물") ||
-                                      trimmedCategoryPath.contains("어류") ||
-                                      trimmedCategoryPath.contains("조개류");
-                    
-                    log.info("카테고리 경로 분석: categoryPath={}, isMarineCategory={}", 
-                            trimmedCategoryPath, isMarineCategory);
-                } else {
-                    // 숫자 ID인 경우 해산물 여부를 알 수 없으므로 안전하게 false로 설정
-                    // (해산물이 아닌 것으로 간주하여 oceanName/oceanType 제거)
-                    log.info("카테고리 ID가 숫자입니다. 해산물 여부를 판단할 수 없어 안전하게 false로 설정: categoryId={}", 
-                            trimmedCategoryPath);
-                    isMarineCategory = false;
-                }
-            } else {
-                // 카테고리 경로가 없으면 해산물이 아닌 것으로 간주
-                log.info("카테고리 경로가 없습니다. 해산물이 아닌 것으로 간주");
-                isMarineCategory = false;
-            }
-            
-            // 해외 원산지인 경우 수입사 필수 필드 채우기
-            // API 문서: originAreaCode=02 (수입산)일 때 importer 필드가 필수
-            // 주의: API 문서에는 importCountry 필드가 없지만, 에러 메시지에서 요구할 수 있음
-            // 일단 API 문서대로 importer만 설정하고, 에러가 발생하면 추가 조사 필요
-            if (isForeignOrigin) {
-                // 수입사: 필수 필드 (API 문서 명시)
-                // 기본값 설정 (추후 엑셀/설정값으로 교체 가능)
-                originAreaInfo.put("importer", "수입사명"); // TODO: 엑셀/설정/Store에서 가져오도록 확장
-                
-                // TODO: 에러 메시지 "수입국 항목을 입력해 주세요"가 계속 발생하면
-                // 원산지 코드 조회 API(/v1/product-origin-areas)를 호출하여
-                // 수입국 코드 정보를 확인하고 적절한 필드명/값을 사용해야 함
-                // 현재는 API 문서에 없는 importCountry 필드를 추가하지 않음
-                
-                log.info("해외 원산지 감지: originArea={}, originAreaCode={}, importer={}", 
-                        trimmedOriginArea, originAreaCode, originAreaInfo.get("importer"));
-            }
-            
-            // content 필드는 항상 설정됨 (원산지 표시 내용)
-            // API 문서: originAreaCode가 '04'(기타-직접 입력)인 경우 content 필수
-            // 하지만 다른 코드에서도 content는 유용하므로 항상 설정
-            
-            // 해산물이 아닌 카테고리에서는 해역명 관련 필드를 명시적으로 제거
-            // (에러: OceanTypeNotFullySelected, NotMarineProduct 방지)
-            // 해외 원산지인 경우에도 해역명 필드가 포함되어 있으면 안 됨
-            if (!isMarineCategory) {
-                // 해역명 관련 필드가 있다면 제거 (혹시 모를 경우 대비)
-                originAreaInfo.remove("oceanName");
-                originAreaInfo.remove("oceanType");
-                // 해역명 관련 다른 필드도 제거 (안전을 위해)
-                originAreaInfo.remove("oceanArea");
-                log.debug("해산물이 아닌 카테고리: oceanName/oceanType/oceanArea 제거됨, isForeignOrigin={}", isForeignOrigin);
-            } else {
-                // 해산물인 경우에만 해역명 정보가 필요하지만, 
-                // 현재는 해역명 정보를 제공하지 않으므로 해산물 카테고리도 일반 원산지 정보만 사용
-                // 필요시 해역명 정보를 추가할 수 있도록 주석 처리
-                log.debug("해산물 카테고리이지만 해역명 정보는 제공하지 않습니다.");
-            }
-        } else {
-            // 기본값: 국산
-            originAreaInfo.put("originAreaCode", "00"); // API 문서: 00=국산
-            originAreaInfo.put("content", "국내산");
-        }
-        
-        // 최종 확인: originAreaCode가 반드시 포함되어 있어야 함
-        if (!originAreaInfo.containsKey("originAreaCode")) {
-            log.error("createOriginAreaInfo 반환 시 originAreaCode가 없습니다! originAreaInfo={}", originAreaInfo);
-            // 기본값 설정: 국산
-            originAreaInfo.put("originAreaCode", "00");
-        }
-        
-        log.debug("createOriginAreaInfo 반환: originAreaInfo={}", originAreaInfo);
-        return originAreaInfo;
+    public Map<String, Object> getCategoriesResponse(Boolean last) {
+        List<Map<String, Object>> categories = getCategories(last);
+        Map<String, Object> response = new HashMap<>();
+        response.put("success", true);
+        response.put("data", categories != null ? categories : new ArrayList<>());
+        response.put("count", categories != null ? categories.size() : 0);
+        response.put("last", last != null ? last : false);
+        return response;
     }
     
     /**
@@ -2177,35 +1832,115 @@ public class ProductService {
     }
     
     /**
-     * 원산지 문자열로부터 원산지 코드를 추론합니다.
+     * 상품 목록 조회
+     * 검색 조건에 따라 상품 목록을 조회합니다.
      * 
-     * 네이버 API 문서에 따른 originAreaCode 값:
-     * - "00": 국산
-     * - "01": 원양산
-     * - "02": 수입산
-     * - "03": 기타-상세 설명에 표시
-     * - "04": 기타-직접 입력 (content 필수)
-     * - "05": 원산지 표기 의무 대상 아님
-     * 
-     * @param originArea 원산지 문자열 (예: "국내산", "중국", "일본" 등)
-     * @return 원산지 코드 (00=국산, 02=수입산)
+     * @param storeId 스토어 ID
+     * @param searchRequest 검색 요청 데이터
+     * @return 상품 목록
      */
-    private String determineOriginAreaCode(String originArea) {
-        if (originArea == null || originArea.trim().isEmpty()) {
-            return "00"; // 기본값: 국산
+    /**
+     * 상품 검색 (현재 스토어 자동 조회, 기본값 설정 포함)
+     */
+    public Map<String, Object> searchProducts(com.example.auto.dto.ProductSearchRequest searchRequest) {
+        Store store = storeService.getCurrentStore()
+                .orElseThrow(() -> new IllegalArgumentException("등록된 스토어가 없습니다. 먼저 스토어를 등록해주세요."));
+        
+        // 기본값 설정
+        if (searchRequest.getPage() == null || searchRequest.getPage() < 1) {
+            searchRequest.setPage(1);
+        }
+        if (searchRequest.getSize() == null || searchRequest.getSize() < 1) {
+            searchRequest.setSize(50);
+        }
+        if (searchRequest.getSize() > 500) {
+            searchRequest.setSize(500); // 최대 500건
         }
         
-        String trimmed = originArea.trim();
-        
-        // 국내산 판단 (명시적으로 국내산인 경우만)
-        if (trimmed.contains("국내") || trimmed.contains("한국") || trimmed.contains("국산")) {
-            return "00"; // 국산
-        }
-        
-        // 이하는 전부 해외산(수입산) 취급
-        // API 문서에 따르면 수입산은 "02" 사용
-        log.debug("해외 원산지로 판단: {}. originAreaCode=02(수입산) 사용", trimmed);
-        return "02"; // 수입산
+        return searchProducts(store.getId(), searchRequest);
     }
+    
+    /**
+     * 상품 검색 (스토어 ID 지정)
+     */
+    public Map<String, Object> searchProducts(Long storeId, com.example.auto.dto.ProductSearchRequest searchRequest) {
+        Store store = storeService.getStoreById(storeId)
+                .orElseThrow(() -> new IllegalArgumentException("스토어를 찾을 수 없습니다: " + storeId));
+        
+        if (store.getAccessToken() == null || store.getAccessToken().isEmpty()) {
+            throw new IllegalArgumentException("스토어의 Access Token이 설정되지 않았습니다.");
+        }
+        
+        if (!store.isActive()) {
+            throw new IllegalArgumentException("비활성화된 스토어입니다.");
+        }
+        
+        log.info("상품 목록 조회: 스토어={}, searchKeywordType={}, page={}, size={}", 
+                store.getStoreName(), 
+                searchRequest.getSearchKeywordType(),
+                searchRequest.getPage(),
+                searchRequest.getSize());
+        
+        // DTO를 Map으로 변환
+        Map<String, Object> searchMap = convertSearchRequestToMap(searchRequest);
+        
+        // 네이버 API 호출 (동기 방식)
+        Map<String, Object> result = naverCommerceClient.searchProducts(
+                store.getAccessToken(),
+                store.getVendorId(),
+                searchMap
+        ).block();
+        
+        log.info("상품 목록 조회 완료: 스토어={}", store.getStoreName());
+        
+        return result;
+    }
+    
+    /**
+     * ProductSearchRequest를 Map으로 변환
+     */
+    private Map<String, Object> convertSearchRequestToMap(com.example.auto.dto.ProductSearchRequest request) {
+        Map<String, Object> map = new HashMap<>();
+        
+        if (request.getSearchKeywordType() != null) {
+            map.put("searchKeywordType", request.getSearchKeywordType());
+        }
+        if (request.getChannelProductNos() != null && !request.getChannelProductNos().isEmpty()) {
+            map.put("channelProductNos", request.getChannelProductNos());
+        }
+        if (request.getOriginProductNos() != null && !request.getOriginProductNos().isEmpty()) {
+            map.put("originProductNos", request.getOriginProductNos());
+        }
+        if (request.getGroupProductNos() != null && !request.getGroupProductNos().isEmpty()) {
+            map.put("groupProductNos", request.getGroupProductNos());
+        }
+        if (request.getSellerManagementCode() != null && !request.getSellerManagementCode().trim().isEmpty()) {
+            map.put("sellerManagementCode", request.getSellerManagementCode().trim());
+        }
+        if (request.getProductStatusTypes() != null && !request.getProductStatusTypes().isEmpty()) {
+            map.put("productStatusTypes", request.getProductStatusTypes());
+        }
+        if (request.getPage() != null) {
+            map.put("page", request.getPage());
+        }
+        if (request.getSize() != null) {
+            map.put("size", request.getSize());
+        }
+        if (request.getOrderType() != null && !request.getOrderType().trim().isEmpty()) {
+            map.put("orderType", request.getOrderType());
+        }
+        if (request.getPeriodType() != null && !request.getPeriodType().trim().isEmpty()) {
+            map.put("periodType", request.getPeriodType());
+        }
+        if (request.getFromDate() != null && !request.getFromDate().trim().isEmpty()) {
+            map.put("fromDate", request.getFromDate().trim());
+        }
+        if (request.getToDate() != null && !request.getToDate().trim().isEmpty()) {
+            map.put("toDate", request.getToDate().trim());
+        }
+        
+        return map;
+    }
+    
 }
 

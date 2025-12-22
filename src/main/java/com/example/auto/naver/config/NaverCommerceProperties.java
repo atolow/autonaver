@@ -1,4 +1,4 @@
-package com.example.auto.config;
+package com.example.auto.naver.config;
 
 import lombok.Getter;
 import lombok.Setter;

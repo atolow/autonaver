@@ -1,7 +1,10 @@
-package com.example.auto.service;
+package com.example.auto.naver.service;
 
 import com.example.auto.dto.ExcelUploadResult;
-import com.example.auto.dto.ProductRequest;
+import com.example.auto.naver.constants.NaverApiConstants;
+import com.example.auto.platform.BatchUploadService;
+import com.example.auto.service.CsvExportService;
+import com.example.auto.service.ExcelService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -11,17 +14,17 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 배치 업로드 서비스
+ * 네이버 배치 업로드 서비스
  * 엑셀 파일에서 읽은 여러 상품을 순차적으로 네이버 스토어에 업로드
  */
 @Slf4j
-@Service
+@Service("naverBatchUploadService")
 @RequiredArgsConstructor
-public class BatchUploadService {
+public class NaverBatchUploadService implements BatchUploadService {
     
     private final ExcelService excelService;
-    private final ExcelToProductConverter excelToProductConverter;
-    private final ProductService productService;
+    private final NaverExcelToProductConverter excelToProductConverter;
+    private final NaverProductService productService;
     private final CsvExportService csvExportService;
     
     /**
@@ -31,6 +34,7 @@ public class BatchUploadService {
      * @param excelRows 엑셀 행 데이터 리스트
      * @return 업로드 결과 리포트
      */
+    @Override
     public ExcelUploadResult batchUploadProducts(Long storeId, List<Map<String, Object>> excelRows) {
         log.info("배치 업로드 시작: 스토어 ID={}, 총 {}개 행", storeId, excelRows.size());
         
@@ -58,7 +62,7 @@ public class BatchUploadService {
             String productName = null;
             try {
                 // 엑셀 행 데이터를 ProductRequest로 변환
-                ProductRequest productRequest = excelToProductConverter.convert(rowData);
+                com.example.auto.dto.ProductRequest productRequest = excelToProductConverter.convert(rowData);
                 productName = productRequest.getName();
                 
                 log.info("상품 업로드 시작: 행 {}, 상품명={}", rowNumber, productName);
@@ -66,7 +70,7 @@ public class BatchUploadService {
                 // Rate Limit 방지를 위해 상품 업로드 사이에 딜레이 추가 (첫 번째 상품 제외)
                 if (rowNumber > 1) {
                     try {
-                        Thread.sleep(500); // 500ms 딜레이 (Rate Limit 방지)
+                        Thread.sleep(NaverApiConstants.PRODUCT_UPLOAD_DELAY_MS); // Rate Limit 방지
                     } catch (InterruptedException e) {
                         Thread.currentThread().interrupt();
                         log.warn("상품 업로드 딜레이 중단됨");
@@ -146,4 +150,3 @@ public class BatchUploadService {
         return result;
     }
 }
-

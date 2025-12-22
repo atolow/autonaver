@@ -53,47 +53,16 @@ public class OAuthController {
             @RequestParam(required = false) String vendorId,
             @RequestParam(required = false) String storeName) {
         
-        // Form Data 또는 Query Parameters 사용
-        String finalType = type;
-        String finalAccountId = accountId;
-        String finalVendorId = vendorId;
-        String finalStoreName = storeName;
-        
         try {
-            // 스토어가 이미 등록되어 있는지 확인
-            java.util.Optional<Store> existingStore = storeService.getCurrentStore();
+            Store store = oAuthService.authenticate(type, accountId, vendorId, storeName);
+            return ResponseEntity.ok(store);
             
-            if (existingStore.isPresent()) {
-                // 스토어가 있으면 저장된 정보로 자동 토큰 갱신
-                Store store = existingStore.get();
-                log.info("기존 스토어 발견, 자동 토큰 갱신: vendorId={}", store.getVendorId());
-                
-                // 저장된 vendorId를 accountId로 사용 (기본값)
-                String autoAccountId = store.getVendorId();
-                String autoType = finalType != null ? finalType : "SELF"; // 기본값 SELF
-                
-                Store updatedStore = oAuthService.authenticateAndCreateStore(
-                        autoType, 
-                        autoAccountId, 
-                        store.getVendorId(), 
-                        store.getStoreName()
-                );
-                
-                return ResponseEntity.ok(updatedStore);
-            } else {
-                // 스토어가 없으면 최초 설정 (필수 정보 입력 필요)
-                String finalTypeValue = finalType != null ? finalType : "SELF"; // 기본값 SELF
-                
-                if ("SELF".equals(finalTypeValue) && (finalAccountId == null || finalAccountId.isEmpty())) {
-                    Map<String, String> error = new HashMap<>();
-                    error.put("error", "최초 설정: type이 SELF인 경우 accountId는 필수입니다.");
-                    error.put("message", "스토어가 등록되지 않았습니다. accountId를 입력하세요.");
-                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
-                }
-                
-                Store store = oAuthService.authenticateAndCreateStore(finalTypeValue, finalAccountId, finalVendorId, finalStoreName);
-                return ResponseEntity.ok(store);
-            }
+        } catch (IllegalArgumentException e) {
+            log.error("네이버 커머스 API 인증 실패: {}", e.getMessage());
+            Map<String, String> error = new HashMap<>();
+            error.put("error", e.getMessage());
+            error.put("message", e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
             
         } catch (Exception e) {
             log.error("네이버 커머스 API 인증 처리 중 오류 발생", e);

@@ -23,37 +23,29 @@ import java.util.Map;
 public class SyncController {
     
     private final SyncService syncService;
-    private final StoreService storeService;
     
     /**
      * 상품 동기화 (독립 실행형: 현재 스토어만 동기화)
      */
     @PostMapping("/products")
     public ResponseEntity<Map<String, Object>> syncProducts() {
-        return storeService.getCurrentStore()
-                .map(store -> {
-                    try {
-                        int syncedCount = syncService.syncProducts(store);
-                        Map<String, Object> response = new HashMap<>();
-                        response.put("success", true);
-                        response.put("message", "상품 동기화가 완료되었습니다.");
-                        response.put("syncedCount", syncedCount);
-                        return ResponseEntity.ok(response);
-                    } catch (Exception e) {
-                        log.error("상품 동기화 실패", e);
-                        Map<String, Object> response = new HashMap<>();
-                        response.put("success", false);
-                        response.put("message", "상품 동기화 실패: " + e.getMessage());
-                        response.put("error", e.getClass().getSimpleName());
-                        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
-                    }
-                })
-                .orElseGet(() -> {
-                    Map<String, Object> response = new HashMap<>();
-                    response.put("success", false);
-                    response.put("message", "등록된 스토어가 없습니다. 먼저 스토어를 등록해주세요.");
-                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
-                });
+        try {
+            Map<String, Object> result = syncService.syncProducts();
+            return ResponseEntity.ok(result);
+        } catch (IllegalArgumentException e) {
+            log.error("상품 동기화 실패: {}", e.getMessage());
+            Map<String, Object> response = new HashMap<>();
+            response.put("success", false);
+            response.put("message", e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        } catch (Exception e) {
+            log.error("상품 동기화 실패", e);
+            Map<String, Object> response = new HashMap<>();
+            response.put("success", false);
+            response.put("message", "상품 동기화 실패: " + e.getMessage());
+            response.put("error", e.getClass().getSimpleName());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
     }
     
     /**
@@ -64,31 +56,23 @@ public class SyncController {
             @RequestParam(required = false) LocalDateTime startDate,
             @RequestParam(required = false) LocalDateTime endDate) {
         
-        return storeService.getCurrentStore()
-                .map(store -> {
-                    try {
-                        LocalDateTime finalStartDate = startDate != null ? startDate : LocalDateTime.now().minusDays(7);
-                        LocalDateTime finalEndDate = endDate != null ? endDate : LocalDateTime.now();
-                        syncService.syncOrders(store, finalStartDate, finalEndDate);
-                        Map<String, Object> response = new HashMap<>();
-                        response.put("success", true);
-                        response.put("message", "주문 동기화가 시작되었습니다.");
-                        return ResponseEntity.ok(response);
-                    } catch (Exception e) {
-                        log.error("주문 동기화 실패", e);
-                        Map<String, Object> response = new HashMap<>();
-                        response.put("success", false);
-                        response.put("message", "주문 동기화 실패: " + e.getMessage());
-                        response.put("error", e.getClass().getSimpleName());
-                        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
-                    }
-                })
-                .orElseGet(() -> {
-                    Map<String, Object> response = new HashMap<>();
-                    response.put("success", false);
-                    response.put("message", "등록된 스토어가 없습니다. 먼저 스토어를 등록해주세요.");
-                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
-                });
+        try {
+            Map<String, Object> result = syncService.syncOrders(startDate, endDate);
+            return ResponseEntity.ok(result);
+        } catch (IllegalArgumentException e) {
+            log.error("주문 동기화 실패: {}", e.getMessage());
+            Map<String, Object> response = new HashMap<>();
+            response.put("success", false);
+            response.put("message", e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        } catch (Exception e) {
+            log.error("주문 동기화 실패", e);
+            Map<String, Object> response = new HashMap<>();
+            response.put("success", false);
+            response.put("message", "주문 동기화 실패: " + e.getMessage());
+            response.put("error", e.getClass().getSimpleName());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
     }
 }
 

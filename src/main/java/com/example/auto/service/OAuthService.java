@@ -1,6 +1,6 @@
 package com.example.auto.service;
 
-import com.example.auto.client.NaverCommerceClient;
+import com.example.auto.naver.client.NaverCommerceClient;
 import com.example.auto.domain.Store;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +20,46 @@ public class OAuthService {
     private final NaverCommerceClient naverCommerceClient;
     private final StoreService storeService;
 
+    /**
+     * 네이버 커머스 API 인증 처리 (자동 스토어 갱신 또는 신규 생성)
+     * 기존 스토어가 있으면 자동으로 토큰 갱신, 없으면 신규 생성
+     *
+     * @param type      인증 토큰 발급 타입 (SELF 또는 SELF)
+     * @param accountId 판매자 ID (type이 SELF 경우 필수, 스토어가 없을 때만)
+     * @param vendorId  판매자 ID (null이면 채널 정보에서 조회)
+     * @param storeName 스토어 이름 (null이면 기본값 사용)
+     * @return 생성/업데이트된 Store 엔티티
+     */
+    public Store authenticate(String type, String accountId, String vendorId, String storeName) {
+        // 기존 스토어가 있으면 자동 토큰 갱신
+        java.util.Optional<Store> existingStore = storeService.getCurrentStore();
+        
+        if (existingStore.isPresent()) {
+            Store store = existingStore.get();
+            log.info("기존 스토어 발견, 자동 토큰 갱신: vendorId={}", store.getVendorId());
+            
+            // 저장된 vendorId를 accountId로 사용 (기본값)
+            String autoAccountId = store.getVendorId();
+            String autoType = type != null ? type : "SELF"; // 기본값 SELF
+            
+            return authenticateAndCreateStore(
+                    autoType, 
+                    autoAccountId, 
+                    store.getVendorId(), 
+                    store.getStoreName()
+            );
+        } else {
+            // 스토어가 없으면 신규 생성 (필수 정보 검증)
+            String finalTypeValue = type != null ? type : "SELF"; // 기본값 SELF
+            
+            if ("SELF".equals(finalTypeValue) && (accountId == null || accountId.isEmpty())) {
+                throw new IllegalArgumentException("최초 설정: type이 SELF인 경우 accountId는 필수입니다.");
+            }
+            
+            return authenticateAndCreateStore(finalTypeValue, accountId, vendorId, storeName);
+        }
+    }
+    
     /**
      * 네이버 커머스 API 인증 + 스토어 생성/업데이트
      *

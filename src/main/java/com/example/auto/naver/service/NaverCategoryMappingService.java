@@ -1,5 +1,6 @@
-package com.example.auto.service;
+package com.example.auto.naver.service;
 
+import com.example.auto.naver.constants.NaverApiConstants;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 카테고리 경로를 네이버 API 카테고리 ID로 변환하는 서비스
+ * 네이버 카테고리 경로를 네이버 API 카테고리 ID로 변환하는 서비스
  * 
  * 네이버 스마트스토어 카테고리 조회 API를 사용하여 동적으로 카테고리 매핑을 생성합니다.
  * 첫 호출 시 API를 통해 전체 카테고리를 조회하고, 이후에는 캐시된 매핑을 사용합니다.
@@ -17,9 +18,9 @@ import java.util.Map;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class CategoryMappingService {
+public class NaverCategoryMappingService {
     
-    private final ProductService productService;
+    private final NaverProductService productService;
     
     /**
      * 카테고리 경로 -> 카테고리 ID 매핑 캐시
@@ -63,7 +64,7 @@ public class CategoryMappingService {
                     allCategories.append("전체 카테고리 매핑 (").append(categoryMappingCache.size()).append("개): ");
                     int count = 0;
                     int lineCount = 0;
-                    final int MAX_LINE_LENGTH = 50000; // 한 줄당 최대 길이 (약 50KB)
+                    final int MAX_LINE_LENGTH = NaverApiConstants.MAX_LOG_LINE_LENGTH; // 한 줄당 최대 길이
                     
                     for (Map.Entry<String, String> entry : categoryMappingCache.entrySet()) {
                         if (count > 0) {
@@ -511,5 +512,4 @@ public class CategoryMappingService {
         }
     }
 }
-
 

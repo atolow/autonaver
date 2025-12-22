@@ -1,6 +1,6 @@
 package com.example.auto.service;
 
-import com.example.auto.client.NaverCommerceClient;
+import com.example.auto.naver.client.NaverCommerceClient;
 import com.example.auto.domain.Order;
 import com.example.auto.domain.Product;
 import com.example.auto.domain.Store;
@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -32,13 +33,33 @@ public class SyncService {
     private final OrderRepository orderRepository;
     
     /**
-     * 상품 목록 동기화
+     * 상품 목록 동기화 (현재 스토어 자동 조회)
+     * 
+     * @return 동기화 결과 (성공 여부, 메시지, 동기화된 상품 수)
+     * @throws IllegalArgumentException 스토어가 없을 때
+     * @throws RuntimeException API 호출 실패 시 예외 발생
+     */
+    public Map<String, Object> syncProducts() {
+        Store store = storeService.getCurrentStore()
+                .orElseThrow(() -> new IllegalArgumentException("등록된 스토어가 없습니다. 먼저 스토어를 등록해주세요."));
+        
+        int syncedCount = syncProductsInternal(store);
+        
+        Map<String, Object> response = new HashMap<>();
+        response.put("success", true);
+        response.put("message", "상품 동기화가 완료되었습니다.");
+        response.put("syncedCount", syncedCount);
+        return response;
+    }
+    
+    /**
+     * 상품 목록 동기화 (내부 메서드)
      * 
      * @param store 스토어 엔티티
      * @return 동기화된 상품 수
      * @throws RuntimeException API 호출 실패 시 예외 발생
      */
-    public int syncProducts(Store store) {
+    public int syncProductsInternal(Store store) {
         log.info("상품 동기화 시작: {}", store.getStoreName());
         
         try {
@@ -393,9 +414,9 @@ public class SyncService {
     }
     
     /**
-     * 주문 목록 동기화
+     * 주문 목록 동기화 (내부 메서드)
      */
-    public void syncOrders(Store store, LocalDateTime startDate, LocalDateTime endDate) {
+    public void syncOrdersInternal(Store store, LocalDateTime startDate, LocalDateTime endDate) {
         log.info("주문 동기화 시작: {} ({} ~ {})", store.getStoreName(), startDate, endDate);
         
         try {
@@ -436,8 +457,26 @@ public class SyncService {
     public void syncAllProducts() {
         List<Store> activeStores = storeService.getActiveStores();
         for (Store store : activeStores) {
-            syncProducts(store);
+            syncProductsInternal(store);
         }
+    }
+    
+    /**
+     * 주문 목록 동기화 (현재 스토어 자동 조회)
+     */
+    public Map<String, Object> syncOrders(LocalDateTime startDate, LocalDateTime endDate) {
+        Store store = storeService.getCurrentStore()
+                .orElseThrow(() -> new IllegalArgumentException("등록된 스토어가 없습니다. 먼저 스토어를 등록해주세요."));
+        
+        LocalDateTime finalStartDate = startDate != null ? startDate : LocalDateTime.now().minusDays(7);
+        LocalDateTime finalEndDate = endDate != null ? endDate : LocalDateTime.now();
+        
+        syncOrdersInternal(store, finalStartDate, finalEndDate);
+        
+        Map<String, Object> response = new HashMap<>();
+        response.put("success", true);
+        response.put("message", "주문 동기화가 시작되었습니다.");
+        return response;
     }
     
     /**
@@ -449,7 +488,7 @@ public class SyncService {
         
         List<Store> activeStores = storeService.getActiveStores();
         for (Store store : activeStores) {
-            syncOrders(store, startDate, endDate);
+            syncOrdersInternal(store, startDate, endDate);
         }
     }
 }

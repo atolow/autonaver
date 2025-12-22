@@ -1,5 +1,6 @@
 package com.example.auto.service;
 
+import com.example.auto.naver.constants.NaverApiConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -295,12 +296,12 @@ public class ExcelService {
                     "https://example.com/image1.jpg",
                     "https://example.com/image2.jpg",
                     "3000",
-                    "DELIVERY",
-                    "국내산",
+                    NaverApiConstants.DEFAULT_DELIVERY_TYPE,
+                    NaverApiConstants.DEFAULT_ORIGIN_AREA,
                     "제조사명",
-                    "TAX",
-                    "SALE",
-                    "ON",
+                    NaverApiConstants.DEFAULT_TAX_TYPE,
+                    NaverApiConstants.DEFAULT_STATUS_TYPE,
+                    NaverApiConstants.DEFAULT_DISPLAY_STATUS_TYPE,
                     "" // guideId는 카테고리로 조회 필요
             };
             
@@ -315,10 +316,10 @@ public class ExcelService {
                 sheet.autoSizeColumn(i);
                 // 최소 너비 설정
                 int columnWidth = sheet.getColumnWidth(i);
-                if (columnWidth < 3000) {
-                    sheet.setColumnWidth(i, 3000);
-                } else if (columnWidth > 15000) {
-                    sheet.setColumnWidth(i, 15000);
+                if (columnWidth < NaverApiConstants.ExcelColumnWidth.MIN) {
+                    sheet.setColumnWidth(i, NaverApiConstants.ExcelColumnWidth.MIN);
+                } else if (columnWidth > NaverApiConstants.ExcelColumnWidth.MAX) {
+                    sheet.setColumnWidth(i, NaverApiConstants.ExcelColumnWidth.MAX);
                 }
             }
             
